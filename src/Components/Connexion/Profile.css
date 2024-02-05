@@ -1,0 +1,122 @@
+.profile-container {
+    width: 100%;
+    background-color: #000009;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+.render-content{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red;
+}
+.user-nav {
+    height: 100vh;
+    background-color: #000009;
+}
+
+.profile-section {
+    height: 15vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.profile-section h1 {
+    color: white;
+    font-size: 20px;
+    font-family: Open Sans, -apple-system, "Segoe UI", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 700;
+    line-height: 1;
+    padding: 10px 0 0 20px;
+}
+
+.profile-section .img-sec {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    position: relative;
+    padding-left: 5px;
+}
+
+.profile-section img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.profile-section .img-sec::before {
+    content: ''; /* Set content to an empty string */
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgb(45, 255, 62);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2; /* Increased z-index */
+}
+
+
+
+.profile-ul{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    padding: 50px 0;
+    font-size: 16px;
+    font-family: Open Sans, -apple-system, "Segoe UI", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+    line-height: 1;
+}
+
+
+ul li a{
+    color: #f5f8f0;
+    font-weight: 600;
+}
+
+
+
+#menuP a{
+    color: #f5f8f0;
+}
+
+
+
+
+
+  .menuPp a::before{
+    background-color: #f5f8f0;
+  }
+
+
+
+  .profile-ul li{
+    width: 40%;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+.visited{
+    background-color: #f5f8f0;
+    color: #000009;
+}
+
+.visited a{
+    color: #000009;
+}
+
+
+
+li .logOut{
+    background-color: rgb(143, 1, 1);
+    padding: 10px 15px;
+    border-radius: 5px;
+}

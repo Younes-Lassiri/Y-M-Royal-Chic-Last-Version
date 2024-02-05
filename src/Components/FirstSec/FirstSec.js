@@ -2,6 +2,8 @@ import React from 'react';
 import './FirstSec.css'
 import imgOne from './myImages/first.jpg';
 
+import { Link } from 'react-router-dom';
+
 export default function FirstSec() {
   return (
     <div className="first-sec">
@@ -16,7 +18,7 @@ export default function FirstSec() {
                 and contemporary fashion. Discover chic dresses and versatile pieces that empower your individuality. Step into Y&M Royal Chic –
                 where fashion meets grace, and sophistication is effortless.
               </p>
-            <button className='button'>SHOP NOW</button>
+            <Link to='/elements/product-carousel'><button className='button'>SHOP NOW</button></Link>
     </div>
     <div className="col-xl-6 col-md-6 col-sm-6 col-xs-12 two" >
       <img src={imgOne} alt="" />

@@ -1,0 +1,161 @@
+.footer {
+    width: 100%;
+    height: 70vh;
+    color: white;
+    background-color: #000009;
+    position: relative;
+}
+
+
+.logo-footer{
+    margin: 0;
+    text-align: left;
+    padding: 30px 0;
+    color: white;
+    font-family: 'EB Garamond';
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-weight: 400;
+    padding: 30% 0 0 70px;
+    cursor: pointer;
+}
+
+
+
+.description-footer {
+    margin: 0;
+    text-align: left;
+    padding: 30px 0;
+    color: white;
+    font-family: 'EB Garamond';
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-weight: 400;
+    padding: 25% 0 0 100px;
+}
+
+li{
+    list-style-type: none;
+
+}
+
+
+
+
+
+a{
+    text-decoration: none;
+    color: #f8f5f0;
+    transition: .7s;
+    font-family: "Source Serif Pro",serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+a:hover{
+    color: #967844;
+}
+
+.menuu .footer-links{
+    font-family: "EB Garamond",serif;
+    font-size: 14px;
+}
+  
+
+.menuu li {
+    padding-top: 10px;
+    line-height: 1.2em;
+}
+
+.menuu .ol{
+    float: right;
+    margin: 25% 40px 0 0;
+}
+
+
+
+
+.footer-input{
+    margin: 30px 100px;
+    padding: 8px 0;
+    font-family: 'EB Garamond';
+    font-weight: 400;
+    background: transparent;
+    outline: none;
+    border: 0;
+    font-size: 14px;
+    border-bottom: 1px solid #f8f5f0;
+    color: white;
+    width: 80%;
+    position: relative;
+
+}
+
+.footer .btnn{
+    margin-left: 100px;
+    font-family: 'EB Garamond';
+    font-weight: 400;
+    background: transparent;
+    border: 0;
+    font-size: 20px;
+    color: white;
+    padding: 4px 50px;
+    border: 1px solid #f8f5f0;
+    transition: .8s;
+}
+
+.footer .btnn:hover{
+    background-color: #f8f5f0;
+    color: #112a26;
+}
+
+
+input::placeholder {
+    color: white;
+}
+
+  
+.footer hr{
+    width: 100%;
+    color: #727272;
+}
+
+.footer .para{
+    font-family: Montserrat,sans-serif;
+    font-size: 9px;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+    color: white;
+
+}
+
+
+@media (max-width: 768px) {
+    .description-footer{
+        padding: 50px 10px;
+    }
+    .logo-footer{
+        padding: 30px 10px;
+    }
+    .footer-input{
+        margin: 0;
+        padding-left: 10px;
+    }
+    .menuu .ol{
+        display: none;
+    }
+    .footer hr{
+        margin: 0;
+        display: none;
+    }
+    .footer .btnn{
+        margin: 15px 0;
+    }
+}
+
+
+
+
+
+
+

@@ -4,10 +4,14 @@ import './Menu.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/js/index.esm'
 import { Link } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 
-export default function Menu() {
+export default function Menu(props) {
+  const quantite = useSelector((state) => state.wishProductQuantite)
+  const cartQuantite = useSelector((state) => state.cartProductQuantite)
   function isMobileDevice() {
     if(window.innerWidth <= 767){
       return 'true'
@@ -19,18 +23,20 @@ export default function Menu() {
   function menu() {
     let hiddenMenu = document.querySelector('.hidden-menu');
     let hiddenSideMenu = document.querySelector('.side-menu');
-    if (isMobileDevice() == 'false' && hiddenMenu.style.display == 'none'){
-      hiddenSideMenu.style.display = 'block'
-    }
-    else if (isMobileDevice() == 'true' && hiddenMenu.style.display === 'none') {
+  
+    if (isMobileDevice() === 'false' && getComputedStyle(hiddenMenu).display === 'none') {
+      hiddenSideMenu.style.display = 'block';
+    } else if (isMobileDevice() === 'true' && getComputedStyle(hiddenMenu).display === 'none') {
       hiddenMenu.style.display = 'block';
-    } else if(isMobileDevice() == 'false') {
+    } else if (isMobileDevice() === 'false') {
       hiddenMenu.style.display = 'none';
-    }
-    else{
+    } else {
       hiddenMenu.style.display = 'none';
     }
   }
+
+
+  
   function hideSideMenu(){
     document.querySelector('.side-menu').style.display = 'none'
   }
@@ -53,38 +59,41 @@ export default function Menu() {
 
 
   return (
-    <div id='menu' className="head-menu">
-    <nav className="navbar navbar-expand-lg yaya">
+    <div id={props.profile === true? "menuP": "menu"} className="head-menu">
+    <nav className={props.profile === true? "navbar navbar-expand-lg yayaP": "navbar navbar-expand-lg yaya"}>
       <div className="container-fluid" style={{overflow: 'hidden'}}>
         <a className="navbar-brand menu-logo" href="#">
         Y&M Royal Chic
         </a>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0 menu">
+          <ul className={props.profile === true? "navbar-nav me-auto mb-2 mb-lg-0 menu menuPp": "navbar-nav me-auto mb-2 mb-lg-0 menu"}>
             <li className="nav-item">
-            <Link className="nav-link activee" to="/haha">
-                  HOME
+                <Link className={props.profile === true? 'span activeeP': 'span activee'} to="/">
+          HOME
+        </Link>
+
+
+            </li>
+            <li className="nav-item">
+            <Link className="nav-link" to="/wishList">
+            WishList({quantite})
                 </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                PAGES
-              </a>
+            <Link className="nav-link" to="/y&m-admin">
+            Pages
+                </Link>
             </li>
+            <li  className="nav-item"><Link to='/shop' className="nav-link">SHOP</Link></li>
             <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="#">
-                SHOP
-              </a>
-            </li>
-            <li className="nav-item">
-            <a className="nav-link" aria-current="page" href="#">
+            <Link className="nav-link" aria-current="page" href="#" to={'/elements/product-carousel'}>
                 ELEMENTS
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-            <a className="nav-link" aria-current="page" href="#">
-                CART(1)
-              </a>
+            <Link className="nav-link" to="/cart">
+            Cart({cartQuantite})
+                </Link>
             </li>
           </ul>
           
@@ -105,15 +114,27 @@ export default function Menu() {
 
 
 
+
+
+
     <div className='hidden-menu'>
       <ul className='navbar-nav'>
-        <li><Link className="activee" to="/haha">
+        <li><Link className="activee" to="/">
                   HOME
                 </Link></li>
         <li><a href="#">PAGES</a></li>
-        <li><a href="v">SHOP</a></li>
+        <li><Link to='/shop'>SHOP</Link></li>
         <li><a href="v">ELEMENTS</a></li>
-        <li><a href="v">CART(1)</a></li>
+        <li className="nav-item">
+            <Link className="nav-link" to="/cart">
+            Cart({cartQuantite})
+                </Link>
+            </li>
+        <li className="nav-item">
+            <Link className="nav-link" to="/wishList">
+                  WishList({quantite})
+                </Link>
+            </li>
       </ul>
     </div>
     <div className="side-menu">

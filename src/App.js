@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Landing from './Components/Landing/Landing';
 import Menu from './Components/Menu/Menu';
@@ -8,35 +8,42 @@ import ThirdSec from './Components/ThirdSec/ThirdSec';
 import Collection from './Components/Collection/Collection';
 import Last from './Components/Last/Last';
 import FiveSec from './Components/FiveSec/FiveSec';
+import Footer from './Components/Footer/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { FETCH_DATA } from './Components/redux/actions/actions';
+import WishList from './Components/wishList/WishList';
+import { Link } from 'react-router-dom';
+import Cart from './Components/Cart/Cart';
+import Shop from './Components/Shop/Shop';
+import axios from 'axios';
+import Sliderr from './Components/Slider/Slider';
+import Login from './Components/Login/Login';
+import SignUp from './Components/Admin/SignUp';
 
+
+import { authContext } from './helpers/authContext';
+import Navigation from './Components/Navigation/Navigation';
 
 const App = () => {
+  const [logged, setLogged] = useState(false);
+  const [user, setUser] = useState({});
+
+  const dispatch = useDispatch()
   
+  
+
+ useEffect(() => {
+    fetch("http://localhost:3500/products").then((res) => res.json()).then((data) => {
+      dispatch({
+        type:FETCH_DATA,
+        payload:data
+      })
+    })
+  }) 
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              <Landing/>
-              <div>
-                <Menu />
-                <FirstSec />
-                <SecondSec />
-              </div>
-              <div className='issue'><ThirdSec />
-                </div>
-              <div><Collection/></div>
-              <div><FiveSec/></div>
-              <div><Last/></div>
-            </div>
-          }
-        />
-        <Route path="/haha/*" element={<h1>Not Found</h1>} />
-      </Routes>
-      <div className='toTop'></div>
-    </Router>
+      <authContext.Provider value={{ logged, setLogged, user, setUser }}>
+        <Navigation/>
+      </authContext.Provider>
   );
 };
 
