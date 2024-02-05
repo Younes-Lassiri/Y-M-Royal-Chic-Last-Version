@@ -48,7 +48,7 @@ export default function Landing() {
 
   return (
     <div className='landing-page' id='top'>
-      <div><h1 className='logo'>Y&M Royal Chic zap</h1></div>
+      <div><h1 className='logo'>Y&M Royal Chic</h1></div>
       <div className='description'>
         <h1 style={{ fontWeight: 300 }}>
           Burning <span style={{ fontStyle: 'italic', fontWeight: 100 }}>brightly </span>

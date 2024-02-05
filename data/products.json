@@ -96,6 +96,32 @@
       "wish": false,
       "quantite": 0,
       "reviews": []
+    },
+    {
+      "id": 1252,
+      "name": "Srdina",
+      "thumbnail": "https://lacomete.qodeinteractive.com/wp-content/uploads/2019/04/shop-img-2-600x795.jpg",
+      "price": 90,
+      "new": false,
+      "sold": true,
+      "promo": false,
+      "oldPrice": 0,
+      "promoValue": 0,
+      "wish": false,
+      "quantite": 0
+    },
+    {
+      "id": 1838,
+      "name": "Houta",
+      "thumbnail": "https://www.rustica.fr/images/bien-s-occuper-ses-poissons-ce-qu-il-faut-savoir-absolument-18373.jpg",
+      "price": 50,
+      "new": false,
+      "sold": false,
+      "promo": true,
+      "oldPrice": 75,
+      "promoValue": 15,
+      "wish": false,
+      "quantite": 0
     }
   ],
   "display": [
