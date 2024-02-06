@@ -174,7 +174,7 @@ export default function AddProduct() {
           </div>
         </div>
 
-        <button type="submit" className='btn btn-primary botonaSubmit yayaAdd'>Add Product</button>
+        <button type="submit" className='btn btn-primary botonaSubmit yayaAdd checkoutBtn'>Add Product</button>
       </form>
     </div>
   );

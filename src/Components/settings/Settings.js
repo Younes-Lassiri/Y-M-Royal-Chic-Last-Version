@@ -110,7 +110,7 @@ const [newPassword, setNewPassword] = useState('')
                     </div>
 
 
-                            <button type="submit" className='btn btn-primary botonaSubmit yayaSave'>Save Changes</button>
+                            <button type="submit" className='btn btn-primary botonaSubmit yayaSave botonaSubmit'>Save Changes</button>
                         
 
                     

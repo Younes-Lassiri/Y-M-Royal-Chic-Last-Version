@@ -107,9 +107,6 @@ label{
     cursor: pointer;
 }
 
-.botonaSubmit:hover{
-    background-color: #3f3da5;
-}
 
 
 /* Increase specificity to override existing styles */

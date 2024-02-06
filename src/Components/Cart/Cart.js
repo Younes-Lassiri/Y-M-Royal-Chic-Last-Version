@@ -121,7 +121,7 @@ const [pay, setPay] = useState(false)
 
                 <div className='d' style={{ display: 'flex', gap: '75px', borderBottom: '1px solid rgba(46, 46, 45, 0.5)', padding: '15px 0' }}>
                   <span>TOTAL</span>
-                  <span>${total}</span>
+                  <span>${total.toLocaleString('en-US')}</span>
                 </div>
                 <div className='e' style={{ padding: '15px 0' }}>
                   <button onClick={() => setPay(true)}>PROCEED TO CHECKOUT</button>

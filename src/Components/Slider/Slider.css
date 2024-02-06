@@ -71,6 +71,7 @@
     font-family: 'EB Garamond', serif;
     font-size: 1.5rem;
     transition: .2s;
+    font-weight: 200;
   }
   .cardee .namee a:hover{
     color: #967844;

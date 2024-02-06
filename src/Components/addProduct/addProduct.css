@@ -78,12 +78,12 @@ input[type=number]::-webkit-outer-spin-button {
 
 .yayaAdd{
     background-color: #f5f8f0;
-    color: #000009;
+    border-radius: 10px;
+    transition: 0.7s;
 }
 
 
 .yayaAdd:hover{
-    background-color: #000009;
-    color: #f5f8f0;
+    color: #000009;
     border: 1px solid #f5f8f0;
 }

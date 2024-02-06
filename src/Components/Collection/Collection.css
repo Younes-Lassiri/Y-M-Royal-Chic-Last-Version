@@ -282,6 +282,7 @@
   left: 50%;
   transform: translate(-50%,-50%);
   z-index: 21000;
+  box-shadow: 4px 3px 20px #3535358c;
 }
 
 

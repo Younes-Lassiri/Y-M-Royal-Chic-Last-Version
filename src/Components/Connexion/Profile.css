@@ -116,7 +116,10 @@ ul li a{
 
 
 li .logOut{
-    background-color: rgb(143, 1, 1);
-    padding: 10px 15px;
     border-radius: 5px;
+    font-size: 0.9rem;
+    transition: .7s;
+}
+li .logOut:hover{
+    color: white;
 }

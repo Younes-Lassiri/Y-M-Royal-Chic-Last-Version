@@ -9,6 +9,7 @@ import profileImg from './myImages/profile-svgrepo-com.png'
 import Login from "../Login/Login";
 import AddProduct from "../addProduct/AddProduct";
 import Settings from "../settings/Settings";
+import Orders from "../Orders/Orders";
 
 
 
@@ -41,6 +42,8 @@ export default function Profil() {
         return <AddProduct/>;
         case 'settings':
           return <Settings user={user} setSelectedContent={setSelectedContent}/>;
+          case 'orders':
+            return <Orders user={user} setSelectedContent={setSelectedContent}/>;
       default:
         return null;
     }
@@ -121,7 +124,7 @@ export default function Profil() {
           <li onClick={() => handleLinkClick('settings')} className={activeLink === 'settings' ? 'visited' : ''}><Link className="a">Settings</Link></li>
 
 
-          <li onClick={handleLogout}><Link className="a logOut">Log Out</Link></li>
+          <li onClick={handleLogout}><Link className="a logOut checkoutBtn">Log Out</Link></li>
 
         </ul>
       </aside>
