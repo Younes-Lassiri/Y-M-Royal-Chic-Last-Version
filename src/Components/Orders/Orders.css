@@ -4,6 +4,7 @@
     border-radius: 5px;
     border: 1px solid rgb(194, 194, 194);
     padding: 10px 10px;
+    position: relative;
 }
 
 
@@ -33,3 +34,4 @@ tr:last-of-type td {
     background-color: rgba(10, 228, 10, 0.075);
     font-family: 'Protest Riot', sans-serif;
 }
+
