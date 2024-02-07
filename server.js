@@ -103,14 +103,13 @@ pool.getConnection((err, connection) => {
 });
 
 // Route to handle user login
-app.post('/api/login', (req, res) => {
+app.post('/api/login', (req, res, next) => {
   const { email, password } = req.body;
-  const sql = `SELECT * FROM users WHERE email = ? AND password = ?`;
-  executeQueryWithRetry(sql, [email, password], (error, results, fields) => {
+  const sql = 'SELECT * FROM users WHERE email = ? AND password = ?';
+  pool.query(sql, [email, password], (error, results, fields) => {
     if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).json({ message: 'Error executing query' });
-      return;
+      console.error('Error executing login query:', error);
+      return res.status(500).json({ message: 'Error executing login query' });
     }
     if (results.length > 0) {
       res.status(200).json({ message: 'Login successful', user: { token: 'your-user-token' } });
@@ -121,41 +120,38 @@ app.post('/api/login', (req, res) => {
 });
 
 // Route to get all users
-app.get('/api/users', (req, res) => {
+app.get('/api/users', (req, res, next) => {
   const sql = 'SELECT * FROM users';
-  executeQueryWithRetry(sql, [], (error, results, fields) => {
+  pool.query(sql, (error, results, fields) => {
     if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).json({ message: 'Error executing query' });
-      return;
+      console.error('Error executing query to get users:', error);
+      return res.status(500).json({ message: 'Error executing query to get users' });
     }
     res.json(results);
   });
 });
 
 // Route to create a new user
-app.post('/api/users', (req, res) => {
+app.post('/api/users', (req, res, next) => {
   const { name, email, password } = req.body;
-  const userId = uuidv4(); // Generate a UUID for the user
+  const userId = uuidv4();
   const sql = 'INSERT INTO users (id, name, email, password) VALUES (?, ?, ?, ?)';
-  executeQueryWithRetry(sql, [userId, name, email, password], (error, results, fields) => {
+  pool.query(sql, [userId, name, email, password], (error, results, fields) => {
     if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).json({ message: 'Error executing query' });
-      return;
+      console.error('Error executing query to add user:', error);
+      return res.status(500).json({ message: 'Error executing query to add user' });
     }
     res.status(201).json({ message: 'User added successfully', user: { id: userId, name, email } });
   });
 });
 
 // Route to handle settings
-app.get('/api/settings', (req, res) => {
-  const sql = 'SELECT display FROM settings LIMIT 1'; // Assuming settings have only one row
-  executeQueryWithRetry(sql, [], (error, results, fields) => {
+app.get('/api/settings', (req, res, next) => {
+  const sql = 'SELECT display FROM settings LIMIT 1';
+  pool.query(sql, (error, results, fields) => {
     if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).json({ message: 'Error executing query' });
-      return;
+      console.error('Error executing query to get settings:', error);
+      return res.status(500).json({ message: 'Error executing query to get settings' });
     }
     if (results.length > 0) {
       res.json({ display: results[0].display });
@@ -166,28 +162,26 @@ app.get('/api/settings', (req, res) => {
 });
 
 // Route to update display settings
-app.put('/api/settings', (req, res) => {
+app.put('/api/settings', (req, res, next) => {
   const { display } = req.body;
-  const sql = 'UPDATE settings SET display = ?'; // No need for WHERE clause
-  executeQueryWithRetry(sql, [display], (error, results, fields) => {
+  const sql = 'UPDATE settings SET display = ?';
+  pool.query(sql, [display], (error, results, fields) => {
     if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).json({ message: 'Error executing query' });
-      return;
+      console.error('Error executing query to update settings:', error);
+      return res.status(500).json({ message: 'Error executing query to update settings' });
     }
     res.json({ message: 'Settings updated successfully', display });
   });
 });
 
 // Route to update user information
-app.put('/api/users', (req, res) => {
+app.put('/api/users', (req, res, next) => {
   const { oldEmail, newEmail, name, password } = req.body;
   const sql = 'UPDATE users SET email = ?, name = ?, password = ? WHERE email = ?';
-  executeQueryWithRetry(sql, [newEmail, name, password, oldEmail], (error, results, fields) => {
+  pool.query(sql, [newEmail, name, password, oldEmail], (error, results, fields) => {
     if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).json({ message: 'Error executing query' });
-      return;
+      console.error('Error executing query to update user information:', error);
+      return res.status(500).json({ message: 'Error executing query to update user information' });
     }
     if (results.affectedRows === 0) {
       res.status(404).json({ message: 'User not found' });
@@ -198,58 +192,56 @@ app.put('/api/users', (req, res) => {
 });
 
 // Route to add orders
-app.post('/api/orders', (req, res) => {
+app.post('/api/orders', (req, res, next) => {
   const { clientName, clientContact, clientTotalPaid, clientItems, clientPayMethod } = req.body;
-  const sql = `INSERT INTO orders (clientName, clientContact, clientTotalPaid, clientItems, clientPayMethod) VALUES (?, ?, ?, ?, ?)`;
-  executeQueryWithRetry(sql, [clientName, clientContact, clientTotalPaid, clientItems, clientPayMethod], (error, results, fields) => {
+  const sql = 'INSERT INTO orders (clientName, clientContact, clientTotalPaid, clientItems, clientPayMethod) VALUES (?, ?, ?, ?, ?)';
+  pool.query(sql, [clientName, clientContact, clientTotalPaid, clientItems, clientPayMethod], (error, results, fields) => {
     if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).json({ message: 'Error executing query' });
-      return;
+      console.error('Error executing query to add order:', error);
+      return res.status(500).json({ message: 'Error executing query to add order' });
     }
     res.status(201).json({ message: 'Order added successfully' });
   });
 });
 
 // Route to fetch all orders
-app.get('/api/orders', (req, res) => {
+app.get('/api/orders', (req, res, next) => {
   const sql = 'SELECT * FROM orders';
-  executeQueryWithRetry(sql, [], (error, results, fields) => {
+  pool.query(sql, (error, results, fields) => {
     if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).json({ message: 'Error executing query' });
-      return;
+      console.error('Error executing query to get orders:', error);
+      return res.status(500).json({ message: 'Error executing query to get orders' });
     }
     res.json(results);
   });
 });
 
 // Route to add messages
-app.post('/api/messages', (req, res) => {
+app.post('/api/messages', (req, res, next) => {
   const { userName, userEmail, contactMessage } = req.body;
-  const sql = `INSERT INTO messages (userName, userEmail, contactMessage) VALUES (?, ?, ?)`;
-  executeQueryWithRetry(sql, [userName, userEmail, contactMessage], (error, results, fields) => {
+  const sql = 'INSERT INTO messages (userName, userEmail, contactMessage) VALUES (?, ?, ?)';
+  pool.query(sql, [userName, userEmail, contactMessage], (error, results, fields) => {
     if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).json({ message: 'Error executing query' });
-      return;
+      console.error('Error executing query to add message:', error);
+      return res.status(500).json({ message: 'Error executing query to add message' });
     }
     res.status(201).json({ message: 'Message added successfully' });
   });
 });
 
 // Route to fetch all messages
-app.get('/api/messages', (req, res) => {
+app.get('/api/messages', (req, res, next) => {
   const sql = 'SELECT * FROM messages';
-  executeQueryWithRetry(sql, [], (error, results, fields) => {
+  pool.query(sql, (error, results, fields) => {
     if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).json({ message: 'Error executing query' });
-      return;
+      console.error('Error executing query to get messages:', error);
+      return res.status(500).json({ message: 'Error executing query to get messages' });
     }
     res.json(results);
   });
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
