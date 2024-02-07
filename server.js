@@ -243,6 +243,4 @@ app.get('/api/messages', (req, res, next) => {
 
 
 
-app.listen(PORT, () => {
-  console.log(`Server is running on ${PORT}`);
-});
+app.listen(PORT);
