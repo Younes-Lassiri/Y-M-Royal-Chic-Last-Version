@@ -63,9 +63,9 @@ app.use(cors());
 const pool = mysql.createPool({
   connectionLimit: 10,
   host: 'srv1264.hstgr.io',
-  user: 'u501859913_royalChic2024',
-  password: '?tcXR?0Up',
-  database: 'u501859913_royalChic2024'
+  user: 'u501859913_royal_chic2024',
+  password: 'Younesselassiri2003@',
+  database: 'u501859913_royal_chic2024'
 });
 
 // Function to execute MySQL query with retry logic

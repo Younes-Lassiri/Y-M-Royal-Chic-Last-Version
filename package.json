@@ -1,6 +1,8 @@
 {
-  "name": "projet",
+  "homepage": "http:///",
+  "name": "royalchic",
   "version": "0.1.0",
+  "proxy": "https://iptvnfl.com/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -44,7 +46,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "myServer": "npx json-server --watch data/products.json --port 3500"
+    "myServer": "l;",
+    "start-server": "node server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -71,5 +74,8 @@
   "main": "index.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "20.10.0"
+  }
 }

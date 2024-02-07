@@ -17,6 +17,7 @@ import SignUp from '../Admin/SignUp';
 import Profile from '../Connexion/Profile';
 import Checkout from '../Checkout/Checkout';
 import Notification from '../Notification/Notification';
+import NotFound from '../NotFound/NotFound';
 export default function Navigation() {
   return (
     <Router>
@@ -54,6 +55,8 @@ export default function Navigation() {
         <Route path="/xx" element={<Notification/>} />
         
         <Route path='/elements/product-carousel' element={<Sliderr/>}/>
+
+        <Route path='/*' element={<NotFound/>}/>
       </Routes>
       
     </Router>

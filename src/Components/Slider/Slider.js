@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Slider from 'react-slick';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -82,6 +82,8 @@ export default function Sliderr() {
 
   
   const data = useSelector((state) => state.products);
+
+
 
   return (
     <div style={{background:'#f8f5f0'}}>
