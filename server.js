@@ -47,7 +47,7 @@ app.listen(PORT, () => {
 
 
 
-
+/*Hahhahah
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
@@ -244,3 +244,25 @@ app.get('/api/messages', (req, res, next) => {
 
 
 app.listen(PORT);
+Hhahah*/
+
+
+
+
+const express = require("express")
+
+
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send({
+    hey: 'guys',
+    welcome: "back",
+    to: "another",
+    video: ",",
+    please: "subscribe",
+  });
+});
+
+
+app.listen(process.env.PORT || 4000)
