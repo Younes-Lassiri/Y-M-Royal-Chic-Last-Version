@@ -1,6 +1,7 @@
 import React from 'react';
 import './SecondSec.css'
 import imgTwo from './myImages/h1-img-2.jpg'
+import { Link } from 'react-scroll';
 
 
 export default function SecondSec() {
@@ -20,7 +21,8 @@ export default function SecondSec() {
                 and contemporary fashion. Discover chic dresses and versatile pieces that empower your individuality. Step into Y&M Royal Chic –
                 where fashion meets grace, and sophistication is effortless.
               </p>
-            <button className='button'>SHOP NOW</button>
+              <Link to='/elements/product-carousel'><button className='button'>SHOP NOW</button></Link>
+            
     </div>
   </div>
 </div>

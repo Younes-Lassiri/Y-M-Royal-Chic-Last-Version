@@ -59,7 +59,7 @@ export default function Collection() {
 
 
   useEffect(() => {
-    fetch('https://royalchicapi-80983a16710e.herokuapp.com/api/settings') // Assuming your backend server is running on port 4000 and has the endpoint /api/settings
+    fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/settings') // Assuming your backend server is running on port 4000 and has the endpoint /api/settings
       .then((res) => res.json())
       .then(((data) => {
         setDisplay(data.display)

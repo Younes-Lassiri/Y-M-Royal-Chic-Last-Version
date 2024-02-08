@@ -23,6 +23,45 @@
   .hamburger-toggle:hover .line{
     background-color: #967844;
   }
+  .admin-section{
+    height: 40px;
+    width: 100%;
+    background-color: #967844;
+    color: #d2c8b6;
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 14px;
+    font-family: Open Sans,-apple-system,"Segoe UI",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  }
+  .admin-section ul{
+    display: flex;
+    gap: 70px;
+    position: absolute;
+    top: 50%;
+    right: 120px;
+    transform: translateY(-50%);
+  }
+  .admin-section ul li a{
+    color: #d2c8b6;
+    transition: .7s;
+    font-size: 14px;
+    font-family: Open Sans,-apple-system,"Segoe UI",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  }
+  .admin-section ul li a:hover{
+    color: #f8f5f0;
+  }
+  .admin-section span:hover{
+    color: #f8f5f0;
+  }
+  .admin-section span{
+    position: absolute;
+    top: 50%;
+    left: 93px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: .7s;
+  }
   .line.middle {
     margin-left: -7px;
   }

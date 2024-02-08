@@ -123,3 +123,7 @@ li .logOut{
 li .logOut:hover{
     color: white;
 }
+
+.adminHide{
+    display: none;
+}

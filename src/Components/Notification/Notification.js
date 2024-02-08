@@ -23,7 +23,7 @@ export default function Notification() {
         };
 
         try {
-            const response = await fetch('https://royalchicapi-80983a16710e.herokuapp.com/api/messages', {
+            const response = await fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/messages', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

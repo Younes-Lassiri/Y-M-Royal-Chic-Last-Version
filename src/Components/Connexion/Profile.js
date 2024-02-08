@@ -10,6 +10,7 @@ import Login from "../Login/Login";
 import AddProduct from "../addProduct/AddProduct";
 import Settings from "../settings/Settings";
 import Orders from "../Orders/Orders";
+import Messages from "../Messages/Messages";
 
 
 
@@ -42,8 +43,10 @@ export default function Profil() {
         return <AddProduct/>;
         case 'settings':
           return <Settings user={user} setSelectedContent={setSelectedContent}/>;
-          case 'orders':
-            return <Orders user={user} setSelectedContent={setSelectedContent}/>;
+        case 'orders':
+          return <Orders user={user} setSelectedContent={setSelectedContent}/>;
+        case 'notifications':
+          return <Messages/>; 
       default:
         return null;
     }
@@ -68,7 +71,7 @@ export default function Profil() {
 
   const userInfo = async () => {
     try {
-      const response = await axios.get("https://royalchicapi-80983a16710e.herokuapp.com/api/users", {
+      const response = await axios.get("https://royalchicapi-cc1c56c683bf.herokuapp.com/api/users", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("userToken"),
         },

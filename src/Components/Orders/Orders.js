@@ -6,7 +6,7 @@ export default function Orders() {
     const [loading, setLoading] = useState(true); // Set loading to true initially
 
     useEffect(() => {
-        fetch('https://royalchicapi-80983a16710e.herokuapp.com/api/orders')
+        fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/orders')
             .then((res) => res.json())
             .then((data) => {
                 setOrders(data);
@@ -39,13 +39,13 @@ export default function Orders() {
                         <tbody>
                             {orders.map((order, i) => (
                                 <tr key={i}>
-                                    <td style={{ color: 'rgb(194, 194, 194)' }}>{order.orderId}</td>
-                                    <td>{order.clientName}</td>
-                                    <td>{order.clientContact}</td>
-                                    <td style={{ color: 'rgb(194, 194, 194)' }}>{order.clientTotalPaid}</td>
-                                    <td>{order.clientItems}</td>
+                                    <td style={{ color: 'rgb(194, 194, 194)' }} className='td'>{order.orderId}</td>
+                                    <td className='td'>{order.clientName}</td>
+                                    <td className='td'>{order.clientContact}</td>
+                                    <td style={{ color: 'rgb(194, 194, 194)' }} className='td'>{order.clientTotalPaid}</td>
+                                    <td className='td'>{order.clientItems}</td>
                                     <td style={{ color: 'rgb(194, 194, 194)' }}>{order.clientPayMethod}</td>
-                                    <td><button className='btn paid'>Paid</button></td>
+                                    <td className='td'><button className='btn paid'>Paid</button></td>
                                 </tr>
                             ))}
                         </tbody>

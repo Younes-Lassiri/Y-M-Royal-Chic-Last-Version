@@ -1,0 +1,13 @@
+.noti-section{
+    width: 99%;
+    padding: 10px 10px;
+    position: relative;
+    background-color: #f5f8f0;
+}
+
+
+td{
+    font-size: 14px;
+    font-weight: 600;
+    padding: 20px 5px;font-family: 'Protest Riot', sans-serif;
+}

@@ -60,6 +60,13 @@ export default function Menu(props) {
 
   return (
     <div id={props.profile === true? "menuP": "menu"} className="head-menu">
+      
+<div className={props.profile === true? "admin-section adminHide": "admin-section"}><span>y&mroyal-chic@contact.com</span>
+<ul>
+  <li><Link to='/y&m-admin'>My account</Link></li>
+  <li><Link to='/wishlist'>Wishlist</Link></li>
+</ul>
+</div>
     <nav className={props.profile === true? "navbar navbar-expand-lg yayaP": "navbar navbar-expand-lg yaya"}>
       <div className="container-fluid" style={{overflow: 'hidden'}}>
         <a className="navbar-brand menu-logo" href="#">
@@ -80,11 +87,11 @@ export default function Menu(props) {
                 </Link>
             </li>
             <li className="nav-item">
-            <Link className="nav-link" to="/y&m-admin">
+            <Link className="nav-link" to="/">
             Pages
                 </Link>
             </li>
-            <li  className="nav-item"><Link to='/shop' className="nav-link">SHOP</Link></li>
+            <li  className="nav-item"><Link to={'/elements/product-carousel'} className="nav-link">SHOP</Link></li>
             <li className="nav-item">
             <Link className="nav-link" aria-current="page" href="#" to={'/elements/product-carousel'}>
                 ELEMENTS

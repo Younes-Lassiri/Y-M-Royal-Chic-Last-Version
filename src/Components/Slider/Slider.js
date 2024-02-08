@@ -120,14 +120,14 @@ export default function Sliderr() {
 
 
             <div className="namee"><Link to={`/product/${product.name}`}>{product.name}</Link></div>
-            {product.new && <div className='new'>NEW</div>}
-            {product.promo && (
-              <>
-                <div className='promoo'>-{product.promoValue}%</div>
-                <div className='oldPricee'>${product.oldPrice}</div>
-              </>
-            )}
-            {product.sold && <div className='sold'>SOLD</div>}
+            {product.isNew ? <div className='new'>NEW</div> : null}
+            {product.promo ? (
+  <>
+    <div className='promoo'>-{product.promoValue}%</div>
+    <div className='oldPricee'>${product.oldPrice}</div>
+  </>
+) : null}
+            {product.sold ? <div className='sold'>SOLD</div> : null}
             <Link to={`/product/${product.name}`}><div className='add'></div></Link>
           </div>
           

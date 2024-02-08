@@ -1,6 +1,5 @@
-
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from '../Landing/Landing';
 import Menu from '../Menu/Menu';
 import FirstSec from '../FirstSec/FirstSec';
@@ -18,6 +17,7 @@ import Profile from '../Connexion/Profile';
 import Checkout from '../Checkout/Checkout';
 import Notification from '../Notification/Notification';
 import NotFound from '../NotFound/NotFound';
+
 export default function Navigation() {
   return (
     <Router>
@@ -32,8 +32,7 @@ export default function Navigation() {
                 <FirstSec/>
                 <SecondSec/>
               </div>
-              <div className='issue'>
-                </div>
+              <div className='issue'></div>
               <div><Collection/></div>
               <div><FiveSec/></div>
               <div><Notification/></div>
@@ -45,20 +44,15 @@ export default function Navigation() {
         <Route path='/wishList' element={<WishList/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/product/:name' element={<Shop/>}/>
-
         <Route path='/y&m-admin' element={<SignUp/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path="/profile" element={<Profile/>} />
-
         <Route path="/checkout" element={<Checkout/>} />
 
-        <Route path="/xx" element={<Notification/>} />
-        
-        <Route path='/elements/product-carousel' element={<Sliderr/>}/>
 
-        <Route path='/*' element={<NotFound/>}/>
+        <Route path='/elements/product-carousel' element={<Sliderr/>}/>
+        <Route path='*' element={<NotFound/>}/> {/* Catch-all route */}
       </Routes>
-      
     </Router>
   )
 }

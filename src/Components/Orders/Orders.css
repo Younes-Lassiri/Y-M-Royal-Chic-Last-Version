@@ -14,7 +14,7 @@ th{
     font-family: 'Protest Riot', sans-serif;
 }
 
-td{
+.td{
     font-size: 14px;
     font-weight: 600;
     border-bottom: 1px solid rgb(194, 194, 194);

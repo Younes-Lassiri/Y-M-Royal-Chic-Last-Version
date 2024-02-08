@@ -20,7 +20,7 @@ const [newPassword, setNewPassword] = useState('')
         e.preventDefault();
         try {
           // Update display
-          const displayResponse = await fetch('https://royalchicapi-80983a16710e.herokuapp.com/api/settings', {
+          const displayResponse = await fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/settings', {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ const [newPassword, setNewPassword] = useState('')
           });
     
           // Update user
-          const userResponse = await fetch(`https://royalchicapi-80983a16710e.herokuapp.com/api/users`, {
+          const userResponse = await fetch(`https://royalchicapi-cc1c56c683bf.herokuapp.com/api/users`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
