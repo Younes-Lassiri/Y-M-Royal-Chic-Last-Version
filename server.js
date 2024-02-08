@@ -58,7 +58,7 @@ const retry = require('retry');
 app.use(express.json());
 
 const corsOptions = {
-  origin: 'https://iptvnfl.com',
+  origin: ['http://localhost:3000', 'https://iptvnfl.com'],
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 };
 
