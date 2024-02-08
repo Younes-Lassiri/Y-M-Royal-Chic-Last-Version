@@ -31,7 +31,7 @@ export default function AddProduct() {
     };
 
     try {
-      const response = await fetch('https://royalchicapi-80983a16710e.herokuapp.com/api/products', {
+      const response = await fetch('https://royalchicapi-bbc2cbf8980a.herokuapp.com/api/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

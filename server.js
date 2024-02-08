@@ -56,7 +56,13 @@ const PORT = process.env.PORT || 4000;
 const retry = require('retry');
 
 app.use(express.json());
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://iptvnfl.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+};
+
+app.use(cors(corsOptions));
 
 // Create MySQL connection pool
 const pool = mysql.createPool({
@@ -267,24 +273,5 @@ app.post('/api/products', (req, res, next) => {
     res.status(201).json({ message: 'Product added successfully' });
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.listen(process.env.PORT || 4000);

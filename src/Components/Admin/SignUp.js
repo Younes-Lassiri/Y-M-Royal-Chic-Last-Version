@@ -92,7 +92,7 @@ export default function SignUp() {
         };
         
         try {
-            const response = await fetch('https://royalchicapi-80983a16710e.herokuapp.com/api/users', {
+            const response = await fetch('https://royalchicapi-bbc2cbf8980a.herokuapp.com/api/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
