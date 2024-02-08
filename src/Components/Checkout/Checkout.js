@@ -42,7 +42,7 @@ export default function Checkout(props) {
       };
   
       try {
-          const response = await fetch('http://localhost:4000/api/orders', {
+          const response = await fetch('https://royalchicapi-80983a16710e.herokuapp.com/api/orders', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json'

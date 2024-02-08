@@ -16,14 +16,12 @@ export default function AddProduct() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const productId = Math.floor(Math.random() * 10000);
 
     const newProduct = {
-      id: productId,
       name: productName,
       thumbnail: productImage,
       price: productPrice,
-      new: neww === "true"? true: false,
+      isNew: neww === "true"? true: false,
       sold: soldee === "true"? true: false,
       promo: promo === "true"? true: false,
       oldPrice: oldPrice,
@@ -33,7 +31,7 @@ export default function AddProduct() {
     };
 
     try {
-      const response = await fetch('http://localhost:3500/products', {
+      const response = await fetch('https://royalchicapi-80983a16710e.herokuapp.com/api/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

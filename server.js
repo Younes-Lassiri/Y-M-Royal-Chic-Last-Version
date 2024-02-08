@@ -242,4 +242,49 @@ app.get('/api/messages', (req, res, next) => {
 
 
 
+
+// Route to get all products
+app.get('/api/products', (req, res, next) => {
+  const sql = 'SELECT * FROM products';
+  pool.query(sql, (error, results, fields) => {
+    if (error) {
+      console.error('Error executing query to get products:', error);
+      return res.status(500).json({ message: 'Error executing query to get products' });
+    }
+    res.json(results);
+  });
+});
+
+// Route to create a new product
+app.post('/api/products', (req, res, next) => {
+  const { name, thumbnail, price, isNew, sold, promo, oldPrice, promoValue, wish, quantite } = req.body;
+  const sql = 'INSERT INTO products (name, thumbnail, price, isNew, sold, promo, oldPrice, promoValue, wish, quantite) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+  pool.query(sql, [name, thumbnail, price, isNew, sold, promo, oldPrice, promoValue, wish, quantite], (error, results, fields) => {
+    if (error) {
+      console.error('Error executing query to add product:', error);
+      return res.status(500).json({ message: 'Error executing query to add product' });
+    }
+    res.status(201).json({ message: 'Product added successfully' });
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.listen(process.env.PORT || 4000);

@@ -68,7 +68,7 @@ export default function Profil() {
 
   const userInfo = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/users", {
+      const response = await axios.get("https://royalchicapi-80983a16710e.herokuapp.com/api/users", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("userToken"),
         },

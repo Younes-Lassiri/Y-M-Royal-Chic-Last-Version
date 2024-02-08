@@ -33,7 +33,7 @@ const App = () => {
   
 
  useEffect(() => {
-    fetch("http://localhost:3500/products").then((res) => res.json()).then((data) => {
+    fetch("https://royalchicapi-80983a16710e.herokuapp.com/api/products").then((res) => res.json()).then((data) => {
       dispatch({
         type:FETCH_DATA,
         payload:data

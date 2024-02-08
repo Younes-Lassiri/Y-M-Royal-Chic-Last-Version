@@ -59,7 +59,7 @@ export default function Collection() {
 
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/settings') // Assuming your backend server is running on port 4000 and has the endpoint /api/settings
+    fetch('https://royalchicapi-80983a16710e.herokuapp.com/api/settings') // Assuming your backend server is running on port 4000 and has the endpoint /api/settings
       .then((res) => res.json())
       .then(((data) => {
         setDisplay(data.display)
@@ -118,20 +118,21 @@ export default function Collection() {
 
 
             <div className='divView' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-      <img src={isHovered ? hoverImg : viewImg} alt="Image" onClick={() => {dispatch({type:VIEW_PRODUCT,payload:{id:product.id,name:product.name,thumbnail:product.thumbnail,price:product.price,promo: product.promo,new: product.new,sold: product.sold,wish: product.wish,quantite: product.quantite}})}}/>
+      <img src={isHovered ? hoverImg : viewImg} alt="Image" onClick={() => {dispatch({type:VIEW_PRODUCT,payload:{id:product.id,name:product.name,thumbnail:product.thumbnail,price:product.price,promo: product.promo,isNew: product.isNew,sold: product.sold,wish: product.wish,quantite: product.quantite}})}}/>
     </div>
 
 
 
             <div className="name"><Link to={`/product/${product.name}`}>{product.name}</Link></div>
-            {product.new && <div className='new'>NEW</div>}
-            {product.promo && (
-              <>
-                <div className='promo'>-{product.promoValue}%</div>
-                <div className='oldPrice'>${product.oldPrice}</div>
-              </>
-            )}
-            {product.sold && <div className='sold'>SOLD</div>}
+            {product.isNew ? <div className='new'>NEW</div> : null}
+            {product.promo ? (
+  <>
+    <div className='promo'>-{product.promoValue}%</div>
+    <div className='oldPrice'>${product.oldPrice}</div>
+  </>
+) : null}
+            {product.sold ? <div className='sold'>SOLD</div> : null}
+
             <Link to={`/product/${product.name}`}><div className='add'></div></Link>
           </div>
           

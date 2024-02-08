@@ -21,7 +21,7 @@ export default function Login() {
     
         if (email !== '' && password !== '') {
             try {
-                const res = await axios.post('http://localhost:4000/api/login', {
+                const res = await axios.post('https://royalchicapi-80983a16710e.herokuapp.com/api/login', {
                     email,
                     password,
                 });

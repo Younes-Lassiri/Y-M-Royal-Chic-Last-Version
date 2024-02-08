@@ -6,7 +6,7 @@ export default function Orders() {
     const [loading, setLoading] = useState(true); // Set loading to true initially
 
     useEffect(() => {
-        fetch('http://localhost:4000/api/orders')
+        fetch('https://royalchicapi-80983a16710e.herokuapp.com/api/orders')
             .then((res) => res.json())
             .then((data) => {
                 setOrders(data);
