@@ -63,9 +63,7 @@ export default function Login() {
         <div className="parent" style={{ position: 'relative', overflow: 'hidden' }}>
             
             <div className="row">
-                <div className="col-6">
-                    <img src={myI} style={{ width: '100%', height: '100vh' }} alt="background" />
-                </div>
+                
 
                 <div className="col-6" style={{ position: 'relative' }}>
                 <ToastContainer />
@@ -112,6 +110,9 @@ export default function Login() {
                             Sign In
                         </button>
                     </form>
+                </div>
+                <div className="col-6">
+                    <img src={myI} style={{ width: '100%', height: '100vh' }} alt="background" />
                 </div>
             </div>
         </div>

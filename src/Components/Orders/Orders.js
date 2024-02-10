@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Orders.css';
+import Loader from '../Loader/Loader';
 
 export default function Orders() {
     const [orders, setOrders] = useState([]);
@@ -52,7 +53,7 @@ export default function Orders() {
                     </table>
                 </div>
             ) : (
-                <div style={{color:'#f5f8f0', fontSize:'25px', fontWeight:600, margin:'auto'}}>No orders for now</div>
+                <div style={{color:'#f5f8f0', fontSize:'25px', fontWeight:600, margin:'auto'}}><Loader/></div>
             )}
         </>
     );

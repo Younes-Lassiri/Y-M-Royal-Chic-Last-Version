@@ -1,6 +1,7 @@
 import React from 'react'
 import './Messages.css'
 import { useState, useEffect } from 'react';
+import Loader from '../Loader/Loader';
 export default function Messages() {
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -46,7 +47,7 @@ export default function Messages() {
                     </table>
                 </div>
             ) : (
-                <div style={{color:'#f5f8f0', fontSize:'25px', fontWeight:600, margin:'auto'}}>No Messages for now</div>
+                <div>No Messages For Now</div>
             )}
         </>
     );

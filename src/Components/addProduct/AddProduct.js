@@ -24,8 +24,8 @@ export default function AddProduct() {
       isNew: neww === "true"? true: false,
       sold: soldee === "true"? true: false,
       promo: promo === "true"? true: false,
-      oldPrice: oldPrice,
-      promoValue: promoPercentage,
+      oldPrice: promo === "true"? Math.floor(parseInt(productPrice) / (1 - promoPercentage / 100)) : 0,
+      promoValue: promo === "true"? promoPercentage : 0,
       wish: false,
       quantite: 0
     };
@@ -61,97 +61,113 @@ export default function AddProduct() {
   };
 
   return (
-    <div style={{ padding: '50px 100px' }}>
+    <div className='addProduct-section'>
       <ToastContainer />
-      <div><h1 className='logoo'>Add new Product</h1></div>
-      <form onSubmit={handleSubmit}>
-        <div className='row'>
-          <div className='col-6'>
-            <label htmlFor="productName" className='label'>Product Name</label><br />
+      <form onSubmit={handleSubmit} className="addPro-form">
+
+      <div className='row'>
+        
+        <div className='col-6'>
+            <label htmlFor="" className='label' style={{color:'#000009'}}>Product Name</label><br />
             <input
-              id="productName"
               type='text'
               placeholder='Product Name'
               value={productName}
               onChange={(e) => setProductName(e.target.value)}
               required
+              style={{background:'white'}}
+              className="admin-add-inp"
             />
-          </div>
-          <div className='col-6'>
-            <label htmlFor="productPrice" className='label'>Product Price</label><br/>
-            <input
-              id="productPrice"
-              type='number'
-              placeholder='Product Price'
-              value={productPrice}
-              onChange={(e) => setProductPrice(parseInt(e.target.value))}
-              required
-            />
-          </div>
+
         </div>
 
-        <label htmlFor="productImage" className='label'>Product Image Link</label><br />
+        <div className='col-6'>
+        <label htmlFor="" className='label' style={{color:'#000009'}}>Product Price</label><br />
+            <input
+              type='text'
+              placeholder='Product Price'
+              value={productPrice}
+              onChange={(e) => setProductPrice(e.target.value)}
+              required
+              style={{background:'white'}}
+            />
+        </div>
+
+      </div>
+
+
+
+      <div className='row'>
+
+        <div className='col-12'>
+        <label className='label' style={{color:'#000009'}}>Product Image</label><br />
         <input
-          id="productImage"
           type='text'
           placeholder='Product Image Link'
           value={productImage}
           onChange={(e) => setProductImage(e.target.value)}
           required
-        /><br />
+          style={{background:'white'}}
+        />
+        </div>
+        
+      </div>
 
-        <div className='row'>
+      <div className='row'>
           <div className='col-6'>
-            <label htmlFor="productNew">New?</label><br />
+            <label htmlFor="productNew" style={{color:'#000009'}}>New?</label><br />
             <div className='all-new' style={{display:'flex', gap:'20px', alignItems:'center'}}>
               <div className='newTrue' style={{display:'flex', gap:'10px', alignItems:'center'}}>
                 <label className="radio">
                   <input name="new" type="radio" value={true} onChange={(e) => setNeww(e.target.value)}/>
-                  <span>Yes</span>
+                  <span style={{color:'#000009'}}>Yes</span>
                 </label>
               </div>
               <div className='newFalse' style={{display:'flex', gap:'10px', alignItems:'center'}}>
                 <label className="radio">
                   <input name="new" type="radio" value={false} onChange={(e) => setNeww(e.target.value)}/>
-                  <span>No</span>
+                  <span style={{color:'#000009'}}>No</span>
                 </label>
               </div>
             </div>
           </div>
 
+
+
           <div className='col-6'>
-            <label htmlFor="productSolde">Solde?</label><br />
+            <label htmlFor="productSolde" style={{color:'#000009'}}>Solde?</label><br />
             <div className='all-solde' style={{display:'flex', gap:'20px', alignItems:'center'}}>
               <div className='soldeTrue' style={{display:'flex', gap:'10px', alignItems:'center'}}>
                 <label className="radio">
                   <input name="sold" type="radio" value={true} onChange={(e) => setSoldee(e.target.value)}/>
-                  <span>Yes</span>
+                  <span style={{color:'#000009'}}>Yes</span>
                 </label>
               </div>
               <div className='soldeFalse' style={{display:'flex', gap:'10px', alignItems:'center'}}>
                 <label className="radio">
                   <input name="sold" type="radio" value={false} onChange={(e) => setSoldee(e.target.value)}/>
-                  <span>No</span>
+                  <span style={{color:'#000009'}}>No</span>
                 </label>
               </div>
             </div>
           </div>
-        </div>
+          </div>
 
-        <div className='row'>
+
+          <div className='row'>
           <div className='col-6'>
-            <label htmlFor="productPromo">Promo?</label><br />
+            <label htmlFor="productPromo" style={{color:'#000009'}}>Promo?</label><br />
             <div className='all-promo' style={{display:'flex', gap:'20px', alignItems:'center'}}>
               <div className='promoTrue' style={{display:'flex', gap:'10px', alignItems:'center'}}>
                 <label className="radio">
                   <input name="radio" type="radio" value={true} onChange={(e) => setPromo(e.target.value)}/>
-                  <span>Yes</span>
+                  <span style={{color:'#000009'}}>Yes</span>
                 </label>
               </div>
               <div className='promoFalse' style={{display:'flex', gap:'10px', alignItems:'center'}}>
                 <label className="radio">
                   <input name="radio" type="radio" value={false} onChange={(e) => setPromo(e.target.value)}/>
-                  <span>No</span>
+                  <span style={{color:'#000009'}}>No</span>
                 </label>
               </div>
             </div>
@@ -160,20 +176,30 @@ export default function AddProduct() {
             {promo === "true" &&
               <div className='row'>
                 <div className='col-6'>
-                  <label>Promo percentage</label>
-                  <input type="number" min={1} max={100} placeholder='Promo percentage %' value={promoPercentage} onChange={(e) => setPromoPercentage(parseInt(e.target.value))}/>
+                  <label style={{color:'#000009'}}>Promo percentage</label>
+                  <input type="number" min={1} max={100} placeholder='Promo percentage %' value={promoPercentage} onChange={(e) => setPromoPercentage(parseInt(e.target.value))} style={{background:'white'}}/>
                 </div>
                 <div className='col-6'>
-                  <label>Product old Price</label>
-                  <input type="number" placeholder='Product Old Price' value={oldPrice} onChange={(e) => setOldPrice(parseInt(e.target.value))}/>
+                  <label style={{color:'#000009'}}>Origine Price</label>
+                  <input 
+    type="number" 
+    placeholder='Origine Price' 
+    value={Math.floor(parseInt(productPrice) / (1 - promoPercentage / 100))} 
+    readOnly
+    
+    style={{background:'white'}}
+  />
                 </div>
               </div>
             }
           </div>
         </div>
+        <div className='row'>
+        <button type="submit" className='btn btn-primary add-pro-admin-btn'>Add Product</button>
+        </div>
 
-        <button type="submit" className='btn btn-primary botonaSubmit yayaAdd checkoutBtn'>Add Product</button>
-      </form>
+      
+        </form>
     </div>
   );
 }

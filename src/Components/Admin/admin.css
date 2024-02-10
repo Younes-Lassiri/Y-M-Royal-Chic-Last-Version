@@ -5,17 +5,15 @@
     background-color: #000009;
     position: relative;
     overflow: hidden;
-    animation: fadeIn 1s forwards ease-in alternate;
+    animation: fadeIn 1.2s forwards ease-in alternate;
 }
 
 @keyframes fadeIn {
     from {
-        opacity: 0;
-        transform: translateY(100%);
+        opacity: 0.2;
     }
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 

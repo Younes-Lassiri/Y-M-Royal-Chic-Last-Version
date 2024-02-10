@@ -128,20 +128,20 @@ export default function SignUp() {
                 <div className='col-6' style={{position:'relative'}}>
                     <div style={{position:'absolute', top:'7%',left:'41%', transform:'translate(-50%, -50%)', fontSize:'25px'}}><h1 className='logoo'>Y&M Royal Chic</h1></div>
                     <form onSubmit={handleSubmit} style={{position:'relative', top:'50%',left:'50%', transform:'translate(-50%, -50%)', width:'60%'}} >
-                        <label htmlFor="">Full Name</label><br/>
+                        <label htmlFor="">Full Name*</label><br/>
                         <input className='nameInput' type='text' ref={nameRef} placeholder='Full Name' required/><br/>
                         {nameError && <div className="error-message">{nameError}</div>}
 
-                        <label htmlFor="">Work Email</label><br/>
+                        <label htmlFor="">Work Email*</label><br/>
                         <input type='email' ref={emailRef} placeholder='name@email.com' className='emailInput' required/><br />
                         {emailError && <div className="error-message">{emailError}</div>}
 
-                        <label htmlFor="">Password</label><br/>
+                        <label htmlFor="">Password*</label><br/>
                         <input type={clicked ? 'text' : 'password'} ref={passRef} placeholder='8 Characters Minimum' className='passwordInput' required/>
                         <span className='disable' onClick={() => showPass()}><img src={clicked ? view : hideView} style={{width:'20px', height:'20px'}}/></span><br />
                         {passError && <div className="error-message">{passError}</div>}
 
-                        <label htmlFor="">Confirm Password</label><br/>
+                        <label htmlFor="">Confirm Password*</label><br/>
                         <input type={clicked ? 'text' : 'password'} ref={confirmPassRef} placeholder='Confirm Password' className='passwordInput' required/>
                         <span className='disable' onClick={() => showPass()}><img src={clicked ? view : hideView} style={{width:'20px', height:'20px'}}/></span><br />
                         {confirmPassError && <div className="error-message">{confirmPassError}</div>}

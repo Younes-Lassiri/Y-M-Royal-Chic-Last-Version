@@ -4,6 +4,7 @@ import './Landind.css'
 
 
 import one from './myImages/blog-post-2.jpg'
+import Loader from '../Loader/Loader';
 
 
 
@@ -46,11 +47,14 @@ export default function Landing() {
     };
   }, []);
 
+
+  
+
   return (
     <div className='landing-page' id='top'>
       <div><h1 className='logo'>Y&M Royal Chic</h1></div>
       <div className='description'>
-        <h1 style={{ fontWeight: 300 }}>
+        <h1 style={{ fontWeight: 500}}>
           Burning <span style={{ fontStyle: 'italic', fontWeight: 100 }}>brightly </span>
           as a star, <span style={{ fontStyle: 'italic', fontWeight: 100 }}>new<br></br> collection </span>
           is here
@@ -71,7 +75,7 @@ export default function Landing() {
       )}
       
 
-      
+      {/*
       <div style={{position: 'fixed', left: 0, bottom: 0, background: '#000009', height: '48vh', width: '100%', transform: "translateY(48vh)", transition: '1s', zIndex: 90000, padding: '35px'}} id='hidden'>
         <div className='row'>
           <div className='col-6'>
@@ -100,7 +104,7 @@ export default function Landing() {
         </div>
         <button className='hideEff' onClick={() => hideEff()} style={{color:'#f5f8f0'}}>✖</button>
       </div>
-
+      */}
 
 
     </div>

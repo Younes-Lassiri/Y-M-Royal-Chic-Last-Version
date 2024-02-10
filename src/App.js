@@ -6,7 +6,6 @@ import FirstSec from './Components/FirstSec/FirstSec';
 import SecondSec from './Components/SecondSec/SecondSec';
 import ThirdSec from './Components/ThirdSec/ThirdSec';
 import Collection from './Components/Collection/Collection';
-import Last from './Components/Last/Last';
 import FiveSec from './Components/FiveSec/FiveSec';
 import Footer from './Components/Footer/Footer';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,6 +22,7 @@ import SignUp from './Components/Admin/SignUp';
 
 import { authContext } from './helpers/authContext';
 import Navigation from './Components/Navigation/Navigation';
+import Loader from './Components/Loader/Loader';
 
 const App = () => {
   const [logged, setLogged] = useState(false);
@@ -39,6 +39,23 @@ const App = () => {
       })
     })
   }) 
+
+{/*
+  const [pageLoaded, setPageLoaded] = useState(false);
+
+  // Simulate page loading effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPageLoaded(true);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Render the loader while the page is loading
+  if (!pageLoaded) {
+    return <Loader/>;
+  }*/}
   return (
       <authContext.Provider value={{ logged, setLogged, user, setUser }}>
         <Navigation/>

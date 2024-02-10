@@ -17,6 +17,7 @@ import Profile from '../Connexion/Profile';
 import Checkout from '../Checkout/Checkout';
 import Notification from '../Notification/Notification';
 import NotFound from '../NotFound/NotFound';
+import Loader from '../Loader/Loader';
 
 export default function Navigation() {
   return (
@@ -48,6 +49,7 @@ export default function Navigation() {
         <Route path='/login' element={<Login/>}/>
         <Route path="/profile" element={<Profile/>} />
         <Route path="/checkout" element={<Checkout/>} />
+
 
 
         <Route path='/elements/product-carousel' element={<Sliderr/>}/>

@@ -65,6 +65,9 @@ export default function Collection() {
         setDisplay(data.display)
         console.log(data.display);
       }))
+
+
+      data.products.reverse();
   }, [])
 
 
