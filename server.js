@@ -9,7 +9,7 @@ const retry = require('retry');
 app.use(express.json());
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://iptvnfl.com'],
+  origin: ['http://localhost:3000', 'https://iptvnfl.com', 'https://frontgiz.store'],
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 };
 
