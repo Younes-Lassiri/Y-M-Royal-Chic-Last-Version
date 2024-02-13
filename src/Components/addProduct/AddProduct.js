@@ -67,7 +67,7 @@ export default function AddProduct() {
 
       <div className='row'>
         
-        <div className='col-6'>
+        <div className='col-md-6 col-12'>
             <label htmlFor="" className='label' style={{color:'#000009'}}>Product Name</label><br />
             <input
               type='text'
@@ -75,13 +75,13 @@ export default function AddProduct() {
               value={productName}
               onChange={(e) => setProductName(e.target.value)}
               required
-              style={{background:'white'}}
-              className="admin-add-inp"
+              style={{background:'white', border:'1px solid #000009'}}
+              className="admin-addsmnp"
             />
 
         </div>
 
-        <div className='col-6'>
+        <div className='col-md-6 col-12'>
         <label htmlFor="" className='label' style={{color:'#000009'}}>Product Price</label><br />
             <input
               type='text'
@@ -89,7 +89,7 @@ export default function AddProduct() {
               value={productPrice}
               onChange={(e) => setProductPrice(e.target.value)}
               required
-              style={{background:'white'}}
+              style={{background:'white', border:'1px solid #000009'}}
             />
         </div>
 
@@ -107,7 +107,7 @@ export default function AddProduct() {
           value={productImage}
           onChange={(e) => setProductImage(e.target.value)}
           required
-          style={{background:'white'}}
+          style={{background:'white', border:'1px solid #000009'}}
         />
         </div>
         
@@ -177,7 +177,7 @@ export default function AddProduct() {
               <div className='row'>
                 <div className='col-6'>
                   <label style={{color:'#000009'}}>Promo percentage</label>
-                  <input type="number" min={1} max={100} placeholder='Promo percentage %' value={promoPercentage} onChange={(e) => setPromoPercentage(parseInt(e.target.value))} style={{background:'white'}}/>
+                  <input type="number" min={1} max={100} placeholder='Promo percentage %' value={promoPercentage} onChange={(e) => setPromoPercentage(parseInt(e.target.value))} style={{background:'white', border:'1px solid #000009'}}/>
                 </div>
                 <div className='col-6'>
                   <label style={{color:'#000009'}}>Origine Price</label>

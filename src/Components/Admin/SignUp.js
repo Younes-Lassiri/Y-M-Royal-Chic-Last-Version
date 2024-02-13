@@ -147,7 +147,10 @@ export default function SignUp() {
                         {confirmPassError && <div className="error-message">{confirmPassError}</div>}
 
                         <p style={{color:'#ACB5BD'}} className='check'>Already have an account? <Link to='/login' style={{color:'#6765E8'}}>Sign In</Link></p>
-                        <button type="submit" className='btn btn-primary botonaSubmit'>Sign Up</button>
+                        <button type="submit" className='btn btn-primary botonaSubmit' style={{margin:'0 0 10px 0'}}>Sign Up</button>
+                        <span style={{color:'#f5f8f0', fontSize:'1.7rem'}}>
+                            <Link to='/'><i class='bx bx-arrow-back'></i></Link>
+                            </span>
                     </form>
                 </div>
             </div>

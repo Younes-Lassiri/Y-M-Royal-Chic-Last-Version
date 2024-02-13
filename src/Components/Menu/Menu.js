@@ -82,11 +82,6 @@ export default function Menu(props) {
 
             </li>
             <li className="nav-item">
-            <Link className="nav-link" to="/wishList">
-            WishList({quantite})
-                </Link>
-            </li>
-            <li className="nav-item">
             <Link className="nav-link" to="/">
             Pages
                 </Link>

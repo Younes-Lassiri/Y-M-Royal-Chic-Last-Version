@@ -8,6 +8,7 @@ import '../Admin/admin.css';
 import { authContext } from '../../helpers/authContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Navigate } from 'react-router-dom';
 
 export default function Login() {
     const { user, logged, setLogged } = useContext(authContext);
@@ -29,7 +30,7 @@ export default function Login() {
                 if (res.status === 200) {
                     localStorage.setItem('userToken', res.data.user.token);
                     setLogged(true);
-                    navigate('/profile'); // Pass email as a URL parameter
+                    navigate(`/profile/${email}/=$admin-user`);
                 }
                 
             } catch (error) {
@@ -42,17 +43,6 @@ export default function Login() {
     };
     
 
-    useEffect(() => {
-        checkLogin();
-    }, []);
-
-    const checkLogin = () => {
-        if (localStorage.getItem('userToken')) {
-            setLogged(true);
-            console.log('You are connected');
-            navigate('/profile');  // Navigate to profile page with the user's email
-        }
-    };
     
     
     function showPass() {
@@ -106,10 +96,15 @@ export default function Login() {
                                 Sign Up
                             </Link>
                         </p>
-                        <button type="submit" className="btn btn-primary botonaSubmit">
+                        <button type="submit" className="btn btn-primary botonaSubmit" style={{margin:'0 0 20px 0'}}>
                             Sign In
                         </button>
+                        <span style={{color:'#f5f8f0', fontSize:'1.7rem'}}>
+                            <Link to='/'><i class='bx bx-arrow-back'></i></Link>
+                            </span>
+                        
                     </form>
+                    
                 </div>
                 <div className="col-6">
                     <img src={myI} style={{ width: '100%', height: '100vh' }} alt="background" />

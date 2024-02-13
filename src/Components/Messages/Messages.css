@@ -2,7 +2,15 @@
     width: 99%;
     padding: 10px 10px;
     position: relative;
-    background-color: #f5f8f0;
+    
+    max-height: calc(100vh - 185px);
+    overflow-y: scroll;
+}
+
+
+.noti-section::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar width */
+    background: transparent;  /* Set scrollbar background to transparent */
 }
 
 

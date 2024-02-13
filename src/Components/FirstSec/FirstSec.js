@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 
 export default function FirstSec() {
   return (
-    <div className="first-sec">
-      <div className="container" >
+    <div className="" style={{background:'#f8f5f0'}}>
+      <div className="container first-sec" >
       <div className="row">
       <div className="col-xl-6 col-md-6 col-sm-6 col-xs-12 one">
     <h1 style={{ color: '#928c81', textAlign: 'left', fontSize: 11, fontWeight: 700, letterSpacing: '0.16em',marginTop:'80px' }}>OUR BI-MONTHLY EDITORIAL</h1>

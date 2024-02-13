@@ -9,6 +9,15 @@ import Loader from '../Loader/Loader';
 
 
 export default function Landing() {
+  const [showPopUp, setShowPopUp] = useState(false);
+
+  useEffect(() => {
+    const isPopUpShown = localStorage.getItem('isPopUpShown');
+    if (!isPopUpShown) {
+      setShowPopUp(true);
+      localStorage.setItem('isPopUpShown', 'true');
+    }
+  }, []);
 
   useEffect(() => {
     const hid = document.getElementById('hidden');
@@ -75,8 +84,9 @@ export default function Landing() {
       )}
       
 
-      {/*
-      <div style={{position: 'fixed', left: 0, bottom: 0, background: '#000009', height: '48vh', width: '100%', transform: "translateY(48vh)", transition: '1s', zIndex: 90000, padding: '35px'}} id='hidden'>
+      
+      {showPopUp && (
+        <div className='popUp-landing' style={{position: 'fixed', left: 0, bottom: 0, background: '#967844', height: '48vh', width: '100%', transform: "translateY(48vh)", transition: '1s', padding: '35px'}} id='hidden'>
         <div className='row'>
           <div className='col-6'>
             <div className='row'>
@@ -96,15 +106,17 @@ export default function Landing() {
               <h2 style={{fontFamily: 'EB Garamond,serif', color: '#f5f8f0', fontWeight: 400}}>Subscribe to Y&M<br></br> Royal Chic for ALL news</h2><br></br>
             <p style={{color: '#f5f8f0', fontSize: '18px'}}>We care about our customers - you<br></br> have always been an integral part of<br></br> who we are. Join today</p>
               </div>
-              <div className='col-6'>
-                <input type='email' value='Your Email' className='inputE' style={{color:'#f5f8f0'}}/>
+              <div className='col-6' style={{display:'flex', gap:'30px', flexDirection:'column'}}>
+                <input type='email' placeholder='Your Email' className='inputE' style={{color:'#f5f8f0'}}/>
+                <button className='subscribe'>Subscribe</button>
               </div>
             </div>
           </div>
         </div>
-        <button className='hideEff' onClick={() => hideEff()} style={{color:'#f5f8f0'}}>✖</button>
+        <button className='hideEff' onClick={() => hideEff()} style={{color:'#f5f8f0', fontSize:'1.2rem', marginTop:'-10px'}}>✖</button>
       </div>
-      */}
+      )}
+      
 
 
     </div>

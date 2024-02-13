@@ -5,8 +5,8 @@ import { Link } from 'react-scroll';
 
 export default function SecondSec() {
   return (
-    <div className="second-sec" style={{padding:'80px 0'}}>
-      <div className="container">
+    <div className="" style={{background:'#f8f5f0'}}>
+      <div className="container second-sec" style={{padding:'80px 0'}}>
   <div className="row">
     <div className="col-xl-6 col-md-6 col-sm-6 col-xs-12 three">
       <img src='https://lacomete.qodeinteractive.com/wp-content/uploads/2019/05/shop-img-63-600x795.jpg' alt="" />

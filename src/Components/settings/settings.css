@@ -3,14 +3,14 @@
     font-family: Open Sans,-apple-system,"Segoe UI",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     font-weight: 500;
     padding: 15px 21px;
-    color: #f5f8f0;
+    color: #000009
 }
 
 
 .settingInput{
-    background-color: #283341;
+    background-color: white;
     border: 1px solid #000009;
-    color: white;
+    color: #000009;
     padding: 13px 7px;
     width: 92%;
 }
@@ -24,20 +24,20 @@
 
 
 .yayaSave{
-    background-color: #f5f8f0;
-    color: #000009;
-    width: 95%;
+    background-color: #000009;
+    color: #f5f8f0;
+    width: 30%;
     margin-left: 15px;
 }
 
 .yayaSave:hover{
-    background-color: #000009;
-    color: #f5f8f0;
-    border: 1px solid #f5f8f0;
+    background-color: #f5f8f0;
+    color: #000009;
+    border: 1px solid #000009;
 }
 
 .settingInput::placeholder{
-    color: white;
+    color: #000009;
 }
 
 
@@ -50,6 +50,6 @@
 
 
 .settingLabel{
-    color: #f5f8f0;
+    color: #000009;
     padding: 15px 0 0 30px;
 }

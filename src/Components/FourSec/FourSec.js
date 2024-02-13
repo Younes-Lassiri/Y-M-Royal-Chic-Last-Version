@@ -1,6 +1,6 @@
 import React from 'react'
 import './FourSec.css'
-import myImg from './myImages/h1-img-3.jpg'
+import myImg from './myImages/category-img-29.jpg'
 
 import myImgg from './myImages/h1-img-4.jpg'
 

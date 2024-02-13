@@ -1,0 +1,31 @@
+.ss{
+    color:rgb(61, 61, 61)
+}
+
+
+.dashbord-row {
+    display: flex;
+    width: 100%;
+}
+.dashbord-left-column {
+    width: 58%;
+    background-color: white;
+    border-radius: 15px;
+}
+.dashbord-right-column {
+    width: 40%;
+    border-radius: 15px;
+    background-color: white;
+}
+
+
+.dashbord-left-column::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar width */
+    background: transparent;  /* Set scrollbar background to transparent */
+}
+
+.dashbord-right-column::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar width */
+    background: transparent;  /* Set scrollbar background to transparent */
+}
+

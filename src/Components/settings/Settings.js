@@ -35,17 +35,16 @@ const [newPassword, setNewPassword] = useState('')
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              oldEmail: props.user[0].email,
-              newEmail: newEmail || props.user[0].email,
-              name: newName || props.user[0].name,
-              password: newPassword || props.user[0].password,
+              oldEmail: props.user.email,
+              newEmail: newEmail || props.user.email,
+              name: newName || props.user.name,
+              password: newPassword || props.user.password,
             }),
           });
     
           // Check response status for both fetch requests
           if (displayResponse.ok || userResponse.ok) {
             toast.success('Settings and user information updated successfully');
-            setTimeout(function(){window.location.reload()}, 2000)
           } else {
             toast.error('Failed to update settings or user information');
           }
@@ -55,16 +54,18 @@ const [newPassword, setNewPassword] = useState('')
         }
       };
 
-
+function toDashbord(){
+  props.setActiveLink('dashbord')
+  props.setSelectedContent('dashbord')
+}
 
   return (
-    <div>
+    <div style={{padding:'0 30px'}}>
         <ToastContainer />
-        <div><h3 style={{color:'#f5f8f0', padding:'15px 0'}}>Account Settings</h3></div>
         <div style={{width:'90%', borderRadius:'3px', position:'relative', height:'90vh'}}>
-            <p style={{position:'absolute', right:'20px'}} className='setting-p'>Need to update your profile? <Link style={{color:'#f5f8f0', fontWeight:800, textDecoration:'underline overline #f5f8f0'}} onClick={() => props.setSelectedContent('profile')}> Go to My Profile</Link></p><br/>
+            <p style={{position:'absolute', right:'20px'}} className='setting-p'>Need to update your profile? <Link style={{color:'#000009', fontWeight:800, textDecoration:'underline overline #f5f8f0'}} onClick={() => toDashbord()}> Go to My Profile</Link></p><br/>
             <div className='row'>
-                <div className='col-12'><hr style={{width:'92%', color:'#f5f8f0', margin:'25px 0 30px 30px'}}></hr></div>
+                <div className='col-12'><hr style={{color:'#f5f8f0'}}></hr></div>
             </div>
 
 
@@ -75,7 +76,7 @@ const [newPassword, setNewPassword] = useState('')
                             <label className='settingLabel'>Full Name</label>
                         </div>
                         <div className='col-7'>
-                            <input type='text' placeholder={`${props.user[0].name}`} className='settingInput' onChange={(e) => setNewName(e.target.value)}/>
+                            <input type='text' placeholder={props.user.name} className='settingInput' onChange={(e) => setNewName(e.target.value)}/>
                         </div>
                     </div>
 
@@ -85,7 +86,7 @@ const [newPassword, setNewPassword] = useState('')
                             <label className='settingLabel'>Email</label>
                         </div>
                         <div className='col-7'>
-                            <input type='text' placeholder={`${props.user[0].email}`} className='settingInput' onChange={(e) => setNewEmail(e.target.value)}/>
+                            <input type='text' placeholder={props.user.email} className='settingInput' onChange={(e) => setNewEmail(e.target.value)}/>
                         </div>
                     </div>
 
@@ -95,7 +96,7 @@ const [newPassword, setNewPassword] = useState('')
                             <label className='settingLabel'>Password</label>
                         </div>
                         <div className='col-7'>
-                            <input type='password' placeholder={`${props.user[0].password}`} className='settingInput' onChange={(e) => setNewPassword(e.target.value)}/>
+                            <input type='password' placeholder={props.user.password} className='settingInput' onChange={(e) => setNewPassword(e.target.value)}/>
                         </div>
                     </div>
 

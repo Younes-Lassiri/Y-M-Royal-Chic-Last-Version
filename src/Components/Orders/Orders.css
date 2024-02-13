@@ -1,36 +1,37 @@
 .order-section{
-    width: 99%;
-    background-color: #000009;
     border-radius: 5px;
-    padding: 10px 10px;
+    padding: 10px 33px;
     position: relative;
+    color: #000009;
+    max-height: calc(100vh - 185px);
+    overflow-y: scroll;
+}
+
+.order-section::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar width */
+    background: transparent;  /* Set scrollbar background to transparent */
 }
 
 
-th{
+.th{
     text-align: center;
-    padding: 5px 20px;
+    font-size: 17px;
+    font-weight: 300;
+    padding: 2px 20px;
     font-family: 'Protest Riot', sans-serif;
 }
 
 .td{
     font-size: 14px;
     font-weight: 600;
-    border-bottom: 1px solid rgb(194, 194, 194);
+    border-bottom: 1px solid #000009;
     text-align: center;
-    padding: 5px 5px;font-family: 'Protest Riot', sans-serif;
+    font-family: 'Protest Riot', sans-serif;
 }
 
 tr:last-of-type td {
     border-bottom: none;
 }
 
-.paid{
-    border: 1px solid rgb(10, 228, 10);
-    border-radius: 5px;
-    font-weight: 600;
-    color: rgb(10, 228, 10);
-    background-color: rgba(10, 228, 10, 0.075);
-    font-family: 'Protest Riot', sans-serif;
-}
+
 

@@ -18,6 +18,10 @@
       }
   }
 
+.popUp-landing{
+  z-index: 10000;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -125,7 +129,7 @@ body{
   .toTop{
     width: 40px;
     height: 40px;
-    background-color: #000009;
+    background-color: #967844;
     position: fixed;
     bottom: 25px;
     right: 25px;
@@ -156,14 +160,20 @@ body{
 
 
   .inputE{
-    background: transparent;
-    outline: none;
+    background-color: #f5f8f0;
+    color: #000009;
+    border-radius: 0;
     border: none;
-    border-bottom: 1px solid #2e2e2d;
-    color: #2e2e2d;
-    padding: 7px 0;
+    padding: 10px 10px;
+    font-size: 1rem;
+    font-family: Open Sans,-apple-system,"Segoe UI",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     width: 100%;
-    position: relative;
+    font-weight: 600;
+  }
+
+
+  .inputE::placeholder{
+    color: #000009;
   }
 
 
@@ -176,4 +186,24 @@ body{
     right: 10px;
     font-size: 25px;
     color: #2e2e2d;
+  }
+
+
+
+  .subscribe{
+    width: 50%;
+    background-color: #f5f8f0;
+    color: #000009;
+    border: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 7px 5px;
+    transition: .7s;
+  }
+
+
+  .subscribe:hover{
+    background-color: #000009;
+    color: #f5f8f0;
+    border: 1px solid #f5f8f0;
   }
