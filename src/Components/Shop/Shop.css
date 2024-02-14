@@ -111,3 +111,31 @@
   .uu:hover .sold{
     display: none;
   }
+
+
+  .active-nav-pro{
+    border-bottom: 1px #727272 solid;
+  }
+
+  .active-nav-pro-before {
+    border-bottom: 1px solid #727272;
+   }
+
+   .review-btn:hover{
+    color: wheat;
+   }
+
+
+   .review-btn{
+    transition: .7s;
+    font-family: Montserrat,sans-serif;
+    font-size: 11px;
+    letter-spacing: .22em;
+    line-height: 2em;
+    font-weight: 500;
+    text-transform: uppercase;
+   }
+
+
+   
+  

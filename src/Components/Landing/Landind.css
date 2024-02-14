@@ -160,20 +160,23 @@ body{
 
 
   .inputE{
-    background-color: #f5f8f0;
-    color: #000009;
+    background-color: transparent;
+    color: #2e2e2d;
     border-radius: 0;
-    border: none;
+    border-bottom: 1px solid #2e2e2d;
     padding: 10px 10px;
     font-size: 1rem;
     font-family: Open Sans,-apple-system,"Segoe UI",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     width: 100%;
     font-weight: 600;
   }
+  .inputE:focus{
+    border: 1px solid #2e2e2d;
+  }
 
 
   .inputE::placeholder{
-    color: #000009;
+    color: #2e2e2db4;
   }
 
 
@@ -192,9 +195,9 @@ body{
 
   .subscribe{
     width: 50%;
-    background-color: #f5f8f0;
-    color: #000009;
-    border: none;
+    background-color: transparent;
+    color: #2e2e2d;
+    border: 1px solid #2e2e2d;
     font-weight: 600;
     font-size: 0.9rem;
     padding: 7px 5px;

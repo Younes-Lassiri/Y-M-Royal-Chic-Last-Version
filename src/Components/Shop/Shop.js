@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ADD_REVIEW, ADD_TO_CART, ADD_WISH_PRODUCT } from '../redux/actions/actions';
 import { ADD_SINGLE_QUANTITE } from '../redux/actions/actions';
 import { MINUCE_SINGLE_QUANTITE } from '../redux/actions/actions';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import axios
  from 'axios';
@@ -16,6 +18,26 @@ import Footer from '../Footer/Footer';
 export default function Shop() {
   const dispatch = useDispatch();
   const [initialStyle, setInitialStyle] = useState({});
+
+
+
+  const [clientName, setClientName] = useState("")
+  const [review, setReview] = useState("")
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
 
   function effect() {
     let images = document.querySelectorAll('.effect');
@@ -40,16 +62,97 @@ export default function Shop() {
   }
   
 
-  useEffect(() => {
-    effect(); // Invoke the effect function when the component mounts
-  }, []);
+
+  const [content, setContent] = useState("Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetendis in mei. Mei an pericula euripidis, hinc partem ei est. Eos ei nisl graecis, vix aperiri consequat an. Eius lorem tincidunt vix at, vel pertinax sensibus id, error epicurei mea et. Mea facilisis urbanitas moderatius id. Vis ei rationibus definiebas, eu qui purto zril laoreet. Ex error omnium interpretaris pro, alia illum ea vim.")
+
+
+
+
+  function showPro(content){
+    setContent(content)
+  }
+
+ 
   
 
   
   const products = useSelector((state) => state.products);
   const { name } = useParams();
 
+
+  const [linkHovered, setLinkHovered] = useState("")
+
+  useEffect(() => {
+    document.title = `${name} - ${document.title}`;
+  }, [name]);
+  
+
   const product = products.find((product) => product.name === name);
+
+  useEffect(() => {
+    effect(); // Invoke the effect function when the component mounts
+  }, [product]);
+
+  if (!product) {
+    return <div>Loading...</div>; // Placeholder for when product is not available yet
+  }
+
+
+
+
+
+
+
+
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const body = {
+        productId: product.id, 
+        clientName: clientName, 
+        reviewContent: review
+    };
+
+    try {
+        const response = await fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/reviews', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+
+        if (!response.ok) {
+            throw new Error('Error adding review');
+        }
+
+        const data = await response.json();
+        console.log('Review sent successfully:', data);
+
+        // Show success message using toast notification
+        toast.success("Thank you for your review! Your review has been sent successfully.", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+
+        
+        
+
+    } catch (error) {
+        console.error('Error adding order:', error);
+        // Handle error - you can display an error message to the user
+    }
+};
+
+
   return (
     <div className='shop'>
       <Menu />
@@ -233,9 +336,46 @@ export default function Shop() {
               </div>
             )}
           </div>
+          
         </div>
+
+
         
+
       </div>
+      <div className='product-informations container' style={{padding:'60px 0'}}>
+          <ul className='product-informations container-navbar' style={{display:'flex', gap:'50px', marginLeft:'-32px', alignItems:'center'}}>
+            <li style={{color:'#727272', fontSize:'1rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer'}} onClick={() => showPro(
+              "Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetendis in mei. Mei an pericula euripidis, hinc partem ei est. Eos ei nisl graecis, vix aperiri consequat an. Eius lorem tincidunt vix at, vel pertinax sensibus id, error epicurei mea et. Mea facilisis urbanitas moderatius id. Vis ei rationibus definiebas, eu qui purto zril laoreet. Ex error omnium interpretaris pro, alia illum ea vim."
+            )}>Description</li>
+
+            <li style={{color:'#727272', fontSize:'1rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer'}}
+             className={linkHovered === "additional"? "active-nav-pro-before" :null} onClick={() => showPro(
+              <h1>jjj</h1>
+            )}>ADDITIONAL INFORMATION</li>
+
+            <li style={{color:'#727272', fontSize:'1rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer'}} onClick={() => showPro(
+              <div>
+                <h5>1 review for {product.name}</h5>
+                <span>Add a review</span>
+                <span>Your email address will not be published. Required fields are marked *</span><br></br>
+                <form onSubmit={handleSubmit}>
+                <label style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif', lineHeight:'1.63em'}}>Your review *</label><br></br>
+                <textarea style={{width:'100%',height:'30vh', background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px', outline:'none'}} onChange={(e) => setReview(e.target.value)}/><br></br>
+                <label style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif', lineHeight:'1.63em'}}>Name *</label><br></br>
+                <input type='text' style={{background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px'}} onChange={(e) => setClientName(e.target.value)}/><br></br>
+                <label style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif', lineHeight:'1.63em'}}>Email *</label>
+                <input type='email' style={{background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px'}}/><br></br>
+                <button type='submit' style={{padding:'14px 45px', color:'#000009', fontWeight:200, background:'transparent', border:'1px solid #000009',margin:'40px 0'}} className='review-btn'>Submit</button>
+                </form>
+              </div>
+            )}>REVIEWS (1)</li>
+          </ul>
+          <p style={{padding:'25px 0'}}>
+            {content}
+          </p>
+
+        </div>
       
       <Footer />
     </div>
