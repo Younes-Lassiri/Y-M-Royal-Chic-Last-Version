@@ -225,4 +225,39 @@ app.post('/api/products', (req, res, next) => {
   });
 });
 
+
+
+
+
+
+
+
+
+// Route to get all reviews
+app.get('/api/reviews', (req, res, next) => {
+  const sql = 'SELECT * FROM reviews';
+  pool.query(sql, (error, results, fields) => {
+    if (error) {
+      console.error('Error executing query to get reviews:', error);
+      return res.status(500).json({ message: 'Error executing query to get reviews' });
+    }
+    res.json(results);
+  });
+});
+
+// Route to create a new review
+app.post('/api/reviews', (req, res, next) => {
+  const { productId, clientName, reviewContent } = req.body;
+  const sql = 'INSERT INTO reviews (productId, clientName, reviewContent) VALUES (?, ?, ?)';
+  pool.query(sql, [productId, clientName, reviewContent], (error, results, fields) => {
+    if (error) {
+      console.error('Error executing query to add user:', error);
+      return res.status(500).json({ message: 'Error executing query to add user' });
+    }
+    res.status(201).json({ message: 'User added successfully'});
+  });
+});
+
+
+
 app.listen(process.env.PORT || 4000);
