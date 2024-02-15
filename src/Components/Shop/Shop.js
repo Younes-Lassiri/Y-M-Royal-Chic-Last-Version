@@ -332,6 +332,20 @@ function addToCart(){
     });
   }
 
+  function addToCartRela(){
+    dispatch({ type: ADD_TO_CART, payload: viewedProduct[0].id })
+    toast.success(`${viewedProduct[0].name} added to Cart`, {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+    }
+
   function two(){
     setSelectedContent("infos")
     setLiVisited("two")
@@ -556,7 +570,7 @@ function addToCart(){
             <div className='row'>
             {relatedProducts.slice(0, 3).map((productRela, index) => (
           
-          <div className="col-12 col-sm-6 col-md-4 col-lg-3 carde" key={index} title={product.name}>
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3 carde" key={index} title={productRela.name}>
             
             <img src={productRela.thumbnail} alt="" />
             <Link to={`/product/${productRela.name}`}><div className="price">${productRela.price}</div></Link>
@@ -575,17 +589,17 @@ function addToCart(){
 
 
 
-            <div className="name"><Link to={`/product/${product.name}`}>{product.name}</Link></div>
-            {product.isNew ? <div className='new'>NEW</div> : null}
-            {product.promo ? (
+            <div className="name"><Link to={`/product/${productRela.name}`}>{productRela.name}</Link></div>
+            {productRela.isNew ? <div className='new'>NEW</div> : null}
+            {productRela.promo ? (
   <>
-    <div className='promo'>-{product.promoValue}%</div>
-    <div className='oldPrice'>${product.oldPrice}</div>
+    <div className='promo'>-{productRela.promoValue}%</div>
+    <div className='oldPrice'>${productRela.oldPrice}</div>
   </>
 ) : null}
-            {product.sold ? <div className='sold'>SOLD</div> : null}
+            {productRela.sold ? <div className='sold'>SOLD</div> : null}
 
-            <Link to={`/product/${product.name}`}><div className='add'></div></Link>
+            <Link to={`/product/${productRela.name}`}><div className='add'></div></Link>
           </div>
           
         ))}
@@ -616,7 +630,7 @@ function addToCart(){
                           <span style={{fontSize:'20px',padding:'0px 20px',color:'#727272'}}>{viewedProduct[0].quantite}</span>
                           <button style={{color:'#727272',backgroundColor:'transparent',fontWeight:'bold',border:'none',fontSize:'25px',color:'#727272'}} onClick={() => {dispatch({type:ADD_SINGLE_QUANTITE,payload:viewedProduct[0].id})}}>›</button>
                         </div>
-                        <button className='botona' onClick={() => addToCart()}>Add to cart</button>
+                        <button className='botona' onClick={() => addToCartRela()}>Add to cart</button>
               </div>
               <span onClick={() => addToWish(viewedProduct[0].id)}><a className='yaya'>ADD TO WISHLIST</a></span>
         </div>
