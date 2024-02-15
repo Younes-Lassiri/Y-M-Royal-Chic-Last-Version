@@ -254,7 +254,7 @@ app.post('/api/reviews', (req, res, next) => {
       console.error('Error executing query to add user:', error);
       return res.status(500).json({ message: 'Error executing query to add user' });
     }
-    res.status(201).json({ message: 'User added successfully'});
+    res.status(201).json({ message: 'Review added successfully'});
   });
 });
 

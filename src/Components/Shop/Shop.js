@@ -3,11 +3,16 @@ import Menu from '../Menu/Menu';
 import './Shop.css';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ADD_REVIEW, ADD_TO_CART, ADD_WISH_PRODUCT } from '../redux/actions/actions';
+import { ADD_REVIEW, ADD_TO_CART, ADD_WISH_PRODUCT, HIDE_VIEW, REMOVE_WISH_PRODUCT, VIEW_PRODUCT } from '../redux/actions/actions';
 import { ADD_SINGLE_QUANTITE } from '../redux/actions/actions';
 import { MINUCE_SINGLE_QUANTITE } from '../redux/actions/actions';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import bag from './myImages/shopping-bag-svgrepo-com.png';
+import bagHovered from './myImages/shopping-bag-svgrepo-com (1).png';
+import viewImg from './myImages/view-svgrepo-com.png'
+import hoverImg from './myImages/view-svgrepo-com (1).png'
 
 import axios
  from 'axios';
@@ -16,24 +21,44 @@ import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 
 export default function Shop() {
+  const [relatedProducts, setRelatedProducts] = useState([])
+  const [isHovered, setIsHovered] = useState(false);
   const dispatch = useDispatch();
   const [initialStyle, setInitialStyle] = useState({});
+  useEffect(() => {
+    fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/products')
+    .then((res) => res.json())
+    .then((data) => {
+      setRelatedProducts(data)
+    })
+  }, [])
 
 
-
-  const [clientName, setClientName] = useState("")
-  const [review, setReview] = useState("")
-
-
-
+  const [reviewLength, setReviewLength] = useState(0)
+const [relatedReview, setRelatedReview] = useState([])
 
   
+const [clicked, setClicked] = useState(false);
+const [heartClickedIndices, setHeartClickedIndices] = useState([]);
+
+  const [clientName, setClientName] = useState("");
+  const [review, setReview] = useState("");
+
+const [liVisited, setLiVisited] = useState('one')
+
+
+  const [selectedContent, setSelectedContent] = useState("description")
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
 
 
 
-
-
+useEffect(() => {
+  console.log(review)
+}, [review])
 
 
 
@@ -63,14 +88,11 @@ export default function Shop() {
   
 
 
-  const [content, setContent] = useState("Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetendis in mei. Mei an pericula euripidis, hinc partem ei est. Eos ei nisl graecis, vix aperiri consequat an. Eius lorem tincidunt vix at, vel pertinax sensibus id, error epicurei mea et. Mea facilisis urbanitas moderatius id. Vis ei rationibus definiebas, eu qui purto zril laoreet. Ex error omnium interpretaris pro, alia illum ea vim.")
 
 
 
 
-  function showPro(content){
-    setContent(content)
-  }
+
 
  
   
@@ -79,7 +101,7 @@ export default function Shop() {
   const products = useSelector((state) => state.products);
   const { name } = useParams();
 
-
+  const viewedProduct = useSelector((state) => state.viewedProduct)
   const [linkHovered, setLinkHovered] = useState("")
 
   useEffect(() => {
@@ -90,6 +112,19 @@ export default function Shop() {
   const product = products.find((product) => product.name === name);
 
   useEffect(() => {
+    if (product) {
+        fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/reviews')
+        .then((res) => res.json())
+        .then((data) => {
+            const filteredReviews = data.filter(review => review.productId === product.id);
+            setReviewLength(filteredReviews.length);
+            setRelatedReview(filteredReviews)
+        })
+    }
+}, [product]);
+
+
+  useEffect(() => {
     effect(); // Invoke the effect function when the component mounts
   }, [product]);
 
@@ -98,22 +133,68 @@ export default function Shop() {
   }
 
 
+  
+  function formatDate(dateString) {
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleDateString('en-US', { month: 'long' });
+    const year = date.getFullYear();
+    return `${day} ${month.toUpperCase()}, ${year}`;
+  }
+
+
+  function addToWish(productId, index) {
+    setClicked(!heartClickedIndices.includes(index));
+    if (!heartClickedIndices.includes(index)) {
+      dispatch({ type: ADD_WISH_PRODUCT, payload: productId });
+      setHeartClickedIndices((prevIndices) => [...prevIndices, index]);
+      toast.success(`${product.name} added to Wishlist`, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    } else {
+      removeWish(productId);
+      setHeartClickedIndices((prevIndices) => prevIndices.filter((i) => i !== index));
+      toast.error(`${product.name} removed from Wishlist`, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
+  }
+
+  function removeWish(productId) {
+    if (clicked) {
+      dispatch({ type: REMOVE_WISH_PRODUCT, payload: productId });
+    }
+  }
+  
+  
 
 
 
 
-
-
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const handleSubmitReview = async (event) => {
+    event.preventDefault();
 
     const body = {
         productId: product.id, 
         clientName: clientName, 
-        reviewContent: review
+        reviewContent: review,
     };
+    console.log(body)
 
     try {
         const response = await fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/reviews', {
@@ -142,9 +223,8 @@ export default function Shop() {
             progress: undefined,
             theme: "light",
         });
+        setTimeout(function(){window.location.reload()}, 2000)
 
-        
-        
 
     } catch (error) {
         console.error('Error adding order:', error);
@@ -152,10 +232,127 @@ export default function Shop() {
     }
 };
 
+function reviewForm(){
+  return(
+    <div>
+<h5 style={{color:'#000009', fontSize:'1.5rem', fontWeight:500, fontFamily:'"Source Serif Pro",serif'}}>{reviewLength} review for {product.name}</h5>
+<div className='reviews-section container'>
+  {relatedReview.reverse().map(function(review, i){
+    return(
+      <div className='row' style={{padding:'30px 0'}}>
+        <div className='col-1' style={{textAlign:'left', padding:'0'}}><img src='https://lacomete.qodeinteractive.com/wp-content/uploads/2019/04/blog-user-1-100x100.jpg' style={{width:'112px', height:'112px'}}/></div>
+        <div className='col-11' style={{padding:'0 35px'}}>
+          <span style={{color:'#bf402e', fontSize:'20px', fontFamily:'Ionicons', letterSpacing:'.3em'}}>★★★★★</span><br></br>
+          <span style={{color:'#928c81', fontFamily:'Montserrat,sans-serif', fontWeight:700, fontSize:'11px', letterSpacing:'.16em', lineHeight:'1.63em', textTransform:'uppercase'}}>
+  {formatDate(review.created_at)}
+</span>
+<h4 style={{color:'#2e2e2d',fontWeight:400, fontSize:'24px', lineHeight:'1.1em'}}>{review.clientName}</h4>
+<p style={{color:'#727272', fontSize:'16px', fontFamily:'"Source Serif Pro",serif', fontWeight:400, lineHeight:'1.63em'}}>
+  {review.reviewContent}
+</p>
+
+
+        </div>
+      </div>
+    )
+  })}
+</div>
+<span style={{color:'#727272', fontSize:'16px', fontFamily:'"Source Serif Pro",serif', fontWeight:400, lineHeight: '1.63em'}}>Add a review</span><br></br>
+<span style={{color:'#727272', fontSize:'16px', fontFamily:'"Source Serif Pro",serif', fontWeight:400, lineHeight: '1.63em'}}>Your email address will not be published. Required fields are marked *</span><br></br>
+<form onSubmit={handleSubmitReview}>
+<label style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif', lineHeight:'1.63em'}}>Your review *</label><br></br>
+<textarea style={{width:'100%',height:'30vh', background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px', outline:'none'}} onChange={(e) => setReview(e.target.value)}/><br></br>
+<label style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif', lineHeight:'1.63em'}}>Name *</label><br></br>
+<input type='text' style={{background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px'}} onChange={(e) => setClientName(e.target.value)}/><br></br>
+<label style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif', lineHeight:'1.63em'}}>Email *</label>
+<input type='email' style={{background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px'}}/><br></br>
+<button type='submit' style={{padding:'14px 45px', color:'#000009', fontWeight:200, background:'transparent', border:'1px solid #000009',margin:'40px 0'}} className='review-btn'>Submit</button>
+</form>
+</div>
+  )
+}
+
+function description(){
+  return(
+    <p style={{color:'#727272', fontSize:'16px', fontWeight:300, fontFamily:'"Source Serif Pro",serif'}}>
+      Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetendis 
+      in mei. Mei an pericula euripidis, hinc partem ei est. Eos ei nisl graecis, vix a
+      periri consequat an. Eius lorem tincidunt vix at, vel pertinax sensibus id, error
+       epicurei mea et. Mea facilisis urbanitas moderatius id. Vis ei rationibus definiebas,
+       eu qui purto zril laoreet. Ex error omnium interpretaris pro, alia illum ea vim.
+    </p>
+  )
+}
+
+function infos(){
+  return(
+    <p style={{color:'#727272', fontSize:'16px', fontWeight:300, fontFamily:''}}>
+      <div className='infos'>
+                  <span style={{ color: '#727272', letterSpacing: '.1rem', fontSize: '16px', fontFamily: '"Source Serif Pro",serif', fontWeight: '500' }}>
+                    SKU: 00{product.id}
+                  </span>
+                  <br></br>
+                  <span style={{ color: '#727272', letterSpacing: '.1rem', fontSize: '16px', fontFamily: '"Source Serif Pro",serif', fontWeight: '500' }}>
+                    CATEGORY: Creative
+                  </span>
+                  <br></br>
+                  <span style={{ color: '#727272', letterSpacing: '.1rem', fontSize: '16px', fontFamily: '"Source Serif Pro",serif', fontWeight: '500' }}>
+                    TAGS: Brand, New, Silver
+                  </span>
+                  <br></br>
+                </div>
+    </p>
+  )
+}
+
+const renderContent = () => {
+  switch (selectedContent) {
+    case 'reviewForm':
+      return reviewForm();
+    case 'description':
+      return description();
+    case 'infos':
+      return infos();
+    default:
+      return null;
+  }
+};
+  
+function addToCart(){
+  dispatch({ type: ADD_TO_CART, payload: product.id })
+  toast.success(`${product.name} added to Cart`, {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+  }
+
+  function two(){
+    setSelectedContent("infos")
+    setLiVisited("two")
+  }
+  
+
+  function one(){
+    setSelectedContent("description")
+    setLiVisited("one")
+  }
+
+  function three(){
+    setSelectedContent("reviewForm")
+    setLiVisited("three")
+  }
+
 
   return (
     <div className='shop'>
       <Menu />
+      <ToastContainer />
       <div className='title'>
         <h1>Shop</h1>
       </div>
@@ -240,7 +437,7 @@ export default function Shop() {
             <span style={{ fontSize: '22px', color: '#727272' }}>${product.price}</span>
             <br></br>
             <span style={{ color: '#bf402e', fontSize: '25px', letterSpacing: '10px' }}>★★★★★</span>
-            <span style={{ fontSize: '16px', paddingLeft: '20px', color: '#727272' }}>(1 customer review)</span>
+            <span style={{ fontSize: '16px', paddingLeft: '20px', color: '#727272' }}>({reviewLength} customer review)</span>
             <br></br>
             <p
               className='view-para'
@@ -310,12 +507,11 @@ export default function Shop() {
                       ›
                     </button>
                   </span>
-                  <button className='botonaa' onClick={() => dispatch({ type: ADD_TO_CART, payload: product.id })}>
+                  <button className='botonaa' onClick={() => addToCart()}>
                     Add to cart
-                
                   </button>
                 </div>
-                <span onClick={() => dispatch({ type: ADD_WISH_PRODUCT, payload: product.id })}>
+                <span onClick={() => addToWish(product.id)}>
                   <a className='yaya'>ADD TO WISHLIST</a>
                 </span>
                 <br></br>
@@ -345,35 +541,92 @@ export default function Shop() {
       </div>
       <div className='product-informations container' style={{padding:'60px 0'}}>
           <ul className='product-informations container-navbar' style={{display:'flex', gap:'50px', marginLeft:'-32px', alignItems:'center'}}>
-            <li style={{color:'#727272', fontSize:'1rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer'}} onClick={() => showPro(
-              "Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetendis in mei. Mei an pericula euripidis, hinc partem ei est. Eos ei nisl graecis, vix aperiri consequat an. Eius lorem tincidunt vix at, vel pertinax sensibus id, error epicurei mea et. Mea facilisis urbanitas moderatius id. Vis ei rationibus definiebas, eu qui purto zril laoreet. Ex error omnium interpretaris pro, alia illum ea vim."
-            )}>Description</li>
+            <li style={{color:'#727272', fontSize:'0.9rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer', letterSpacing:'.2em'}} onClick={() => one()} className={liVisited === "one"? "visited-review visited-review-one" :"visited-review" }>Description</li>
 
-            <li style={{color:'#727272', fontSize:'1rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer'}}
-             className={linkHovered === "additional"? "active-nav-pro-before" :null} onClick={() => showPro(
-              <h1>jjj</h1>
-            )}>ADDITIONAL INFORMATION</li>
+            <li style={{color:'#727272', fontSize:'0.9rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer', letterSpacing:'.2em'}}
+             className={liVisited === "two"? "visited-review visited-review-two" :"visited-review" } onClick={() => two()}>ADDITIONAL INFORMATION</li>
 
-            <li style={{color:'#727272', fontSize:'1rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer'}} onClick={() => showPro(
-              <div>
-                <h5>1 review for {product.name}</h5>
-                <span>Add a review</span>
-                <span>Your email address will not be published. Required fields are marked *</span><br></br>
-                <form onSubmit={handleSubmit}>
-                <label style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif', lineHeight:'1.63em'}}>Your review *</label><br></br>
-                <textarea style={{width:'100%',height:'30vh', background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px', outline:'none'}} onChange={(e) => setReview(e.target.value)}/><br></br>
-                <label style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif', lineHeight:'1.63em'}}>Name *</label><br></br>
-                <input type='text' style={{background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px'}} onChange={(e) => setClientName(e.target.value)}/><br></br>
-                <label style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif', lineHeight:'1.63em'}}>Email *</label>
-                <input type='email' style={{background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px'}}/><br></br>
-                <button type='submit' style={{padding:'14px 45px', color:'#000009', fontWeight:200, background:'transparent', border:'1px solid #000009',margin:'40px 0'}} className='review-btn'>Submit</button>
-                </form>
-              </div>
-            )}>REVIEWS (1)</li>
+            <li style={{color:'#727272', fontSize:'0.9rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer', letterSpacing:'.2em'}} onClick={() => three()}  className={liVisited === "three"? "visited-review visited-review-three" :"visited-review" }>REVIEWS ({reviewLength})</li>
           </ul>
           <p style={{padding:'25px 0'}}>
-            {content}
+         {renderContent()}
           </p>
+          <h2 style={{color:'2e2e2d', lineHeight:'1.2em', fontWeight: 400, fontFamily:'"EB Garamond",serif'}}>Related products</h2>
+          <div className='relatedProducts container' style={{padding:'40px 0', display:'flex', justifyContent:'center'}}>
+            <div className='row'>
+            {relatedProducts.slice(0, 3).map((productRela, index) => (
+          
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3 carde" key={index} title={product.name}>
+            
+            <img src={productRela.thumbnail} alt="" />
+            <Link to={`/product/${productRela.name}`}><div className="price">${productRela.price}</div></Link>
+            
+            
+
+
+            <Link to='/cart'><div className='divHeart' onMouseEnter={() => setClicked(true)} onMouseLeave={() => setClicked(false)}>
+      <img src={clicked ? bagHovered : bag} alt="Image"/>
+    </div></Link>
+
+
+            <div className='divView' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+      <img src={isHovered ? hoverImg : viewImg} alt="Image" onClick={() => {dispatch({type:VIEW_PRODUCT,payload:{id:productRela.id,name:productRela.name,thumbnail:productRela.thumbnail,price:productRela.price,promo: productRela.promo,isNew: productRela.isNew,sold: productRela.sold,wish: productRela.wish,quantite: productRela.quantite}})}}/>
+    </div>
+
+
+
+            <div className="name"><Link to={`/product/${product.name}`}>{product.name}</Link></div>
+            {product.isNew ? <div className='new'>NEW</div> : null}
+            {product.promo ? (
+  <>
+    <div className='promo'>-{product.promoValue}%</div>
+    <div className='oldPrice'>${product.oldPrice}</div>
+  </>
+) : null}
+            {product.sold ? <div className='sold'>SOLD</div> : null}
+
+            <Link to={`/product/${product.name}`}><div className='add'></div></Link>
+          </div>
+          
+        ))}
+            </div>
+            {viewedProduct.length > 0 ? (
+  <div className='viewProduct'>
+    <div className='container h-100'>
+    <div className="row h-100">
+        <div className="col-md-5 h-100 col-12" style={{padding:0,overflow:'hidden'}}>
+            <img src={viewedProduct[0].thumbnail} className='h-100 w-100 haha' alt="Viewed Product"/>
+        </div>
+        <div className="col-md-7 bg-light h-100 col-12 second" style={{padding:'60px 50px',position:'relative'}}>
+        <div onClick={() => {dispatch({type:HIDE_VIEW})}}><ToastContainer /></div>
+          <div className='hideView'>
+            <h1 style={{fontSize:'40px',color:'#2e2e2d',fontWeight:400}}>{viewedProduct[0].name}</h1>
+            <button style={{position:'absolute',top:'70px',right:'50px'}} onClick={() => {dispatch({type:HIDE_VIEW})}}></button>
+            </div>
+            <span style={{fontSize:'22px',color:'#727272'}}>${viewedProduct[0].price}</span><br></br>
+            <span style={{color:'#ff6900',fontSize:'30px'}}>★★★★★</span><br></br>
+            <p className='view-para' style={{padding:'30px 0',fontSize:'20px',color:'#727272'}}>Alie num phaed rum torquatos nec eu, vis detraxit per 
+              iculis ex, nihil expete ndis in mei. Mei an per icula 
+              eurip idis, hinc ei est. Eos ei nisl graecis, vix aperiri 
+              consequat an. Eius lorem ipsum dolor sit.</p><br></br>
+              <div className='viewOperation' style={{display:'flex',justifyContent:'start',alignItems:'center',gap:'50px',marginBottom:'20px'}}>
+              <span style={{color:'#727272',letterSpacing:'.2rem',fontSize:'17px'}}>Quantite</span>
+                        <div className=''>
+                          <button style={{color:'#727272',backgroundColor:'transparent',fontWeight:'bold',border:'none',fontSize:'25px',color:'#727272'}} onClick={() => {dispatch({type:MINUCE_SINGLE_QUANTITE,payload:viewedProduct[0].id})}}>‹</button>
+                          <span style={{fontSize:'20px',padding:'0px 20px',color:'#727272'}}>{viewedProduct[0].quantite}</span>
+                          <button style={{color:'#727272',backgroundColor:'transparent',fontWeight:'bold',border:'none',fontSize:'25px',color:'#727272'}} onClick={() => {dispatch({type:ADD_SINGLE_QUANTITE,payload:viewedProduct[0].id})}}>›</button>
+                        </div>
+                        <button className='botona' onClick={() => addToCart()}>Add to cart</button>
+              </div>
+              <span onClick={() => addToWish(viewedProduct[0].id)}><a className='yaya'>ADD TO WISHLIST</a></span>
+        </div>
+    </div>
+</div>
+
+    
+  </div>
+) : null}
+          </div>
 
         </div>
       
