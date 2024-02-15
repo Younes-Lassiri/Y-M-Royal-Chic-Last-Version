@@ -153,7 +153,7 @@ const ShopReducer = (state = { products: [], wishProductQuantite: 0, cart: [], c
   return {
     ...state,
     products: state.products.map(function (pro) {
-      if (pro.id === action.payload) {
+      if (pro.id === action.payload && pro.quantite > 0) {
         return {
           ...pro,
           quantite: pro.quantite - 1,
@@ -162,12 +162,16 @@ const ShopReducer = (state = { products: [], wishProductQuantite: 0, cart: [], c
       return pro;
     }),
     viewedProduct: state.viewedProduct.map(function (pro) {
-      return {
-        ...pro,
-        quantite: pro.quantite - 1
-      };
+      if (pro.quantite > 0) {
+        return {
+          ...pro,
+          quantite: pro.quantite - 1,
+        };
+      }
+      return pro;
     }),
   };
+
 
 
     default:

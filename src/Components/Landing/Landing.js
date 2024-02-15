@@ -48,7 +48,21 @@ export default function Landing() {
     };
   }, []);
 
+  const [pageLoaded, setPageLoaded] = useState(false);
 
+  // Simulate page loading effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPageLoaded(true);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Render the loader while the page is loading
+  if (!pageLoaded) {
+    return <Loader/>;
+  }
   
 
   return (

@@ -40,7 +40,7 @@ const App = () => {
     })
   }) 
 
-{/*
+
   const [pageLoaded, setPageLoaded] = useState(false);
 
   // Simulate page loading effect
@@ -55,7 +55,7 @@ const App = () => {
   // Render the loader while the page is loading
   if (!pageLoaded) {
     return <Loader/>;
-  }*/}
+  }
   return (
       <authContext.Provider value={{ logged, setLogged, user, setUser }}>
         <Navigation/>

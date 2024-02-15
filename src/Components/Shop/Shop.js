@@ -366,7 +366,7 @@ function addToCart(){
   return (
     <div className='shop'>
       <Menu />
-      <ToastContainer />
+      {viewedProduct.length === 0? <ToastContainer />: null}
       <div className='title'>
         <h1>Shop</h1>
       </div>
@@ -611,24 +611,24 @@ function addToCart(){
         <div className="col-md-5 h-100 col-12" style={{padding:0,overflow:'hidden'}}>
             <img src={viewedProduct[0].thumbnail} className='h-100 w-100 haha' alt="Viewed Product"/>
         </div>
-        <div className="col-md-7 bg-light h-100 col-12 second" style={{padding:'60px 50px',position:'relative'}}>
+        <div className="col-md-7 bg-light h-100 col-12 second" style={{padding:'75px 40px',position:'relative'}}>
         <div onClick={() => {dispatch({type:HIDE_VIEW})}}><ToastContainer /></div>
           <div className='hideView'>
-            <h1 style={{fontSize:'40px',color:'#2e2e2d',fontWeight:400}}>{viewedProduct[0].name}</h1>
-            <button style={{position:'absolute',top:'70px',right:'50px'}} onClick={() => {dispatch({type:HIDE_VIEW})}}></button>
+            <h3 style={{fontSize:'40px',color:'#2e2e2d',fontWeight:400, fontFamily:'"EB Garamond",serif', lineHeight:'1em'}}>{viewedProduct[0].name}</h3>
+            <button style={{position:'absolute',top:'30px',right:'30px'}} onClick={() => {dispatch({type:HIDE_VIEW})}}></button>
             </div>
-            <span style={{fontSize:'22px',color:'#727272'}}>${viewedProduct[0].price}</span><br></br>
-            <span style={{color:'#ff6900',fontSize:'30px'}}>★★★★★</span><br></br>
-            <p className='view-para' style={{padding:'30px 0',fontSize:'20px',color:'#727272'}}>Alie num phaed rum torquatos nec eu, vis detraxit per 
+            <span style={{fontSize:'19px',color:'#727272', fontWeight:300}}>${viewedProduct[0].price}</span><br></br>
+            <span style={{color:'#bf402e', fontSize:'21px', fontFamily:'Ionicons', letterSpacing:'.3em'}}>★★★★★</span><br></br>
+            <p className='view-para' style={{padding:'15px 0 0  0',fontSize:'17px',color:'#727272'}}>Alie num phaed rum torquatos nec eu, vis detraxit per 
               iculis ex, nihil expete ndis in mei. Mei an per icula 
               eurip idis, hinc ei est. Eos ei nisl graecis, vix aperiri 
               consequat an. Eius lorem ipsum dolor sit.</p><br></br>
-              <div className='viewOperation' style={{display:'flex',justifyContent:'start',alignItems:'center',gap:'50px',marginBottom:'20px'}}>
-              <span style={{color:'#727272',letterSpacing:'.2rem',fontSize:'17px'}}>Quantite</span>
+              <div className='viewOperation' style={{display:'flex',justifyContent:'start',alignItems:'center',gap:'20px',marginBottom:'30px'}}>
+              <span style={{color:'#727272',letterSpacing:'.22em',fontSize:'14px', fontFamily:'Montserrat,sans-serif', fontWeight:500}}>Quantity</span>
                         <div className=''>
-                          <button style={{color:'#727272',backgroundColor:'transparent',fontWeight:'bold',border:'none',fontSize:'25px',color:'#727272'}} onClick={() => {dispatch({type:MINUCE_SINGLE_QUANTITE,payload:viewedProduct[0].id})}}>‹</button>
-                          <span style={{fontSize:'20px',padding:'0px 20px',color:'#727272'}}>{viewedProduct[0].quantite}</span>
-                          <button style={{color:'#727272',backgroundColor:'transparent',fontWeight:'bold',border:'none',fontSize:'25px',color:'#727272'}} onClick={() => {dispatch({type:ADD_SINGLE_QUANTITE,payload:viewedProduct[0].id})}}>›</button>
+                          <button style={{color:'#727272',backgroundColor:'transparent',fontWeight:'bold',border:'none',fontSize:'20px',color:'#727272'}} onClick={() => {dispatch({type:MINUCE_SINGLE_QUANTITE,payload:viewedProduct[0].id})}}>‹</button>
+                          <span style={{fontSize:'15px',padding:'0px 7px',color:'#727272'}}>{viewedProduct[0].quantite}</span>
+                          <button style={{color:'#727272',backgroundColor:'transparent',fontWeight:'bold',border:'none',fontSize:'20px',color:'#727272'}} onClick={() => {dispatch({type:ADD_SINGLE_QUANTITE,payload:viewedProduct[0].id})}}>›</button>
                         </div>
                         <button className='botona' onClick={() => addToCartRela()}>Add to cart</button>
               </div>

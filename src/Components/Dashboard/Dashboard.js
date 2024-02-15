@@ -91,7 +91,7 @@ useEffect(() => {
 {orders.length > 0? orders.slice().reverse().slice(0,4).map(function(order, i){
     return(
         <div className='row' style={{padding:'12px 0'}} key={i}>
-    <div className='col-4' style={{display:'flex', alignItems:'center', gap:'10px', fontWeight:600, fontFamily:"'Protest Riot', sans-serif"}}><i class='bx bxs-user-circle' style={{fontSize:'1.3rem'}}></i>{order.clientName}</div>
+    <div className='col-4' style={{display:'flex', alignItems:'center', gap:'10px', fontWeight:600, fontFamily:"'Protest Riot', sans-serif"}}><i class='bx bxs-user' style={{color:'#046de6'}}></i>{order.clientName}</div>
     <div className='col-4' style={{fontWeight:500, fontFamily:"'Protest Riot', sans-serif"}}>{new Date(order.created_at).toLocaleDateString()}</div>
     <div className='col-4'><span style={{background:'#046de6', padding:'6px 17px', borderRadius:'30px', color:'white', fontWeight:500, fontFamily:"'Protest Riot', sans-serif", fontSize:'0.8rem'}}>Completed</span></div>
 </div>

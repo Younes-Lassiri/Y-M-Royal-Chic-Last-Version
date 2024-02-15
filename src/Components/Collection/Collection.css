@@ -298,19 +298,20 @@
 
 .botona{
   color: black;
-  border: 1px solid black;
+  border: 1px solid #2e2e2d;
   background-color: transparent;
   font-size: 11px;
   letter-spacing: .22em;
   line-height: 2em;
   font-weight: 500;
   text-transform: uppercase;
-  padding: 15px 50px;
+  padding: 10px 42px;
   transition: .8s;
+  font-family: Montserrat,sans-serif;
 }
 
 .botona:hover{
-  background-color: black;
+  background-color: #2e2e2d;
   color: white;
 
 }
@@ -343,7 +344,7 @@
 .hideView button::before{
   content: '';
   width: 1px;
-  height: 30px;
+  height: 20px;
   background-color: #2e2e2d;
   position: absolute;
   left: 50%;
@@ -363,7 +364,7 @@
 .hideView button::after{
   content: '';
   width: 1px;
-  height: 30px;
+  height: 20px;
   background-color: #2e2e2d;
   position: absolute;
   left: 50%;

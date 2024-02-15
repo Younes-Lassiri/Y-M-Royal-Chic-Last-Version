@@ -140,7 +140,7 @@ const renderContent = () => {
   
 
   const renderView = loading ? (
-    <div>Loading...</div>
+    <div><Loader/></div>
   ) : (
 
 
