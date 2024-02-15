@@ -3,8 +3,8 @@ import './FiveSec.css'
 
 export default function FiveSec() {
   return (
-    <div>
-<div className="container-fluid" style={{ width: '100%', height: '100vh', background: '#f8f5f0'}}>
+    <div style={{width:'100%', height:'100vh', background:'#f8f5f0'}}>
+<div className="container" style={{ width: '100%', height: '100vh', background: '#f8f5f0'}}>
     <div className="row tata">
         <div className="col-6 col-xl-2 col-lg-4 col-md-4 col-sm-6">
             <img src="https://lacomete.qodeinteractive.com/wp-content/uploads/2019/04/clients-2.png" alt="" />

@@ -14,6 +14,8 @@ import bagHovered from './myImages/shopping-bag-svgrepo-com (1).png';
 import viewImg from './myImages/view-svgrepo-com.png'
 import hoverImg from './myImages/view-svgrepo-com (1).png'
 
+import { FaStar } from "react-icons/fa";
+
 import axios
  from 'axios';
 
@@ -34,6 +36,29 @@ export default function Shop() {
   }, [])
 
 
+  const [currentValue, setCurrentValue] = useState(0);
+  const [hoverValue, setHoverValue] = useState(undefined);
+  const stars = Array(5).fill(0)
+
+  const handleClick = value => {
+    setCurrentValue(value)
+  }
+
+  const handleMouseOver = newHoverValue => {
+    setHoverValue(newHoverValue)
+  };
+
+  const handleMouseLeave = () => {
+    setHoverValue(undefined)
+  }
+
+
+  useEffect(() => {
+    console.log(currentValue)
+  }, [currentValue])
+
+
+  
   const [reviewLength, setReviewLength] = useState(0)
 const [relatedReview, setRelatedReview] = useState([])
 
@@ -233,11 +258,24 @@ useEffect(() => {
 };
 
 function reviewForm(){
+  const styles = {
+    stars: {
+      display: "flex",
+      flexDirection: "row",
+      padding:'15px 0'
+    }
+  
+  };
+  const colors = {
+    orange: "#bf402e",
+    grey: "#a9a9a9"
+    
+};
   return(
     <div>
 <h5 style={{color:'#000009', fontSize:'1.5rem', fontWeight:500, fontFamily:'"Source Serif Pro",serif'}}>{reviewLength} review for {product.name}</h5>
 <div className='reviews-section container'>
-  {relatedReview.reverse().map(function(review, i){
+  {relatedReview.map(function(review, i){
     return(
       <div className='row' style={{padding:'30px 0'}}>
         <div className='col-1' style={{textAlign:'left', padding:'0'}}><img src='https://lacomete.qodeinteractive.com/wp-content/uploads/2019/04/blog-user-1-100x100.jpg' style={{width:'112px', height:'112px'}}/></div>
@@ -259,6 +297,28 @@ function reviewForm(){
 </div>
 <span style={{color:'#727272', fontSize:'16px', fontFamily:'"Source Serif Pro",serif', fontWeight:400, lineHeight: '1.63em'}}>Add a review</span><br></br>
 <span style={{color:'#727272', fontSize:'16px', fontFamily:'"Source Serif Pro",serif', fontWeight:400, lineHeight: '1.63em'}}>Your email address will not be published. Required fields are marked *</span><br></br>
+<span style={{color:'#727272', fontSize:'16px', fontFamily:'"Source Serif Pro",serif', fontWeight:400, lineHeight: '1.63em'}}>Your rating *</span><br></br>
+
+<div style={styles.stars}>
+        {stars.map((_, index) => {
+          return (
+            <FaStar
+              key={index}
+              size={18}
+              onClick={() => handleClick(index + 1)}
+              onMouseOver={() => handleMouseOver(index + 1)}
+              onMouseLeave={handleMouseLeave}
+              color={(hoverValue || currentValue) > index ? colors.orange : colors.grey}
+              style={{
+                marginRight: 7,
+                cursor: "pointer"
+              }}
+            />
+          )
+        })}
+      </div>
+
+
 <form onSubmit={handleSubmitReview}>
 <label style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif', lineHeight:'1.63em'}}>Your review *</label><br></br>
 <textarea style={{width:'100%',height:'30vh', background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px', outline:'none'}} onChange={(e) => setReview(e.target.value)}/><br></br>

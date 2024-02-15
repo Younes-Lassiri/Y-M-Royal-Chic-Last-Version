@@ -95,7 +95,7 @@ export default function Collection() {
   
 
   return (
-    <div className="container-fluid con">
+    <div className="container-fluid connn">
       <div className="row headingOne">
         <div className="col-12">
           <div className="all">

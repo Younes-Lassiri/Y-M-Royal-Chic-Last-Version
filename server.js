@@ -247,8 +247,8 @@ app.get('/api/reviews', (req, res, next) => {
 
 // Route to create a new review
 app.post('/api/reviews', (req, res, next) => {
-  const { productId, clientName, reviewContent } = req.body;
-  const sql = 'INSERT INTO reviews (productId, clientName, reviewContent) VALUES (?, ?, ?)';
+  const { productId, clientName, reviewContent, rateValue } = req.body;
+  const sql = 'INSERT INTO reviews (productId, clientName, reviewContent, rateValue) VALUES (?, ?, ?, ?)';
   pool.query(sql, [productId, clientName, reviewContent], (error, results, fields) => {
     if (error) {
       console.error('Error executing query to add user:', error);
