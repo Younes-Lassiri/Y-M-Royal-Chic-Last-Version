@@ -105,14 +105,14 @@ export default function Login() {
                         <br />
 
                         <p style={{ color: '#ACB5BD', padding: '20px 0' }} className="check">
-                            Not Registered yet? <Link to="/y&m-admin" style={{ color: '#6765E8' }}>
+                            Not Registered yet? <Link to="/y&m-admin" style={{ color: '#6765E8', textDecoration:'none' }}>
                                 Sign Up
                             </Link>
                         </p>
                         <button type="submit" className="btn btn-primary botonaSubmit" style={{margin:'0 0 20px 0'}}>
                             Sign In
                         </button>
-                        <span style={{color:'#f5f8f0', fontSize:'1.7rem'}}>
+                        <span style={{color:'#f5f8f0', fontSize:'1.3rem'}}>
                             <Link to='/'><i class='bx bx-arrow-back'></i></Link>
                             </span>
                         
