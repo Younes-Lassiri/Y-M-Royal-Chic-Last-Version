@@ -539,7 +539,7 @@ function addToCart(){
                 <br></br>
                 <div style={{ margin: '30px 0' }}>
                   <span onClick={() => dispatch({ type: ADD_WISH_PRODUCT, payload: product.id })}>
-                    <a className='yaya'>ADD TO WISHLIST</a>
+                    <a className='yaya' style={{textDecoration:'none'}}>ADD TO WISHLIST</a>
                   </span>
                 </div>
                 <br></br>
@@ -592,7 +592,7 @@ function addToCart(){
                   </button>
                 </div>
                 <span onClick={() => addToWish(product.id)}>
-                  <a className='yaya'>ADD TO WISHLIST</a>
+                  <a className='yaya' style={{textDecoration:'none'}}>ADD TO WISHLIST</a>
                 </span>
                 <br></br>
                 <div className='infos' style={{ marginTop: '35px' }}>
@@ -621,12 +621,12 @@ function addToCart(){
       </div>
       <div className='product-informations container' style={{padding:'60px 0'}}>
           <ul className='product-informations container-navbar' style={{display:'flex', gap:'50px', marginLeft:'-32px', alignItems:'center'}}>
-            <li style={{color:'#727272', fontSize:'0.9rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer', letterSpacing:'.2em'}} onClick={() => one()} className={liVisited === "one"? "visited-review visited-review-one" :"visited-review" }>Description</li>
+            <li style={{color:'#727272', fontSize:'0.9rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer', letterSpacing:'.2em', listStyleType:'none'}} onClick={() => one()} className={liVisited === "one"? "visited-review visited-review-one" :"visited-review" }>Description</li>
 
-            <li style={{color:'#727272', fontSize:'0.9rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer', letterSpacing:'.2em'}}
+            <li style={{color:'#727272', fontSize:'0.9rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer', letterSpacing:'.2em', listStyleType:'none'}}
              className={liVisited === "two"? "visited-review visited-review-two" :"visited-review" } onClick={() => two()}>ADDITIONAL INFORMATION</li>
 
-            <li style={{color:'#727272', fontSize:'0.9rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer', letterSpacing:'.2em'}} onClick={() => three()}  className={liVisited === "three"? "visited-review visited-review-three" :"visited-review" }>REVIEWS ({reviewLength})</li>
+            <li style={{color:'#727272', fontSize:'0.9rem', fontWeight:300, fontFamily:'monospace', cursor:'pointer', letterSpacing:'.2em', listStyleType:'none'}} onClick={() => three()}  className={liVisited === "three"? "visited-review visited-review-three" :"visited-review" }>REVIEWS ({reviewLength})</li>
           </ul>
           <p style={{padding:'25px 0'}}>
          {renderContent()}
@@ -698,7 +698,7 @@ function addToCart(){
                         </div>
                         <button className='botona' onClick={() => addToCartRela()}>Add to cart</button>
               </div>
-              <span onClick={() => addToWish(viewedProduct[0].id)}><a className='yaya'>ADD TO WISHLIST</a></span>
+              <span onClick={() => addToWish(viewedProduct[0].id)}><a className='yaya' style={{textDecoration:'none'}}>ADD TO WISHLIST</a></span>
         </div>
     </div>
 </div>

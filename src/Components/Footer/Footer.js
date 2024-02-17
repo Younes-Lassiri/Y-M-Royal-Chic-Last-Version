@@ -1,59 +1,41 @@
 import React from 'react'
 import './Footer.css'
 import { Link } from 'react-scroll'
-import Slider from '../Slider/Slider'
 
 export default function Footer() {
   return (
     <div className='container-fluid footer'>
-    <div className='row'>
-        <div className='col-12 col-md-4'>
-            <h1 className='logo-footer'>Y&M Royal Chic</h1>
-        </div>
-        <div className='col-12 col-md-4'>
-            <div className='div-inp'>
-            <p className='description-footer'>
-                Subscribe to La Comète<br></br> newsletter and share our story.
-            </p>
-            <input type='email' placeholder='Your Email' className='footer-input'/>
-            <button className='btnn'>Send</button>
+        <div className='row'>
+            <div className='col-12 col-md-5 footer-leftSide'><Link to='/'><img src="https://lacomete.qodeinteractive.com/wp-content/uploads/2019/05/footer-image-300x41.png"/></Link></div>
             
+            <div className='col-12 col-md-4'>
+                <div className='footer-rightSide-left'>
+                <h3 style={{fontFamily:'"EB Garamond",serif'}}>Subscribe to Y&M newsletter<br></br> and share our story.</h3>
+                <input type='email' placeholder='Your Email'/>
+                </div>
+
+
+
+                
             </div>
-        </div>
-        
-        <div className='col-12 col-md-4 menuu'>
-            <div className='ol'>
-                <h6 className='footer-links'>ELSEWHERE</h6>
-                <ul className="list-unstyled">
-                <li className="nav-item">
-            <Link className="nav-link" to="/wishList">
-            WishList
-                </Link>
-            </li>
-            <li className="nav-item">
-            <Link className="nav-link" to="/y&m-admin">
-            Pages
-                </Link>
-            </li>
-            <li  className="nav-item"><Link to='/shop' className="nav-link">SHOP</Link></li>
-            <li className="nav-item">
-            <Link className="nav-link" aria-current="page" href="#">
-                ELEMENTS
-              </Link>
-            </li>
-            <li className="nav-item">
-            <Link className="nav-link" to="/cart">
-            Cart
-                </Link>
-            </li>
+            <div className='col-3 footer-rightSide-right'>
+                <h3 style={{fontFamily:'Open Sans,-apple-system,"Segoe UI",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"'}}>ELSEWHERE</h3>
+
+                <ul style={{listStyleType:'none', padding:'0'}}>
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='/elements/product-carousel'>Shop</a></li>
+                    <li><a href='/elements/product-carousel'>Elements</a></li>
+                    <li><a href='/cart'>Cart</a></li>
                 </ul>
-            </div>
+
+                </div>
+                
         </div>
-    </div>
-    <hr/>
-    <p className='para'>©Younes 2023 Y&M Royal Chic, ALL RIGHTS RESERVED</p>
-    
+        <div><p style={{position:'absolute', bottom:'0', fontFamily:'Montserrat,sans-serif', letterSpacing:'.42em', textTransform:'uppercase', color:'rgba(248,245,240,.25)', fontSize:'9px'}} className='copyLast'>©Y&M 2024 QODE INTERACTIVE, ALL RIGHTS RESERVED</p></div>
+        
+        
 </div>
+
 
   )
 }

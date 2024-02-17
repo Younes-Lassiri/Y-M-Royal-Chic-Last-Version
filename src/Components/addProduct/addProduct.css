@@ -92,25 +92,31 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 .addProduct-section{
-  padding: 0 180px;
+  padding: 0 33px;
   position: relative
 }
 
 
 .add-pro-admin-btn{
-  width: 50%;
-  background: #000009; 
-  color: white;
-  border: none;
+  width: 15%;
+  background: transparent; 
+  color: #000009;
+  border: 1px solid #000009;
   transition: .7s,;
-  font-weight: 600;
-  font-size: 1.1rem
+  font-weight: 500;
+  padding: 10px 0;
+  letter-spacing: .20em;
+  font-size: 0.9rem;
+  border-radius: 0;
+  font-family: Source Serif Pro,serif;
+  text-transform: uppercase;
+  margin-left: 10px;
 }
 
 
 
 .add-pro-admin-btn:hover{
-  background: white; 
-  color: #000009;
-  border: 1px solid #000009
+  background: #000009; 
+  color: white;
+  border: none;
 }

@@ -68,28 +68,26 @@ export default function AddProduct() {
       <div className='row'>
         
         <div className='col-md-6 col-12'>
-            <label htmlFor="" className='label' style={{color:'#000009'}}>Product Name</label><br />
+            <label htmlFor="" className='label' style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>Product Name *</label><br />
             <input
               type='text'
-              placeholder='Product Name'
               value={productName}
               onChange={(e) => setProductName(e.target.value)}
               required
-              style={{background:'white', border:'1px solid #000009'}}
+              style={{background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px', fontFamily:'"Source Serif Pro",serif'}}
               className="admin-addsmnp"
             />
 
         </div>
 
         <div className='col-md-6 col-12'>
-        <label htmlFor="" className='label' style={{color:'#000009'}}>Product Price</label><br />
+        <label htmlFor="" className='label' style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>Product Price *</label><br />
             <input
               type='text'
-              placeholder='Product Price'
               value={productPrice}
               onChange={(e) => setProductPrice(e.target.value)}
               required
-              style={{background:'white', border:'1px solid #000009'}}
+              style={{background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px', fontFamily:'"Source Serif Pro",serif'}}
             />
         </div>
 
@@ -100,14 +98,13 @@ export default function AddProduct() {
       <div className='row'>
 
         <div className='col-12'>
-        <label className='label' style={{color:'#000009'}}>Product Image</label><br />
+        <label className='label' style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>Product Image *</label><br />
         <input
           type='text'
-          placeholder='Product Image Link'
           value={productImage}
           onChange={(e) => setProductImage(e.target.value)}
           required
-          style={{background:'white', border:'1px solid #000009'}}
+          style={{background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px', fontFamily:'"Source Serif Pro",serif'}}
         />
         </div>
         
@@ -115,18 +112,18 @@ export default function AddProduct() {
 
       <div className='row'>
           <div className='col-6'>
-            <label htmlFor="productNew" style={{color:'#000009'}}>New?</label><br />
+            <label htmlFor="productNew" style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>New?</label><br />
             <div className='all-new' style={{display:'flex', gap:'20px', alignItems:'center'}}>
               <div className='newTrue' style={{display:'flex', gap:'10px', alignItems:'center'}}>
                 <label className="radio">
                   <input name="new" type="radio" value={true} onChange={(e) => setNeww(e.target.value)}/>
-                  <span style={{color:'#000009'}}>Yes</span>
+                  <span style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>Yes</span>
                 </label>
               </div>
               <div className='newFalse' style={{display:'flex', gap:'10px', alignItems:'center'}}>
                 <label className="radio">
                   <input name="new" type="radio" value={false} onChange={(e) => setNeww(e.target.value)}/>
-                  <span style={{color:'#000009'}}>No</span>
+                  <span style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>No</span>
                 </label>
               </div>
             </div>
@@ -135,18 +132,18 @@ export default function AddProduct() {
 
 
           <div className='col-6'>
-            <label htmlFor="productSolde" style={{color:'#000009'}}>Solde?</label><br />
+            <label htmlFor="productSolde" style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>Solde?</label><br />
             <div className='all-solde' style={{display:'flex', gap:'20px', alignItems:'center'}}>
               <div className='soldeTrue' style={{display:'flex', gap:'10px', alignItems:'center'}}>
                 <label className="radio">
                   <input name="sold" type="radio" value={true} onChange={(e) => setSoldee(e.target.value)}/>
-                  <span style={{color:'#000009'}}>Yes</span>
+                  <span style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>Yes</span>
                 </label>
               </div>
               <div className='soldeFalse' style={{display:'flex', gap:'10px', alignItems:'center'}}>
                 <label className="radio">
                   <input name="sold" type="radio" value={false} onChange={(e) => setSoldee(e.target.value)}/>
-                  <span style={{color:'#000009'}}>No</span>
+                  <span style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>No</span>
                 </label>
               </div>
             </div>
@@ -156,18 +153,18 @@ export default function AddProduct() {
 
           <div className='row'>
           <div className='col-6'>
-            <label htmlFor="productPromo" style={{color:'#000009'}}>Promo?</label><br />
+            <label htmlFor="productPromo" style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>Promo?</label><br />
             <div className='all-promo' style={{display:'flex', gap:'20px', alignItems:'center'}}>
               <div className='promoTrue' style={{display:'flex', gap:'10px', alignItems:'center'}}>
                 <label className="radio">
                   <input name="radio" type="radio" value={true} onChange={(e) => setPromo(e.target.value)}/>
-                  <span style={{color:'#000009'}}>Yes</span>
+                  <span style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>Yes</span>
                 </label>
               </div>
               <div className='promoFalse' style={{display:'flex', gap:'10px', alignItems:'center'}}>
                 <label className="radio">
                   <input name="radio" type="radio" value={false} onChange={(e) => setPromo(e.target.value)}/>
-                  <span style={{color:'#000009'}}>No</span>
+                  <span style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>No</span>
                 </label>
               </div>
             </div>
@@ -176,18 +173,17 @@ export default function AddProduct() {
             {promo === "true" &&
               <div className='row'>
                 <div className='col-6'>
-                  <label style={{color:'#000009'}}>Promo percentage</label>
-                  <input type="number" min={1} max={100} placeholder='Promo percentage %' value={promoPercentage} onChange={(e) => setPromoPercentage(parseInt(e.target.value))} style={{background:'white', border:'1px solid #000009'}}/>
+                  <label style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>Promo percentage% *</label>
+                  <input type="number" min={1} max={100} value={promoPercentage} onChange={(e) => setPromoPercentage(parseInt(e.target.value))} style={{background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px', fontFamily:'"Source Serif Pro",serif'}}/>
                 </div>
                 <div className='col-6'>
-                  <label style={{color:'#000009'}}>Origine Price</label>
+                  <label style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>Origine Price</label>
                   <input 
     type="number" 
-    placeholder='Origine Price' 
     value={Math.floor(parseInt(productPrice) / (1 - promoPercentage / 100))} 
     readOnly
     
-    style={{background:'white'}}
+    style={{background:'#e9eae4', color: '#999898', border:'none', padding:'19px 19px', fontFamily:'"Source Serif Pro",serif'}}
   />
                 </div>
               </div>
@@ -195,7 +191,7 @@ export default function AddProduct() {
           </div>
         </div>
         <div className='row'>
-        <button type="submit" className='btn btn-primary add-pro-admin-btn'>Add Product</button>
+        <button type="submit" className='btn btn-primary add-pro-admin-btn'>Submit</button>
         </div>
 
       

@@ -28,9 +28,11 @@ export default function Login() {
                 });
     
                 if (res.status === 200) {
-                    localStorage.setItem('userToken', res.data.user.token);
+                    localStorage.setItem('userToken', res.data.token);
                     setLogged(true);
-                    navigate(`/profile/${email}/=$admin-user`);
+                    navigate('/profile', { state: { email: email } });
+                    localStorage.setItem('userEmail', email);
+
                 }
                 
             } catch (error) {
@@ -43,6 +45,17 @@ export default function Login() {
     };
     
 
+    useEffect(() => {
+        checkLogin();
+      }, []);
+    
+      const checkLogin = () => {
+        if (localStorage.getItem("userToken")) {
+          setLogged(true);
+          console.log("You are connected");
+          navigate("/profile");
+        }
+      };
     
     
     function showPass() {

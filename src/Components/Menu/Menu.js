@@ -63,8 +63,8 @@ export default function Menu(props) {
       
 <div className={props.profile === true? "admin-section adminHide": "admin-section"}><span>y&mroyal-chic@contact.com</span>
 <ul>
-  <li><Link to='/y&m-admin'>My account</Link></li>
-  <li><Link to='/wishlist'>Wishlist</Link></li>
+  <li style={{listStyleType:'none'}}><Link to='/y&m-admin' style={{textDecoration:'none'}}>My account</Link></li>
+  <li style={{listStyleType:'none'}}><Link to='/wishlist' style={{textDecoration:'none'}}>Wishlist</Link></li>
 </ul>
 </div>
     <nav className={props.profile === true? "navbar navbar-expand-lg yayaP": "navbar navbar-expand-lg yaya"}>
@@ -75,7 +75,7 @@ export default function Menu(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className={props.profile === true? "navbar-nav me-auto mb-2 mb-lg-0 menu menuPp": "navbar-nav me-auto mb-2 mb-lg-0 menu"}>
             <li className="nav-item">
-                <Link className={props.profile === true? 'span activeeP': 'span activee'} to="/">
+                <Link className={props.profile === true? 'span activeeP': 'span activee'} to="/"  style={{textDecoration:'none'}}>
           HOME
         </Link>
 

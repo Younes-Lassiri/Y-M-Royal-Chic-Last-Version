@@ -1,166 +1,103 @@
-
-.footer {
+.footer{
     width: 100%;
-    height: 70vh;
-    color: white;
     background-image: url('https://lacomete.qodeinteractive.com/wp-content/uploads/2019/04/fullscreen-menu-img-1.png');
     background-position: center;
     background-size: cover;
+    color: white;
+    padding: 140px 100px;
     background-attachment: fixed;
     position: relative;
 }
 
 
 
-.logo-footer{
-    margin: 0;
-    text-align: left;
-    padding: 30px 0;
-    color: white;
-    font-family: 'EB Garamond';
-    font-size: 1.5rem;
-    font-weight: 600;
-    font-weight: 400;
-    padding: 30% 0 0 70px;
-    cursor: pointer;
+
+.footer-leftSide{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.footer-rightSide-left{
+    padding-left: 50px;
 }
 
-
-
-.description-footer {
-    margin: 0;
-    text-align: left;
-    padding: 30px 0;
-    color: white;
-    font-family: 'EB Garamond';
-    font-size: 1.5rem;
-    font-weight: 600;
-    font-weight: 400;
-    padding: 25% 0 0 100px;
+.footer-rightSide-left h3{
+    font-size: 1.4rem;
+    line-height: 1.3em;
 }
-
-li{
-    list-style-type: none;
-
-}
-
-
-
-
-
-a{
-    text-decoration: none;
-    color: #f8f5f0;
-    transition: .7s;
-    font-family: "Source Serif Pro",serif;
-    font-size: 16px;
-    font-weight: 400;
-}
-
-a:hover{
-    color: #967844;
-}
-
-.menuu .footer-links{
-    font-family: "EB Garamond",serif;
-    font-size: 14px;
-}
-  
-
-.menuu li {
-    padding-top: 10px;
-    line-height: 1.2em;
-}
-
-.menuu .ol{
-    float: right;
-    margin: 25% 40px 0 0;
-}
-
-
-
-
-.footer-input{
-    margin: 30px 100px;
-    padding: 8px 0;
-    font-family: 'EB Garamond';
-    font-weight: 400;
-    background: transparent;
-    outline: none;
-    border: 0;
-    font-size: 14px;
-    border-bottom: 1px solid #f8f5f0;
-    color: white;
-    width: 80%;
-    position: relative;
-
-}
-
-.footer .btnn{
-    margin-left: 100px;
-    font-family: 'EB Garamond';
-    font-weight: 400;
-    background: transparent;
-    border: 0;
-    font-size: 20px;
-    color: white;
-    padding: 4px 50px;
-    border: 1px solid #f8f5f0;
-    transition: .8s;
-}
-
-.footer .btnn:hover{
-    background-color: #f8f5f0;
-    color: #112a26;
-}
-
-
-input::placeholder {
-    color: white;
-}
-
-  
-.footer hr{
-    width: 100%;
-    color: #727272;
-}
-
-.footer .para{
-    font-family: Montserrat,sans-serif;
-    font-size: 9px;
-    letter-spacing: .42em;
-    text-transform: uppercase;
-    color: white;
-
-}
-
 
 @media (max-width: 768px) {
-    .description-footer{
-        padding: 50px 10px;
+    .footer{
+        padding: 50px 50px;
     }
-    .logo-footer{
-        padding: 30px 10px;
-    }
-    .footer-input{
-        margin: 0;
-        padding-left: 10px;
-    }
-    .menuu .ol{
+    .footer-rightSide-right ul{
         display: none;
     }
-    .footer hr{
-        margin: 0;
+    .footer-rightSide-right h3{
         display: none;
     }
-    .footer .btnn{
-        margin: 15px 0;
+
+    .footer-rightSide-left{
+        padding: 0;
     }
+    .footer-rightSide-left h3{
+        padding: 30px 0 0 0;
+    }
+    .footer-leftSide{
+        padding: 20px 0 0 0;
+    }
+  }
+
+.footer-rightSide-left input:focus{
+    outline: none;
+    border-top: 0 solid transparent;
+    border-left: 0 solid transparent;
+    border-right: 0 solid transparent;
+}
+
+.footer-rightSide-left input::placeholder{
+    font-size: 1rem;
+    color: #727272;
+    font-family: "EB Garamond",serif;
+    font-weight: 400;
+}
+.footer-rightSide-left input{
+    background-color: transparent;
+    border-bottom: 1px solid #f5f8f0;
+    border-radius: 0;
+    color: #f5f8f0;
+    padding: 7px 3px;
+    font-family: "EB Garamond",serif;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 35px;
+
+}
+.footer-rightSide-right{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    padding-left: 150px;
+}
+
+.footer-rightSide-right h3{
+    line-height: 1.63em;
+    letter-spacing: .20em;
+    font-family: Montserrat,sans-serif;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 
+.footer-rightSide-right a{
+    color: #f8f5f0;
+    text-decoration: none;
+    transition: .7s;
+    font-family: Open Sans,-apple-system,"Segoe UI",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 15px;
+    font-weight: 400;
+}
 
-
-
-
-
+.footer-rightSide-right a:hover{
+    color: #967844;
+}

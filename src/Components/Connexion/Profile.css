@@ -139,7 +139,7 @@
 
 
 .admin-visited{
-    background-color: rgb(245, 244, 244);
+    background-color: #f5f8f0;
     animation: fadeInn 0.3s forwards ease-in alternate;
 }
 
@@ -152,7 +152,7 @@
         background-color: transparen;
     }
     to {
-        background-color: rgb(245, 244, 244);
+        background-color: #f5f8f0;
     }
 }
 
@@ -170,7 +170,7 @@
 
 
 .admin-content{
-    background-color: rgb(245, 244, 244);
+    background-color: white;
     position: absolute;
     right: 0;
     top: 80px;

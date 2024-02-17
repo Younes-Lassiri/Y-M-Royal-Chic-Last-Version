@@ -26,7 +26,7 @@ export default function Navigation() {
         <Route
           path="/"
           element={
-            <div>
+            <div style={{overflowX:'hidden'}}>
               <Landing/>
               <div>
                 <Menu/>
@@ -47,7 +47,7 @@ export default function Navigation() {
         <Route path='/product/:name' element={<Shop/>}/>
         <Route path='/y&m-admin' element={<SignUp/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path="/profile/:email/=$admin-user" element={<Profile/>} />
+        <Route path="/profile" element={<Profile/>} />
         <Route path="/checkout" element={<Checkout/>} />
 
 

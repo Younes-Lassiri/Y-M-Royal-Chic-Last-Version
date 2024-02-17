@@ -44,12 +44,12 @@
     padding: 0.3rem;
     border: none;
     border-bottom: 1.5px solid #ccc;
-    margin-bottom: 0.3rem;
     font-family: 'Roboto', sans-serif;
     color: #000009;
     font-size: 0.8rem;
     font-weight: 500;
   outline:none;
+  border-radius: 0;
 }
 
 .expcvv {
@@ -66,10 +66,8 @@
 }
 
 .checkoutBtn{
-    background: linear-gradient(
-135deg
-, #753370 0%, #298096 100%);
-    padding: 12px;
+    background-color: #000009;
+    padding: 8px;
     border: none;
     border-radius: 10px;
     color: white;
@@ -78,14 +76,7 @@
     width:100%;
     letter-spacing: .11rem;
     outline:none;
-}
-
-.checkoutBtn:hover
-{
-    box-shadow: 3px 3px 6px #38373785;
-    background: linear-gradient(
-135deg
-, #298096 0%, #753370 100%);
+    border-radius: 0;
 }
 
 @media only screen and (max-width: 1000px) {

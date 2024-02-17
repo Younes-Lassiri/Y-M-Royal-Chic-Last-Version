@@ -19,12 +19,15 @@ import Team from "../Team/Team";
 
 
 export default function Profil() {
-  const {email} = useParams()
+  const location = useLocation();
+const { email } = location.state || 'jaja';
   const [totalNoti, setTotalNoti] = useState(0)
   const [profileHovered, setProfileHovered] = useState(false)
-  const location = useLocation()
 
-
+useEffect(() => {
+  const userEmail = localStorage.getItem('userEmail');
+  console.log(userEmail)
+}, [])
   const [dark, setDark] = useState("off")
 
 
@@ -75,34 +78,33 @@ export default function Profil() {
   };
 
 
+ 
+
   const userInfo = async () => {
     try {
-        const response = await axios.get("https://royalchicapi-cc1c56c683bf.herokuapp.com/api/users", {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("userToken"),
-            },
-        });
-
-        const userData = response.data.find(user => user.email === email);
-        if (userData) {
-            // Store user data in localStorage
-            localStorage.setItem("userData", JSON.stringify(userData));
-
-            // Update user state and set loading to false
-            setUser(userData);
-            setLogged(true);
-            setLoading(false);
-        } else {
-            // Handle case where user data is not found
-            console.error("User data not found.");
-            setLoading(false);
-        }
-    } catch (error) {
-        console.error("Error fetching user info:", error.message);
-        // Handle error if needed
+      const response = await axios.get("https://royalchicapi-cc1c56c683bf.herokuapp.com/api/users", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("userToken"),
+        },
+      });
+  
+      const userData = response.data.find((userData) => userData.email === localStorage.getItem('userEmail'));
+      if (userData) {
+        setUser(userData);
+        setLogged(true);
         setLoading(false);
+      } else {
+        // Handle case where user data is not found
+        console.error("User data not found.");
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      setLoading(false);
     }
-};
+  };
+
+
 
   
 useEffect(() => {
@@ -150,7 +152,7 @@ const renderContent = () => {
 
       <div style={{position:'absolute', left:'40px', display:'flex', gap:'10px', alignItems:'center'}}>
       
-      <Link to='/'><h1 className="admin-logo">Y&M-Admin</h1></Link>
+      <Link to='/' style={{textDecoration:'none'}}><h1 className="admin-logo">Y&M-Admin</h1></Link>
       
       </div>
 
@@ -199,20 +201,20 @@ style={{borderRadius:'50%', width:'50px', height:'50px', cursor:'pointer'}} clas
       </div>
       <div className="admin-sidebar">
         <ul className="admin-sidebar-ul">
-          <li onClick={() => handleLinkClick('dashbord')} className={activeLink === 'dashbord' ? 'admin-visited' : ''}><i className='bx bxs-dashboard' style={{fontSize:'1.2rem'}}></i><Link href="">Dashboard</Link></li>
-          <li onClick={() => handleLinkClick('orders')} className={activeLink === 'orders' ? 'admin-visited' : ''}><i className='bx bxs-cart-alt' style={{fontSize:'1.2rem'}}></i><Link href="">Orders</Link></li>
-          <li onClick={() => handleLinkClick('messages')} className={activeLink === 'messages' ? 'admin-visited' : ''}><i className='bx bx-message-rounded-dots' style={{fontSize:'1.2rem'}}></i><Link href="">Messages</Link></li>
-          <li onClick={() => handleLinkClick('store')} className={activeLink === 'store' ? 'admin-visited' : ''}><i className='bx bxs-store' style={{fontSize:'1.2rem'}}></i><Link href="">My Store</Link></li>
+          <li onClick={() => handleLinkClick('dashbord')} className={activeLink === 'dashbord' ? 'admin-visited' : ''}><i className='bx bxs-dashboard' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Dashboard</Link></li>
+          <li onClick={() => handleLinkClick('orders')} className={activeLink === 'orders' ? 'admin-visited' : ''}><i className='bx bxs-cart-alt' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Orders</Link></li>
+          <li onClick={() => handleLinkClick('messages')} className={activeLink === 'messages' ? 'admin-visited' : ''}><i className='bx bx-message-rounded-dots' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Messages</Link></li>
+          <li onClick={() => handleLinkClick('store')} className={activeLink === 'store' ? 'admin-visited' : ''}><i className='bx bxs-store' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>My Store</Link></li>
 
           
-          <li onClick={() => handleLinkClick('team')} className={activeLink === 'team' ? 'admin-visited' : ''}><i className='bx bxs-user' style={{fontSize:'1.2rem'}}></i><Link href="">Team</Link></li>
+          <li onClick={() => handleLinkClick('team')} className={activeLink === 'team' ? 'admin-visited' : ''}><i className='bx bxs-user' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Team</Link></li>
         </ul>
 
         <ul className="admin-settings">
-        <li onClick={() => handleLinkClick('settings')}><i className='bx bx-cog' style={{fontSize:'1.2rem'}}></i><Link href="">Settings</Link></li>
+        <li onClick={() => handleLinkClick('settings')}><i className='bx bx-cog' style={{fontSize:'1.2rem'}}></i><Link href="" style={{listStyleType:'none', textDecoration:'none'}}>Settings</Link></li>
 
           
-<li onClick={() => handleLogout()} style={{color:'red'}}><i className='bx bx-log-out-circle' style={{fontSize:'1.2rem'}}></i><Link href="" style={{color:'red'}}>Log out</Link></li>
+<li onClick={() => handleLogout()} style={{color:'red'}}><i className='bx bx-log-out-circle' style={{fontSize:'1.2rem'}}></i><Link href="" style={{color:'red', textDecoration:'none'}}>Log out</Link></li>
         </ul>
       </div>
       

@@ -1,8 +1,8 @@
 .tata{
-    padding-top: 150px;
+    padding-top: 100px;
 }
 .tata img{
-    width: 100%;
+    width: 130%;
     cursor: pointer;
     transition: .5s;
 }

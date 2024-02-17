@@ -169,7 +169,7 @@ export default function Collection() {
                         </div>
                         <button className='botona' onClick={() => addToCart()}>Add to cart</button>
               </div>
-              <span onClick={() => addToWish(viewedProduct[0].id)}><a className='yaya'>ADD TO WISHLIST</a></span>
+              <span onClick={() => addToWish(viewedProduct[0].id)}><a className='yaya' style={{textDecoration:'none'}}>ADD TO WISHLIST</a></span>
         </div>
     </div>
 </div>

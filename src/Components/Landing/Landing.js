@@ -51,18 +51,7 @@ export default function Landing() {
   const [pageLoaded, setPageLoaded] = useState(false);
 
   // Simulate page loading effect
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setPageLoaded(true);
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Render the loader while the page is loading
-  if (!pageLoaded) {
-    return <Loader/>;
-  }
+  
   
 
   return (
@@ -88,10 +77,9 @@ export default function Landing() {
         </ScrollLink>
       </div>
       )}
-      
 
-      
-        <div className='popUp-landing' style={{position: 'fixed', left: 0, bottom: 0, background: '#967844', height: '48vh', width: '100%', transform: "translateY(48vh)", transition: '1s', padding: '35px'}} id='hidden'>
+
+<div className='popUp-landing' style={{position: 'fixed', left: 0, bottom: 0, background: '#967844', height: '48vh', width: '100%', transform: "translateY(48vh)", transition: '1s', padding: '35px'}} id='hidden'>
         <div className='row'>
           <div className='col-6'>
             <div className='row'>
@@ -120,8 +108,6 @@ export default function Landing() {
         </div>
         <button className='hideEff' onClick={() => hideEff()} style={{color:'#2e2e2d', fontSize:'1.2rem', marginTop:'-10px'}}>✖</button>
       </div>
-      
-
 
     </div>
   );

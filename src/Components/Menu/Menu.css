@@ -122,7 +122,8 @@
   }
 
   .menu-logo {
-    margin-left: 78px;
+    margin-left: 92px;
+    font-family: "Source Serif Pro",serif;
   }
   .menu a:hover{
     color: #967844;

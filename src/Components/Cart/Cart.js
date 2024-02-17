@@ -91,7 +91,7 @@ const [pay, setPay] = useState(false)
                         </div>
                       </div>
                       <span className='price-quantite'>
-                        <li className='price-quantite' style={{color:'#727272'}}>${product.price * product.quantite}</li>
+                        <li className='price-quantite' style={{color:'#727272', listStyleType:'none'}}>${product.price * product.quantite}</li>
                       </span>
                     </div>
                   </div>
