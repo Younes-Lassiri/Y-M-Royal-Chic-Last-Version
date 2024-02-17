@@ -7,11 +7,20 @@ import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Menu(props) {
+  const navigate = useNavigate()
   const quantite = useSelector((state) => state.wishProductQuantite)
   const cartQuantite = useSelector((state) => state.cartProductQuantite)
+
+  const [searchValue, setSearchValue] = useState("")
+
+
+  const [search, setSearch] = useState(false)
+
   function isMobileDevice() {
     if(window.innerWidth <= 767){
       return 'true'
@@ -36,12 +45,26 @@ export default function Menu(props) {
   }
 
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && searchValue !== "") {
+      // Redirect the user to the desired link when the "Enter" key is pressed
+      navigate(`/product/${searchValue.charAt(0).toUpperCase() + searchValue.slice(1)}`)
+    }
+  };
+
   
   function hideSideMenu(){
     document.querySelector('.side-menu').style.display = 'none'
   }
 
-
+  useEffect(() => {
+    // Add or remove 'no-scroll' class based on the searching state
+    if (search) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [search]);
 
   useEffect(() => {
     window.addEventListener('scroll', hideSideMenu);
@@ -60,10 +83,17 @@ export default function Menu(props) {
 
   return (
     <div id={props.profile === true? "menuP": "menu"} className="head-menu">
+      {search? (
+        <div className="search-popUp-parent">
+        <input type='text' placeholder='Enter your search...' className='search-product-popUp' onChange={(e) => setSearchValue(e.target.value)} onKeyDown={handleKeyDown}/>
+        <button className='hide-search-bar' onClick={() => setSearch(false)}>✖</button>
+      </div>
+      ): null}
       
-<div className={props.profile === true? "admin-section adminHide": "admin-section"}><span>y&mroyal-chic@contact.com</span>
+<div className={props.profile === true? "admin-section adminHide": "admin-section"}><span>Y&M_royal-chic@contact.com</span>
 <ul>
   <li style={{listStyleType:'none'}}><Link to='/y&m-admin' style={{textDecoration:'none'}}>My account</Link></li>
+  <li style={{listStyleType:'none'}} onClick={() => setSearch(true)}><Link to='/' style={{textDecoration:'none'}}>Search</Link></li>
   <li style={{listStyleType:'none'}}><Link to='/wishlist' style={{textDecoration:'none'}}>Wishlist</Link></li>
 </ul>
 </div>
