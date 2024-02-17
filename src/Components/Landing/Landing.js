@@ -9,7 +9,9 @@ import Loader from '../Loader/Loader';
 
 
 export default function Landing() {
-  
+  useEffect(() => {
+    document.title = "Y&M−Fashion and Clothing";
+}, []);
 
   useEffect(() => {
     const hid = document.getElementById('hidden');

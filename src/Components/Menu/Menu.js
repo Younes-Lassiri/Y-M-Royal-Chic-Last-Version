@@ -48,7 +48,7 @@ export default function Menu(props) {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && searchValue !== "") {
       // Redirect the user to the desired link when the "Enter" key is pressed
-      navigate(`/product/${searchValue.charAt(0).toUpperCase() + searchValue.slice(1)}`)
+      navigate(`/product/${searchValue.charAt(0).toUpperCase() + searchValue.slice(1).toLowerCase()}`)
     }
   };
 

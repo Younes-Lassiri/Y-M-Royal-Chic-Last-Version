@@ -130,9 +130,11 @@ useEffect(() => {
   const [linkHovered, setLinkHovered] = useState("")
 
   useEffect(() => {
-    document.title = `${name} - ${document.title}`;
-  }, [name]);
-  
+    const newYMIndex = document.title.indexOf('Y&M');
+    const newTitle = `${name} - ${document.title.slice(newYMIndex)}`;
+    document.title = newTitle;
+}, [name]);
+
 
   const product = products.find((product) => product.name === name);
 
