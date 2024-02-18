@@ -13,52 +13,88 @@ export default function Notification() {
     const [userEmail, setUserEmail] = useState("")
     const [contactMessage	, setContactMessage	] = useState('')
 
+    const [submitting, setSubmitting] = useState(false);
+    const [userNameError, setUserNameError] = useState('');
+    const [userEmailError, setUserEmailError] = useState('');
+
     const handleSubmit = async (event) => {
-        event.preventDefault();
+      event.preventDefault();
 
-        const body = {
-            userName,
-            userEmail,
-            contactMessage,
-        };
+      if (!validateInputs()) {
+          return;
+      }
 
-        try {
-            const response = await fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/messages', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body),
-            });
+      setSubmitting(true);
 
-            if (!response.ok) {
-                throw new Error('Error sending message.');
-            }
+      const body = {
+          userName,
+          userEmail,
+          contactMessage,
+      };
 
-            const data = await response.json();
-            console.log('message send successfully:', data);
+      try {
+          const response = await fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/messages', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(body),
+          });
 
-            // Show success message using toast notification
-            toast.success("Thank you! Your message has been successfully sent. We'll get back to you as soon as possible.", {
-                position: 'top-center',
-                autoClose: 2000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: 'light',
-                onClose: () => {
-                    navigate('/');
-                },
-            });
-            setUserName("");
-            setUserEmail("");
-            setContactMessage("");
-        } catch (error) {
-            console.error('Error sending message:', error);
-        }
-    };
+          if (!response.ok) {
+              throw new Error('Error sending message.');
+          }
+
+          const data = await response.json();
+          console.log('message send successfully:', data);
+
+          // Show success message using toast notification
+          toast.success("Thank you! Your message has been successfully sent. We'll get back to you as soon as possible.", {
+              position: 'top-center',
+              autoClose: 2000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: 'light',
+              onClose: () => {
+                  navigate('/');
+              },
+          });
+
+          setUserName('');
+          setUserEmail('');
+          setContactMessage('');
+      } catch (error) {
+          console.error('Error sending message:', error);
+          toast.error('Error sending message. Please try again later.');
+      } finally {
+          setSubmitting(false);
+      }
+  };
+
+  const validateInputs = () => {
+      let isValid = true;
+
+      // Validate userName
+      if (!/^[A-Za-z]+$/.test(userName)) {
+          setUserNameError('Name must contain only letters');
+          isValid = false;
+      } else {
+          setUserNameError('');
+      }
+
+      // Validate userEmail
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)) {
+          setUserEmailError('Invalid email format');
+          isValid = false;
+      } else {
+          setUserEmailError('');
+      }
+
+      return isValid;
+  };
   return (
     <section className="contact_us">
         <ToastContainer />
@@ -74,9 +110,11 @@ export default function Notification() {
                       <form onSubmit={handleSubmit}>
                       <p>Feel Free to contact us any time. We will get back to you as soon as we can!.</p>
                       <input type="text" className="form-control form-group" placeholder="Name" onChange={(e) => setUserName(e.target.value)} value={userName}/>
+                      {userNameError && <span className="message-error">{userNameError}</span>}
                       <input type="text" className="form-control form-group" placeholder="Email" onChange={(e) => setUserEmail(e.target.value)} value={userEmail}/>
+                      {userEmailError && <span className="message-error">{userEmailError}</span>}
                       <textarea className="form-control form-group" placeholder="Message" onChange={(e) => setContactMessage(e.target.value)} value={contactMessage}></textarea>
-                      <button className="contact_form_submit" type='submit'>Send</button>
+                      <button className="contact_form_submit" type='submit' disabled={submitting}>Send</button>
                       </form>
                     </div>
                   </div>

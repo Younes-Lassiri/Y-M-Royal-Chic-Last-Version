@@ -14,7 +14,7 @@ export default function FirstSec() {
             <h1 style={{ color: '#2e2e2d', fontWeight: 500, fontFamily: 'EB Garamond, serif',fontSize:'2.7rem' }}>Quintessential <span style={{ fontStyle: 'italic' }}>pieces </span>today</h1> {/* Fix font family syntax */}
           
               <p>
-                <span style={{ fontWeight: 500 }}>Y&M Royal Chic</span> will Elevate your style with a curated collection of timeless elegance
+                <span style={{ fontWeight: 500, color:"#000009" }}>Y&M Royal Chic</span> will Elevate your style with a curated collection of timeless elegance
                 and contemporary fashion. Discover chic dresses and versatile pieces that empower your individuality. Step into Y&M Royal Chic –
                 where fashion meets grace, and sophistication is effortless.
               </p>

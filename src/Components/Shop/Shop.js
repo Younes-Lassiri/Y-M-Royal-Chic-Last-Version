@@ -281,7 +281,7 @@ function reviewForm(){
   {relatedReview.map(function(review, i){
     return(
       <div className='row' style={{padding:'30px 0'}}>
-        <div className='col-1' style={{textAlign:'left', padding:'0'}}><img src='https://lacomete.qodeinteractive.com/wp-content/uploads/2019/04/blog-user-1-100x100.jpg' style={{width:'112px', height:'112px'}}/></div>
+        <div className='col-1' style={{textAlign:'left', padding:'0'}}><img src='https://lacomete.qodeinteractive.com/wp-content/uploads/2019/04/blog-user-2-100x100.jpg' style={{width:'112px', height:'112px'}}/></div>
         <div className='col-11' style={{padding:'0 35px'}}>
           <span style={{color:'#bf402e', fontSize:'20px', fontFamily:'Ionicons', letterSpacing:'.3em'}}>{'★'.repeat(review.rateValue)}{'☆'.repeat(5 - review.rateValue)}</span><br></br>
           <span style={{color:'#928c81', fontFamily:'Montserrat,sans-serif', fontWeight:700, fontSize:'11px', letterSpacing:'.16em', lineHeight:'1.63em', textTransform:'uppercase'}}>

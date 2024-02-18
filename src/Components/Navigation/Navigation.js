@@ -18,6 +18,7 @@ import Checkout from '../Checkout/Checkout';
 import Notification from '../Notification/Notification';
 import NotFound from '../NotFound/NotFound';
 import Loader from '../Loader/Loader';
+import ThirdSec from '../ThirdSec/ThirdSec';
 
 export default function Navigation() {
   return (
@@ -33,7 +34,7 @@ export default function Navigation() {
                 <FirstSec/>
                 <SecondSec/>
               </div>
-              <div className='issue'></div>
+              <ThirdSec/>
               <div><Collection/></div>
               <div><FiveSec/></div>
               <div><Notification/></div>

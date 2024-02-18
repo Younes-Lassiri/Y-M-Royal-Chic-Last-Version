@@ -20,7 +20,7 @@
     height: 80px;
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: #f5f8f0;
     
 }
 
@@ -85,7 +85,7 @@
     height: calc(100vh - 80px);
     padding: 5% 0;
     position: relative;
-    background-color: white;
+    background-color: #f5f8f0;
     position: relative;
     
 }
@@ -139,7 +139,7 @@
 
 
 .admin-visited{
-    background-color: #f5f8f0;
+    background-color: whitesmoke;
     animation: fadeInn 0.3s forwards ease-in alternate;
 }
 
@@ -152,7 +152,7 @@
         background-color: transparen;
     }
     to {
-        background-color: #f5f8f0;
+        background-color: whitesmoke;
     }
 }
 
@@ -170,7 +170,7 @@
 
 
 .admin-content{
-    background-color: white;
+    background-color: #f5f8f0;
     position: absolute;
     right: 0;
     top: 80px;
