@@ -60,7 +60,7 @@ export default function Messages() {
                         <tbody>
                             {messages.map((message, i) => (
                                 <tr key={i}>
-                                    <td style={{display:'flex', alignItems:'center', gap:'15px'}}><div style={{display:'flex', flexDirection:'column'}}>{message.userName}<br></br><span style={{color:'blue', fontSize:'14px'}}>{calculateTimePassed(message.created_at)}</span></div></td>
+                                    <td style={{display:'flex', alignItems:'center', gap:'15px'}}><div style={{display:'flex', flexDirection:'column'}}>{message.userName}</div></td>
                                     <td>{message.userEmail}</td>
                                     <td>{message.contactMessage}</td>
                                 </tr>

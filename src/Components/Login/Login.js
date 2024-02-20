@@ -26,7 +26,7 @@ export default function Login() {
                     email,
                     password,
                 });
-    
+                
                 if (res.status === 200) {
                     localStorage.setItem('userToken', res.data.token);
                     setLogged(true);

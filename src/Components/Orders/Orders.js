@@ -49,7 +49,7 @@ export default function Orders() {
                                 <td style={{ color: 'green' }}>${ord.clientTotalPaid.toLocaleString('en-US')}</td>
                                 <td style={{ color: '#727272' }}>{new Date(ord.created_at).toLocaleDateString()}</td>
                                 
-                                <td>{ord.userEmail}</td>
+                                <td>{ord.clientContact}</td>
                                 <td>{ord.clientItems}</td>
                                 <td>{ord.clientPayMethod}</td>
                                 <td><button className='btn-danget'>Completed</button></td>

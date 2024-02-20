@@ -15,6 +15,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+
 // Create MySQL connection pool
 const pool = mysql.createPool({
   connectionLimit: 10,
@@ -23,6 +24,8 @@ const pool = mysql.createPool({
   password: "Younesselassiri2003@",
   database: "u501859913_royal_chic2024"
 });
+
+
 
 // Function to execute MySQL query with retry logic
 function executeQueryWithRetry(sql, params, callback) {

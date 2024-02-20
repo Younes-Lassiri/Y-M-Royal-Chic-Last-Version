@@ -15,14 +15,17 @@ import Loader from "../Loader/Loader";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Dashboard from "../Dashboard/Dashboard";
 import Team from "../Team/Team";
+import Reviews from "../Reviews/Reviews";
+import Products from "../Products/Products";
 
 
 
 export default function Profil() {
   const location = useLocation();
-const { email } = location.state || 'jaja';
+  const { email } = location.state || 'jaja';
   const [totalNoti, setTotalNoti] = useState(0)
   const [profileHovered, setProfileHovered] = useState(false)
+  const [orders, setOrders] = useState([])
 
 useEffect(() => {
   const userEmail = localStorage.getItem('userEmail');
@@ -41,6 +44,13 @@ useEffect(() => {
     }
   }
   
+  useEffect(() => {
+    fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/orders')
+    .then((res) => res.json())
+    .then((data) => {
+      setOrders(data)
+    })
+  }, [])
 
   const [activeLink, setActiveLink] = useState('overview');
   const [selectedContent, setSelectedContent] = useState('overview');
@@ -132,7 +142,11 @@ const renderContent = () => {
         case 'overview':
           return <Dashboard/>; 
           case 'team':
-            return <Team/>; 
+            return <Team/>;
+            case 'reviews':
+              return <Reviews/>;
+              case 'products':
+              return <Products/>;
     default:
       return null;
   }
@@ -162,9 +176,16 @@ const renderContent = () => {
 
      
 
-
+<div style={{position:'relative'}}>
+<i class='bx bx-cart-alt' style={{fontSize:'28px', paddingRight:'15px', cursor:'pointer'}}></i>
+<span style={{position:'absolute', top:'-3px', right:'8px', zIndex:'2', color:'white', fontSize:'13px', fontWeight:600,
+       background:'red', borderRadius:'50%',
+       width:'17px', height:'17px', display:'flex', justifyContent:'center', alignItems:'center'
+       ,cursor:'pointer'}}>{orders.length > 9 ? '9+' : orders.length}</span>
+</div>
         <div style={{position:'relative'}}>
-        <i class='bx bx-bell' style={{fontSize:'25px'}}></i>
+        
+        <i class='bx bx-bell' style={{fontSize:'25px', cursor:'pointer'}}></i>
       <span style={{position:'absolute', top:'-3px', right:'-5px', zIndex:'2', color:'white', fontSize:'13px', fontWeight:600,
        background:'red', borderRadius:'50%',
        width:'17px', height:'17px', display:'flex', justifyContent:'center', alignItems:'center'
@@ -198,6 +219,10 @@ style={{borderRadius:'50%', width:'50px', height:'50px', cursor:'pointer'}} clas
           <li onClick={() => handleLinkClick('messages')} className={activeLink === 'messages' ? 'admin-visited' : ''}><i className='bx bx-message-rounded-dots' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Messages</Link></li>
           <li onClick={() => handleLinkClick('store')} className={activeLink === 'store' ? 'admin-visited' : ''}><i className='bx bxs-store' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>My Store</Link></li>
 
+          
+          <li onClick={() => handleLinkClick('reviews')} className={activeLink === 'reviews' ? 'admin-visited' : ''}><i class='bx bxs-comment' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Reviews</Link></li>
+
+          <li onClick={() => handleLinkClick('products')} className={activeLink === 'products' ? 'admin-visited' : ''}><i class='bx bxs-comment' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Products</Link></li>
           
           <li onClick={() => handleLinkClick('team')} className={activeLink === 'team' ? 'admin-visited' : ''}><i className='bx bxs-user' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Team</Link></li>
         </ul>
