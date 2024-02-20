@@ -98,7 +98,9 @@ export default function AddProduct() {
       <div className='row'>
 
         <div className='col-12'>
-        <label className='label' style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}>Product Image *</label><br />
+        <label className='label' style={{color:'#727272', fontSize:'16px', fontWeight:400, fontFamily:'"Source Serif Pro",serif'}}><a href="https://i-converter.com/files/jpg-to-url" target="_blank" style={{textDecoration: 'none', color: '#727272'}}>
+        Product Image *<i class='bx bx-right-top-arrow-circle'></i>
+    </a></label><br />
         <input
           type='text'
           value={productImage}

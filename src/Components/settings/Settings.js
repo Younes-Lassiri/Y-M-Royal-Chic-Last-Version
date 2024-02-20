@@ -55,8 +55,8 @@ const [newPassword, setNewPassword] = useState('')
       };
 
 function toDashbord(){
-  props.setActiveLink('dashbord')
-  props.setSelectedContent('dashbord')
+  props.setActiveLink('overview')
+  props.setSelectedContent('overview')
 }
 
   return (

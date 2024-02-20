@@ -42,8 +42,8 @@ useEffect(() => {
   }
   
 
-  const [activeLink, setActiveLink] = useState('dashbord');
-  const [selectedContent, setSelectedContent] = useState('dashbord');
+  const [activeLink, setActiveLink] = useState('overview');
+  const [selectedContent, setSelectedContent] = useState('overview');
 
   const handleLinkClick = (content) => {
     setSelectedContent(content);
@@ -129,7 +129,7 @@ const renderContent = () => {
         return <Orders user={user} setSelectedContent={setSelectedContent}/>;
       case 'messages':
         return <Messages/>;
-        case 'dashbord':
+        case 'overview':
           return <Dashboard/>; 
           case 'team':
             return <Team/>; 
@@ -160,30 +160,22 @@ const renderContent = () => {
 
       <div className="admin-noti">
 
-      <label className="switch">
-  <input type="checkbox" onClick={() => switchDark()}/>
-  <span className="slider round"></span>
-</label>
+     
 
 
         <div style={{position:'relative'}}>
-      <img style={{cursor:'pointer'}} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz3
-      4AAAAAXNSR0IArs4c6QAAAb1JREFUSEvd1U+ITlEYx/HPsBh/shFZ+DcWIwsLWcifjfJno5QwNaU
-      sZ2GJaHYWUv7NxkLKRknNJFkTSamxYaPJQthp3iQlQpj7vJ07Xbf39l737d04q3uf85zf93nO85xzB
-      vR5DPRZXxmwHMcx0QE8glvJPop7HXxO4SY+5XNFwCAeYSfGcCM5LUn/57As2T4j/q/jW7KdwDU8wR78
-      CnsREJPh9AHb8R57cSdbuKJiK2dxJBN8iiE8x0pcxukiYG22NW+xAFvxEocwhYVd6vQTB/AA2zCNsK3O
-      Am7lGZzHOG7jGFbhDZbWbILIehhfcB8Hs++ox5Uc8AJbsDvt4aXkUFO/7XYSV3EUkymj/TkgCrUoFTGiiP1f
-      9y/qeJaJ7sImzOAdNuSAP/ieIKH7u9QAdVjRmtHm0RAtfIzvKkAAm4zQW4yvWU1/YLDqJPcC+Cuw/xOwPnVAkxr
-      EaY4OnB/lLVpTOPZNANGaO9J1015fBrzGxibKhTWvsLnTbRq2pt1Tjmk+8HIGj9N10UsSD7GvKoNehDuurftkns1O5YWS
-      whlc7BZRXUD4xQ17OAneTQ9K15rVBXQLtHK+74A5oc5OGf/GpNQAAAAASUVORK5CYII="/>
-      <span style={{position:'absolute', top:0, right:'-5px', zIndex:'2', color:'white', fontSize:'15px', fontWeight:600,
+        <i class='bx bx-bell' style={{fontSize:'25px'}}></i>
+      <span style={{position:'absolute', top:'-3px', right:'-5px', zIndex:'2', color:'white', fontSize:'13px', fontWeight:600,
        background:'red', borderRadius:'50%',
-       width:'18px', height:'18px', display:'flex', justifyContent:'center', alignItems:'center'
-       ,cursor:'pointer'}}>{totalNoti >= 9 ? '9+' : totalNoti}</span>
+       width:'17px', height:'17px', display:'flex', justifyContent:'center', alignItems:'center'
+       ,cursor:'pointer'}}>{totalNoti > 9 ? '9+' : totalNoti}</span>
 </div>
 
+<div style={{position:'relative'}}>
 <img src="https://ih1.redbubble.net/image.4770862630.8484/st,small,507x507-pad,600x600,f8f8f8.jpg" 
 style={{borderRadius:'50%', width:'50px', height:'50px', cursor:'pointer'}} className="nani" onMouseEnter={() => setProfileHovered(true)} onMouseOut={() => setProfileHovered(false)}/>
+<div style={{width:'10px', height:'10px', backgroundColor:'rgb(2, 209, 2)', borderRadius:'50%', position:'absolute', bottom:'7px', right:'10px'}}></div>
+</div>
 
 {
   profileHovered? <div className="admin-toggle">
@@ -201,7 +193,7 @@ style={{borderRadius:'50%', width:'50px', height:'50px', cursor:'pointer'}} clas
       </div>
       <div className="admin-sidebar">
         <ul className="admin-sidebar-ul">
-          <li onClick={() => handleLinkClick('dashbord')} className={activeLink === 'dashbord' ? 'admin-visited' : ''}><i className='bx bxs-dashboard' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Dashboard</Link></li>
+          <li onClick={() => handleLinkClick('overview')} className={activeLink === 'overview' ? 'admin-visited' : ''}><i className='bx bxs-dashboard' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Overview</Link></li>
           <li onClick={() => handleLinkClick('orders')} className={activeLink === 'orders' ? 'admin-visited' : ''}><i className='bx bxs-cart-alt' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Orders</Link></li>
           <li onClick={() => handleLinkClick('messages')} className={activeLink === 'messages' ? 'admin-visited' : ''}><i className='bx bx-message-rounded-dots' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Messages</Link></li>
           <li onClick={() => handleLinkClick('store')} className={activeLink === 'store' ? 'admin-visited' : ''}><i className='bx bxs-store' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>My Store</Link></li>
@@ -220,14 +212,10 @@ style={{borderRadius:'50%', width:'50px', height:'50px', cursor:'pointer'}} clas
       
       
 
-      <div className={dark === "off"? "admin-content col-10" : "admin-content col-10 admin-content-dark"}>
-        <div className="admin-news" style={{height:'95', padding:'10px 33px'}}>
-          <h1 style={{fontWeight:600, color:'#000009'}}>Dashboard</h1>
-          <div className="bread" style={{display:'flex', gap:'30px', alignItems:'center'}}>
-          <h6 style={{color:'gray', fontWeight:500}}>Dashboard</h6>
-          <span style={{fontWeight:800, fontSize:'1.8rem', marginTop:'-10px'}}>›</span>
-          <h6 style={{color:'lightblue'}}>{selectedContent.charAt(0).toUpperCase() + selectedContent.slice(1)}</h6>
-          </div>
+      <div className="admin-content col-10">
+        <div className="admin-news" style={{height:'95', padding:'10px 12px'}}>
+          <h1 style={{fontWeight:600, color:'#000009', fontSize:'25px'}}>{selectedContent.charAt(0).toUpperCase() + selectedContent.slice(1)}</h1>
+          
         </div>
 
       {renderContent()}

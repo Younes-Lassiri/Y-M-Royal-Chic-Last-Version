@@ -12,23 +12,23 @@ export default function Team() {
         })
     })
   return (
-    <div className='order-section'>
-                    <table className='tablee' style={{width:'100%'}}>
+    <div className='team-section'>
+                    <table>
                         <thead>
-                            <tr style={{ borderBottom: '1px solid #000009' }}>
-                                <th className='th'>Admin Id</th>
-                                <th className='th'>Admin Name</th>
-                                <th className='th'>Admin Email</th>
-                                <th className='th'>Admin Password</th>
+                            <tr>
+                                <th>Admin Id</th>
+                                <th>Admin Name</th>
+                                <th>Admin Email</th>
+                                <th>Admin Password</th>
                             </tr>
                         </thead>
                         <tbody>
                             {team.map((team, i) => (
                                 <tr key={i}>
-                                    <td style={{ color: 'rgb(194, 194, 194)' }} className='td'>{team.id}</td>
-                                    <td className='td'>{team.name}</td>
-                                    <td className='td'>{team.email}</td>
-                                    <td style={{ color: 'rgb(194, 194, 194)' }} className='td'>{team.password}</td>
+                                    <td>{team.id}</td>
+                                    <td>{team.name}</td>
+                                    <td>{team.email}</td>
+                                    <td>{team.password}</td>
                                 </tr>
                             ))}
                         </tbody>

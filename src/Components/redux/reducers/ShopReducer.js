@@ -1,17 +1,6 @@
 import { FETCH_DATA, ADD_TO, ADD_WISH_PRODUCT, REMOVE_WISH_PRODUCT, ADD_TO_CART, REMOVE_CART, ADD_QUANTITE, MINUCE_QUANTITE, REMOVE_TRASH, VIEW_PRODUCT, HIDE_VIEW, ADD_SINGLE_QUANTITE, MINUCE_SINGLE_QUANTITE, ADD_REVIEW } from "../actions/actions";
 
-const ShopReducer = (state = { products: [], wishProductQuantite: 0, cart: [{
-  "id": "1",
-  "name": "Sunglasses",
-  "thumbnail": "https://lacomete.qodeinteractive.com/wp-content/uploads/2019/04/shop-img-8-600x795.jpg",
-  "price": 94,
-  "promo": false,
-  "new": false,
-  "sold": false,
-  "wish": false,
-  "quantite": 0,
-  "reviews": []
-}], cartProductQuantite:0,trash:[],viewed:false,viewedProduct:[]}, action) => {
+const ShopReducer = (state = { products: [], wishProductQuantite: 0, cart: [], cartProductQuantite:0,trash:[],viewed:false,viewedProduct:[]}, action) => {
   switch (action.type) {
     case FETCH_DATA:
       return { ...state, products: action.payload };

@@ -24,33 +24,42 @@ export default function Orders() {
             {loading ? (
                 <div style={{color:'#000009', fontSize:'20px', fontWeight:600}}>Loading...</div> // Show loading message while data is being fetched
             ) : orders.length > 0 ? (
-                <div className='order-section'>
-                    <table className='tablee' style={{width:'100%'}}>
+                <div className='order-section container'>
+                    <div className='row'>
+                        <div className='col-12'>
+                        <table>
                         <thead>
                             <tr style={{ borderBottom: '1px solid #000009' }}>
-                                <th className='th'>Order⇅</th>
-                                <th className='th'>Customer⇅</th>
-                                <th className='th'>Email⇅</th>
-                                <th className='th'>Price⇅</th>
-                                <th className='th'>Items⇅</th>
-                                <th className='th'>Method⇅</th>
-                                <th className='th'>Payment⇅</th>
+                                <th>No.</th>
+                                <th>Customer</th>
+                                <th>Total ($)</th>
+                                <th>Date</th>
+                                <th>Email</th>
+                                <th>Items</th>
+                                <th>Method</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {orders.map((order, i) => (
-                                <tr key={i}>
-                                    <td style={{ color: 'rgb(194, 194, 194)' }} className='td'>{order.orderId}</td>
-                                    <td className='td'>{order.clientName}</td>
-                                    <td className='td'>{order.clientContact}</td>
-                                    <td style={{ color: 'rgb(194, 194, 194)' }} className='td'>{order.clientTotalPaid}</td>
-                                    <td className='td'>{order.clientItems}</td>
-                                    <td style={{ color: 'rgb(194, 194, 194)', textAlign:'center' }} className='td'>{order.clientPayMethod}</td>
-                                    <td className='td'><span style={{background:'#046de6', padding:'6px 15px', borderRadius:'30px', color:'white', fontWeight:500, fontFamily:"'Protest Riot', sans-serif", fontSize:'0.8rem'}}>Completed</span></td>
-                                </tr>
-                            ))}
+                        {orders.length > 0 ? orders
+                        .map((ord, i) => (
+                            <tr key={i}>
+                                <td style={{ color: '#000009' }}>{ord.orderId}</td>
+                                <td>{ord.clientName}</td>
+                                <td style={{ color: 'green' }}>${ord.clientTotalPaid.toLocaleString('en-US')}</td>
+                                <td style={{ color: '#727272' }}>{new Date(ord.created_at).toLocaleDateString()}</td>
+                                
+                                <td>{ord.userEmail}</td>
+                                <td>{ord.clientItems}</td>
+                                <td>{ord.clientPayMethod}</td>
+                                <td><button className='btn-danget'>Completed</button></td>
+                            </tr>
+                        )) : <h2>No orders for now</h2>}
                         </tbody>
                     </table>
+                        </div>
+                    </div>
+                   
                 </div>
             ) : (
                 <div style={{color:'#f5f8f0', fontSize:'15px', fontWeight:600, margin:'auto'}}><Loader/></div>
@@ -58,3 +67,5 @@ export default function Orders() {
         </>
     );
 }
+
+

@@ -19,6 +19,13 @@ export default function Menu(props) {
   const [searchValue, setSearchValue] = useState("")
 
 
+  const [products, setProducts] = useState([])
+  
+
+
+  const [filtredProducts, setFiltredProducts] = useState([])
+
+
   const [search, setSearch] = useState(false)
 
   function isMobileDevice() {
@@ -81,12 +88,62 @@ export default function Menu(props) {
   }
 
 
+  useEffect(() => {
+    fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/products')
+    .then((res) => res.json())
+    .then((data) => {
+      setProducts(data)
+      
+    })
+  }, [])
+
+
+  useEffect(() => {
+    if (searchValue.trim() === '') {
+      setFiltredProducts([]);
+    } else {
+      setFiltredProducts(products.filter(product => 
+        product.name.toLowerCase().includes(searchValue.toLowerCase())
+      ));
+    }
+  }, [searchValue, products]);
+  
+  
+
+
   return (
     <div id={props.profile === true? "menuP": "menu"} className="head-menu">
       {search? (
         <div className="search-popUp-parent">
-        <input type='text' placeholder='Enter your search...' className='search-product-popUp' onChange={(e) => setSearchValue(e.target.value)} onKeyDown={handleKeyDown}/>
-        <button className='hide-search-bar' onClick={() => setSearch(false)}>✖</button>
+        <div className='container' style={{padding:'30px 0'}}>
+          <div className='row' style={{borderBottom:'1px solid #e0e0e0'}}>
+            <div className='col-11'>
+            <input type='text' placeholder='Enter your search...' className='search-product-popUp' onChange={(e) => setSearchValue(e.target.value)} onKeyDown={handleKeyDown}/>
+            
+            </div>
+            <div className='col-1'><button className='hide-search-bar' onClick={() => setSearch(false)}>✖</button></div>
+          </div>
+          <div className='container' style={{padding:'50px 0 0 0'}}>
+          <div className='row'>
+              {filtredProducts.map(function(product){
+                return(
+                  <div className='col-3' style={{display:'flex', alignItems:'center', gap:'15px', padding:'20px 0 0 0'}}>
+                      <Link to={`/product/${product.name}`}><div style={{backgroundImage:`url(${product.thumbnail})`, width:'80px', height:'80px', backgroundPosition:'center', backgroundSize:'cover'}}></div></Link>
+                      <div style={{display:'flex', flexDirection:'column', gap:'5px'}}>
+                      <Link className='searchLink' to={`/product/${product.name}`}><span>{product.name}</span></Link>
+                      <div style={{display:'flex', gap:'7px'}}>
+                      {product.promo? <span style={{color:'727272', fontSize:'16px', fontFamily:'"EB Garamond",serif', textDecoration:'line-through'}}>${product.oldPrice}</span> : null}
+                      <span style={{color:'727272', fontSize:'16px', fontFamily:'"EB Garamond",serif'}}>${product.price}</span>
+                      </div>
+                      </div>
+                  </div>
+                  )
+              })}
+            
+          </div>
+          </div>
+        </div>
+        
       </div>
       ): null}
       
@@ -99,7 +156,7 @@ export default function Menu(props) {
 </div>
     <nav className={props.profile === true? "navbar navbar-expand-lg yayaP": "navbar navbar-expand-lg yaya"}>
       <div className="container-fluid" style={{overflow: 'hidden'}}>
-        <a className="navbar-brand menu-logo" href="#">
+        <a className="navbar-brand menu-logo" href="/">
         Y&M Royal Chic
         </a>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">

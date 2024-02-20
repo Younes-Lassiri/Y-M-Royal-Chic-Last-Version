@@ -20,7 +20,7 @@
     height: 80px;
     display: flex;
     align-items: center;
-    background-color: #f5f8f0;
+    background-color: #f8f5f0;
     
 }
 
@@ -43,7 +43,7 @@
 }
 
 .admin-toggle{
-    width: 250px;
+    width: 280px;
     height: 100px;
     background-color: #000009;
     position: absolute;
@@ -83,9 +83,9 @@
 
 .admin-sidebar{
     height: calc(100vh - 80px);
-    padding: 5% 0;
+    padding: 4.3% 0;
     position: relative;
-    background-color: #f5f8f0;
+    background-color: #f8f5f0;
     position: relative;
     
 }
@@ -130,8 +130,6 @@
     align-items: center;
     gap: 10px;
     padding: 10px 20px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
     cursor: pointer;
 }
 
@@ -139,7 +137,7 @@
 
 
 .admin-visited{
-    background-color: whitesmoke;
+    background-color: #000009;
     animation: fadeInn 0.3s forwards ease-in alternate;
 }
 
@@ -152,29 +150,28 @@
         background-color: transparen;
     }
     to {
-        background-color: whitesmoke;
+        background-color: #000009;
     }
 }
 
 .admin-visited a{
-    color: #000009;
+    color: whitesmoke;
 }
 
 
 
 .admin-visited .bx{
-    color: #000009;
+    color: whitesmoke;
 }
 
 
 
 
 .admin-content{
-    background-color: #f5f8f0;
+    background-color: #f8f5f0;
     position: absolute;
     right: 0;
     top: 80px;
-    border-top-left-radius: 15px;
     height: calc(100vh - 80px);
     overflow: hidden;
 }

@@ -206,3 +206,12 @@ body{
     color: #f5f8f0;
     border: 1px solid #f5f8f0;
   }
+
+
+
+  @media screen and (max-width: 767px) {
+    .description h1{
+      font-size: 2.7em;
+
+    }
+  }
