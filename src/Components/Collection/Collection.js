@@ -145,7 +145,7 @@ export default function Collection() {
   <div className='viewProduct'>
     <div className='container h-100'>
     <div className="row h-100">
-        <div className="col-md-5 h-100 col-12" style={{padding:0,overflow:'hidden'}}>
+        <div className="col-md-5 h-100 col-12 view-leftSide" style={{padding:0,overflow:'hidden'}}>
             <img src={viewedProduct[0].thumbnail} className='h-100 w-100 haha' alt="Viewed Product"/>
         </div>
         <div className="col-md-7 bg-light h-100 col-12 second" style={{padding:'75px 40px',position:'relative'}}>

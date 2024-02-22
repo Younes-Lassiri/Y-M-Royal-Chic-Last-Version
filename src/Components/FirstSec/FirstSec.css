@@ -44,7 +44,9 @@
         padding: 35px;
         text-align: center;
     }
-    
+    .one{
+        padding: 0;
+    }
 .one p{
     padding-left: 20px;
 }
@@ -56,4 +58,10 @@
 }
 .two img{
     width: 100%;}
+  }
+
+
+
+  .ourBi{
+    margin-top: 80px;
   }
