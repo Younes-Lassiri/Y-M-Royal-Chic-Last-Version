@@ -263,4 +263,29 @@ app.post('/api/reviews', (req, res, next) => {
 
 
 
+
+// Route to delete a product by ID
+app.delete('/api/products', (req, res, next) => {
+  const productId = req.body.id;
+  if (!productId) {
+    return res.status(400).json({ message: 'Product ID is required' });
+  }
+
+  const sql = 'DELETE FROM products WHERE id = ?';
+  pool.query(sql, [productId], (error, results, fields) => {
+    if (error) {
+      console.error('Error executing query to delete product:', error);
+      return res.status(500).json({ message: 'Error executing query to delete product' });
+    }
+    if (results.affectedRows === 0) {
+      // If no rows were affected, it means the product with the given ID was not found
+      return res.status(404).json({ message: 'Product not found' });
+    }
+    res.json({ message: 'Product deleted successfully' });
+  });
+});
+
+
+
+
 app.listen(process.env.PORT || 4000);

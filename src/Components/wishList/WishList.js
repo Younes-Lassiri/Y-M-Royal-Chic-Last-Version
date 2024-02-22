@@ -4,10 +4,17 @@ import Menu from '../Menu/Menu';
 import Footer from '../Footer/Footer';
 import './WishList.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect } from 'react';
 
 export default function WishList() {
   const data = useSelector((state) => state.products);
 
+
+  useEffect(() => {
+    const newYMIndex = document.title.indexOf('Y&M');
+    const newTitle = `Wishlist−${document.title.slice(newYMIndex)}`;
+    document.title = newTitle;
+}, [document.title]);
   const wishlistProducts = data.filter((product) => product.wish);
 
   return (

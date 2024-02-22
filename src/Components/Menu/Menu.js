@@ -169,16 +169,12 @@ export default function Menu(props) {
 
             </li>
             <li className="nav-item">
-            <Link className="nav-link" to="/">
-            Pages
+            <Link className="nav-link" to="/our-history">
+            Our History
                 </Link>
             </li>
             <li  className="nav-item"><Link to={'/elements/product-carousel'} className="nav-link">SHOP</Link></li>
-            <li className="nav-item">
-            <Link className="nav-link" aria-current="page" href="#" to={'/elements/product-carousel'}>
-                ELEMENTS
-              </Link>
-            </li>
+            
             <li className="nav-item">
             <Link className="nav-link" to="/cart">
             Cart({cartQuantite})

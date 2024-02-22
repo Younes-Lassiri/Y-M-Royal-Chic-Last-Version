@@ -25,7 +25,7 @@ export default function Products() {
                                 <td>{prod.name}</td>
                                 <td style={{ color: 'green' }}>${prod.price.toLocaleString('en-US')}</td>
                                 <td>{prod.isNew? "True" : "False"}</td>
-                                <td>{prod.promoValue}</td>
+                                <td>{prod.promoValue? "True" : "False"}</td>
                             </tr>
                         )) : <h2>No Products for now</h2>}
                         </tbody>

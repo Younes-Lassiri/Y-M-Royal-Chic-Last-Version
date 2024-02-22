@@ -195,3 +195,10 @@
     transition: .4s;
    }
   
+
+
+   @media screen and (max-width: 767px) {
+    .effect{
+      display: none;
+    }
+  }

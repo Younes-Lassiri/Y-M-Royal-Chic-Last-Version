@@ -115,7 +115,11 @@ useEffect(() => {
   };
 
 
-
+  useEffect(() => {
+    const newYMIndex = document.title.indexOf('Y&M');
+    const newTitle = `Admin−${document.title.slice(newYMIndex)}`;
+    document.title = newTitle;
+}, [document.title]);
   
 useEffect(() => {
   checkLogin();
@@ -166,7 +170,7 @@ const renderContent = () => {
 
       <div style={{position:'absolute', left:'40px', display:'flex', gap:'10px', alignItems:'center'}}>
       
-      <Link to='/' style={{textDecoration:'none'}}><h1 className="admin-logo">Y&M-Admin</h1></Link>
+      <Link to='/' style={{textDecoration:'none'}}><h1 className="admin-logo">Y&M-Royal Chic</h1></Link>
       
       </div>
 
@@ -222,7 +226,7 @@ style={{borderRadius:'50%', width:'50px', height:'50px', cursor:'pointer'}} clas
           
           <li onClick={() => handleLinkClick('reviews')} className={activeLink === 'reviews' ? 'admin-visited' : ''}><i class='bx bxs-comment' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Reviews</Link></li>
 
-          <li onClick={() => handleLinkClick('products')} className={activeLink === 'products' ? 'admin-visited' : ''}><i class='bx bxs-comment' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Products</Link></li>
+          <li onClick={() => handleLinkClick('products')} className={activeLink === 'products' ? 'admin-visited' : ''}><i class='bx bxs-bookmarks' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Products</Link></li>
           
           <li onClick={() => handleLinkClick('team')} className={activeLink === 'team' ? 'admin-visited' : ''}><i className='bx bxs-user' style={{fontSize:'1.2rem'}}></i><Link href="" style={{textDecoration:'none'}}>Team</Link></li>
         </ul>

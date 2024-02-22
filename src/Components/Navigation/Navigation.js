@@ -19,6 +19,7 @@ import Notification from '../Notification/Notification';
 import NotFound from '../NotFound/NotFound';
 import Loader from '../Loader/Loader';
 import ThirdSec from '../ThirdSec/ThirdSec';
+import OurHistory from '../OurHistory/OurHistory';
 
 export default function Navigation() {
   return (
@@ -50,6 +51,8 @@ export default function Navigation() {
         <Route path='/login' element={<Login/>}/>
         <Route path="/profile" element={<Profile/>} />
         <Route path="/checkout" element={<Checkout/>} />
+
+        <Route path="/our-history" element={<OurHistory/>} />
 
 
         <Route path="/loader" element={<Loader/>} />

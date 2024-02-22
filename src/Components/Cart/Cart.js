@@ -3,7 +3,8 @@ import Menu from '../Menu/Menu';
 import Footer from '../Footer/Footer';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import './Cart.css';
+import './Cart.css'
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ADD_QUANTITE, MINUCE_QUANTITE, REMOVE_CART, REMOVE_TRASH } from '../redux/actions/actions';
@@ -15,6 +16,13 @@ export default function Cart() {
     return accumulator + pro.price * pro.quantite;
   }, 0);
   
+
+
+  useEffect(() => {
+    const newYMIndex = document.title.indexOf('Y&M');
+    const newTitle = `Cart−${document.title.slice(newYMIndex)}`;
+    document.title = newTitle;
+}, [document.title]);
   const trash = useSelector((state) => state.trash)
 
 const [pay, setPay] = useState(false)

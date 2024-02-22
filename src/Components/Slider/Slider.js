@@ -34,6 +34,14 @@ import { ADD_WISH_PRODUCT } from '../redux/actions/actions';
 import { REMOVE_WISH_PRODUCT } from '../redux/actions/actions';
 
 export default function Sliderr() {
+
+  useEffect(() => {
+    const newYMIndex = document.title.indexOf('Y&M');
+    const newTitle = `Product Carousel−${document.title.slice(newYMIndex)}`;
+    document.title = newTitle;
+}, [document.title]);
+
+
   const dispatch = useDispatch();
   const [isHovered, setIsHovered] = useState(false);
   const [clicked, setClicked] = useState(false);

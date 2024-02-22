@@ -32,7 +32,6 @@ export default function Login() {
                     setLogged(true);
                     navigate('/profile', { state: { email: email } });
                     localStorage.setItem('userEmail', email);
-
                 }
                 
             } catch (error) {

@@ -102,7 +102,7 @@
 .admin-sidebar-ul{
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 7px;
     position: absolute;
     width: 18%;
     padding: 0 10px;
