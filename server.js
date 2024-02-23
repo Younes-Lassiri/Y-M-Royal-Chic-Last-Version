@@ -287,5 +287,39 @@ app.delete('/api/products', (req, res, next) => {
 
 
 
+//Mohamed  Back end
+
+
+// Route to create a new admins
+app.post('/api/admins', (req, res, next) => {
+  const { name, email, password } = req.body;
+  const sql = 'INSERT INTO admins (name, email, password) VALUES (?, ?, ?)';
+  pool.query(sql, [name, email, password], (error, results, fields) => {
+    if (error) {
+      console.error('Error executing query to add user:', error);
+      return res.status(500).json({ message: 'Error executing query to add user' });
+    }
+    res.status(201).json({ message: 'User added successfully', user: { id: userId, name, email } });
+  });
+});
+
+
+
+// Route to handle admin login
+app.post('/api/adminLogin', (req, res, next) => {
+  const { email, password } = req.body;
+  const sql = 'SELECT * FROM admins WHERE email = ? AND password = ?';
+  pool.query(sql, [email, password], (error, results, fields) => {
+    if (error) {
+      console.error('Error executing login query:', error);
+      return res.status(500).json({ message: 'Error executing login query' });
+    }
+    if (results.length > 0) {
+      res.status(200).json({ message: 'Login successful'});
+    } else {
+      res.status(401).json({ message: 'Invalid credentials' });
+    }
+  });
+});
 
 app.listen(process.env.PORT || 4000);

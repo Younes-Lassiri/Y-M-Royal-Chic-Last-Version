@@ -1,6 +1,8 @@
 import React from 'react'
 import './Products.css'
 import { useSelector } from 'react-redux'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function Products() {
 
 
@@ -18,6 +20,17 @@ export default function Products() {
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
+          toast.error('Product deleted successfully', {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+          setTimeout(function(){window.location.reload()},1000)
           return response.json(); 
         })
         .then(data => {
@@ -31,6 +44,7 @@ export default function Products() {
     const products = useSelector((state) => state.products)
   return (
     <div className='container products-section'>
+        <ToastContainer />
         <div className='row'>
             <div className='col-12'>
             <table>
