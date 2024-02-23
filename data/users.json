@@ -1,16 +1,3 @@
 {
-  "users": [
-    {
-      "id": 8359,
-      "name": "Younes Lassiri",
-      "email": "youiehb@gmail.com",
-      "password": "U@0252odbjlcsjlbds"
-    },
-    {
-      "id": 1129,
-      "name": "Amine",
-      "email": "youneslassirifreelance@gmail.com",
-      "password": "Djposcspos@5655"
-    }
-  ]
+  "users": []
 }

@@ -32,7 +32,7 @@ export default function Orders() {
                             <tr style={{ borderBottom: '1px solid #000009' }}>
                                 <th>No.</th>
                                 <th>Customer</th>
-                                <th>Total ($)</th>
+                                <th>Total($)</th>
                                 <th>Date</th>
                                 <th>Email</th>
                                 <th>Items</th>
