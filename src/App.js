@@ -33,7 +33,7 @@ const App = () => {
   
   
  useEffect(() => {
-    fetch("https://royalchicapi-cc1c56c683bf.herokuapp.com/api/products").then((res) => res.json()).then((data) => {
+    fetch("https://frontgiz.store/api/react-fetch").then((res) => res.json()).then((data) => {
       dispatch({
         type:FETCH_DATA,
         payload:data

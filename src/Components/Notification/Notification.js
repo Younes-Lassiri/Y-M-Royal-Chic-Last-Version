@@ -33,7 +33,7 @@ export default function Notification() {
       };
 
       try {
-          const response = await fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/messages', {
+          const response = await fetch('https://frontgiz.store/api/store/message', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
@@ -44,7 +44,6 @@ export default function Notification() {
           if (!response.ok) {
               throw new Error('Error sending message.');
           }
-
           const data = await response.json();
           console.log('message send successfully:', data);
 

@@ -89,7 +89,7 @@ export default function Menu(props) {
 
 
   useEffect(() => {
-    fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/products')
+    fetch('https://frontgiz.store/api/react-fetch')
     .then((res) => res.json())
     .then((data) => {
       setProducts(data)
@@ -128,7 +128,7 @@ export default function Menu(props) {
               {filtredProducts.map(function(product){
                 return(
                   <div className='col-3' style={{display:'flex', alignItems:'center', gap:'15px', padding:'20px 0 0 0'}}>
-                      <Link to={`/product/${product.name}`}><div style={{backgroundImage:`url(${product.thumbnail})`, width:'80px', height:'80px', backgroundPosition:'center', backgroundSize:'cover'}}></div></Link>
+                      <Link to={`/product/${product.name}`}><div style={{backgroundImage:`url(${product.image})`, width:'80px', height:'80px', backgroundPosition:'center', backgroundSize:'cover'}}></div></Link>
                       <div style={{display:'flex', flexDirection:'column', gap:'5px'}}>
                       <Link className='searchLink' to={`/product/${product.name}`}><span>{product.name}</span></Link>
                       <div style={{display:'flex', gap:'7px'}}>
@@ -149,7 +149,7 @@ export default function Menu(props) {
       
 <div className={props.profile === true? "admin-section adminHide": "admin-section"}><span>Y&M_royal-chic@contact.com</span>
 <ul>
-  <li style={{listStyleType:'none'}}><Link to='/y&m-admin' style={{textDecoration:'none'}}>My account</Link></li>
+  <li style={{listStyleType:'none'}}><Link to='/login' style={{textDecoration:'none'}}>My account</Link></li>
   <li style={{listStyleType:'none'}} onClick={() => setSearch(true)}><Link to='/' style={{textDecoration:'none'}}>Search</Link></li>
   <li style={{listStyleType:'none'}}><Link to='/wishlist' style={{textDecoration:'none'}}>Wishlist</Link></li>
 </ul>

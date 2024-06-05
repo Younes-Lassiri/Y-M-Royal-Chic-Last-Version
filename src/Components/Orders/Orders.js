@@ -7,7 +7,7 @@ export default function Orders() {
     const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
-        fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/orders')
+        fetch('https://frontgiz.store/api/orders')
             .then((res) => res.json())
             .then((data) => {
                 setOrders(data);

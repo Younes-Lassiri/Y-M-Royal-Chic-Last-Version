@@ -28,7 +28,7 @@ export default function Shop() {
   const dispatch = useDispatch();
   const [initialStyle, setInitialStyle] = useState({});
   useEffect(() => {
-    fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/products')
+    fetch('https://frontgiz.store/api/react-fetch')
     .then((res) => res.json())
     .then((data) => {
       setRelatedProducts(data)
@@ -112,17 +112,6 @@ useEffect(() => {
   }
   
 
-
-
-
-
-
-
-
- 
-  
-
-  
   const products = useSelector((state) => state.products);
   const { name } = useParams();
 
@@ -140,7 +129,7 @@ useEffect(() => {
 
   useEffect(() => {
     if (product) {
-        fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/reviews')
+        fetch('https://frontgiz.store/api/reviews')
         .then((res) => res.json())
         .then((data) => {
             const filteredReviews = data.filter(review => review.productId === product.id);
@@ -225,7 +214,7 @@ useEffect(() => {
     console.log(body)
 
     try {
-        const response = await fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/reviews', {
+        const response = await fetch('https://frontgiz.store/api/store/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -451,7 +440,7 @@ function addToCart(){
               }}
             >
               <img
-                src={product.thumbnail}
+                src={product.image}
                 style={{ width: '100%', height: '100%', transform: 'scale(2.5) translateX(-40px)' }}
                 className='effect clicked'
               />
@@ -471,7 +460,7 @@ function addToCart(){
               }}
             >
               <img
-                src={product.thumbnail}
+                src={product.image}
                 style={{ width: '100%', height: '100%', transform: 'scale(2.7) translateX(-5px)' }}
                 className='effect'
               />
@@ -490,12 +479,12 @@ function addToCart(){
                 cursor: 'pointer',
               }}
             >
-              <img src={product.thumbnail} style={{ width: '100%', height: '100%' }} className='effect' />
+              <img src={product.image} style={{ width: '100%', height: '100%' }} className='effect' />
             </div>
           </div>
           <div className='col-lg-5 col-12 uu order-1' style={{ height: '95vh', position: 'relative' }}>
             <div className='' style={{ height: '99%', overflow: 'hidden', cursor: 'crosshair' }}>
-              <img src={product.thumbnail} style={{ height: '100%', width: '100%', ...initialStyle }} className='secondImg' />
+              <img src={product.image} style={{ height: '100%', width: '100%', ...initialStyle }} className='secondImg' />
 
               {product.new && <div className='new'>NEW</div>}
               {product.promo && (
@@ -640,7 +629,7 @@ function addToCart(){
           
           <div className="col-12 col-sm-6 col-md-4 col-lg-3 carde" key={index} title={productRela.name}>
             
-            <img src={productRela.thumbnail} alt="" />
+            <img src={productRela.image} alt="" />
             <Link to={`/product/${productRela.name}`}><div className="price">${productRela.price}</div></Link>
             
             
@@ -652,7 +641,7 @@ function addToCart(){
 
 
             <div className='divView' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-      <img src={isHovered ? hoverImg : viewImg} alt="Image" onClick={() => {dispatch({type:VIEW_PRODUCT,payload:{id:productRela.id,name:productRela.name,thumbnail:productRela.thumbnail,price:productRela.price,promo: productRela.promo,isNew: productRela.isNew,sold: productRela.sold,wish: productRela.wish,quantite: productRela.quantite}})}}/>
+      <img src={isHovered ? hoverImg : viewImg} alt="Image" onClick={() => {dispatch({type:VIEW_PRODUCT,payload:{id:productRela.id,name:productRela.name,thumbnail:productRela.image,price:productRela.price,promo: productRela.promo,isNew: productRela.isNew,sold: productRela.sold,wish: productRela.wish,quantite: productRela.quantite}})}}/>
     </div>
 
 

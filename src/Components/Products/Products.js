@@ -7,7 +7,7 @@ export default function Products() {
 
 
     function deleteProduct(productId) {
-        const url = 'https://royalchicapi-cc1c56c683bf.herokuapp.com/api/products';
+        const url = 'https://frontgiz.store/api/delete/product';
       
         fetch(url, {
           method: 'DELETE',

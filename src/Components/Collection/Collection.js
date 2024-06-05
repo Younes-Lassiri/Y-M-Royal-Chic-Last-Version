@@ -59,11 +59,10 @@ export default function Collection() {
 
 
   useEffect(() => {
-    fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/settings') // Assuming your backend server is running on port 4000 and has the endpoint /api/settings
+    fetch('https://frontgiz.store/api/settings') // Assuming your backend server is running on port 4000 and has the endpoint /api/settings
       .then((res) => res.json())
       .then(((data) => {
-        setDisplay(data.display)
-        console.log(data.display);
+        setDisplay(data[0].display)
       }))
 
 
@@ -109,7 +108,7 @@ export default function Collection() {
           
           <div className="col-12 col-sm-6 col-md-4 col-lg-3 carde" key={index} title={product.name}>
             
-            <img src={product.thumbnail} alt="" />
+            <img src={product.image} alt="" />
             <Link to={`/product/${product.name}`}><div className="price">${product.price}</div></Link>
             
             
@@ -121,11 +120,9 @@ export default function Collection() {
 
 
             <div className='divView' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-      <img src={isHovered ? hoverImg : viewImg} alt="Image" onClick={() => {dispatch({type:VIEW_PRODUCT,payload:{id:product.id,name:product.name,thumbnail:product.thumbnail,price:product.price,promo: product.promo,isNew: product.isNew,sold: product.sold,wish: product.wish,quantite: product.quantite}})}}/>
+      <img src={isHovered ? hoverImg : viewImg} alt="Image" onClick={() => {dispatch({type:VIEW_PRODUCT,payload:{id:product.id,name:product.name,thumbnail:product.image,price:product.price,promo: product.promo,isNew: product.isNew,sold: product.sold,wish: product.wish,quantite: product.quantite}})}}/>
     </div>
-
-
-
+    
             <div className="name"><Link to={`/product/${product.name}`}>{product.name}</Link></div>
             {product.isNew ? <div className='new'>NEW</div> : null}
             {product.promo ? (

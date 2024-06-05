@@ -22,13 +22,13 @@ export default function Login() {
     
         if (email !== '' && password !== '') {
             try {
-                const res = await axios.post('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/login', {
+                const res = await axios.post('https://frontgiz.store/api/user/login', {
                     email,
                     password,
                 });
                 
                 if (res.status === 200) {
-                    localStorage.setItem('userToken', res.data.token);
+                    localStorage.setItem('userToken', res.data.user.token);
                     setLogged(true);
                     navigate('/profile', { state: { email: email } });
                     localStorage.setItem('userEmail', email);
@@ -36,12 +36,17 @@ export default function Login() {
                 
             } catch (error) {
                 console.error('Error logging in:', error.message);
-                toast.error('Invalid credentials', { position: 'top-center' });
+                if (error.response && error.response.status === 401) {
+                    toast.error('Invalid credentials', { position: 'top-center' });
+                } else {
+                    toast.error('Error logging in', { position: 'top-center' });
+                }
             }
         } else {
             toast.error('Please fill the form', { position: 'top-center' });
         }
     };
+    
     
 
     useEffect(() => {

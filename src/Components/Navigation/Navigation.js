@@ -62,7 +62,7 @@ export default function Navigation() {
 
 
         <Route path='/elements/product-carousel' element={<Sliderr/>}/>
-        <Route path='*' element={<NotFound/>}/> {/* Catch-all route */}
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
     </Router>
   )

@@ -7,7 +7,7 @@ export default function Messages() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/messages')
+        fetch('https://frontgiz.store/api/messages')
             .then((res) => res.json())
             .then((data) => {
                 setMessages(data)

@@ -42,7 +42,7 @@ export default function Checkout(props) {
       };
   
       try {
-          const response = await fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/orders', {
+          const response = await fetch('https://frontgiz.store/api/store/order', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json'
@@ -56,8 +56,6 @@ export default function Checkout(props) {
   
           const data = await response.json();
           console.log('Order added successfully:', data);
-  
-          // Show success message using toast notification
           toast.success("Thank you for your order! Your purchase has been successfully completed.", {
               position: "top-center",
               autoClose: 2000,
@@ -71,13 +69,8 @@ export default function Checkout(props) {
                 navigate('/')
               }
           });
-
-          
-          
-  
       } catch (error) {
           console.error('Error adding order:', error);
-          // Handle error - you can display an error message to the user
       }
   };
 
@@ -88,7 +81,7 @@ export default function Checkout(props) {
       <div className="card">
         <ToastContainer />
         <div className="leftside">
-            <img src={products[index].thumbnail} style={{width:'100%', height:'85%'}}/>
+            <img src={products[index].image} style={{width:'100%', height:'85%'}}/>
             <div style={{width:'100%', display:'flex', flexDirection:'column'}}>
             <span style={{textAlign:'center'}} className='check-name'>The {products[index].name}</span><br></br>
 

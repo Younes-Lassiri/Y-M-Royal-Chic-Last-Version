@@ -5,7 +5,7 @@ export default function Team() {
     const [team, setTeam] = useState([])
 
     useEffect(() => {
-        fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/users')
+        fetch('https://frontgiz.store/api/users')
         .then((res) => res.json())
         .then((data) => {
             setTeam(data)

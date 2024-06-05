@@ -45,7 +45,7 @@ useEffect(() => {
   }
   
   useEffect(() => {
-    fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/orders')
+    fetch('https://frontgiz.store/api/orders')
     .then((res) => res.json())
     .then((data) => {
       setOrders(data)
@@ -60,13 +60,12 @@ useEffect(() => {
     setActiveLink(content);
   };
 
-  // Render content based on selectedContent state
   
   const { logged, setLogged, user, setUser } = useContext(authContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/messages')
+    fetch('https://frontgiz.store/api/messages')
         .then((res) => res.json())
         .then((data) => {
           setTotalNoti(data.length)
@@ -92,7 +91,7 @@ useEffect(() => {
 
   const userInfo = async () => {
     try {
-      const response = await axios.get("https://royalchicapi-cc1c56c683bf.herokuapp.com/api/users", {
+      const response = await axios.get("https://frontgiz.store/api/users", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("userToken"),
         },

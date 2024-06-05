@@ -123,7 +123,7 @@ export default function Sliderr() {
           
           <div className="cardee" key={index} title={product.name}> 
             
-            <img src={product.thumbnail} alt="" />
+            <img src={product.image} alt="" />
            <Link to={`/product/${product.name}`}><div className="pricee">${product.price}</div></Link>
             
             
@@ -135,7 +135,7 @@ export default function Sliderr() {
 
 
             <div className='divVieww' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-      <img src={isHovered ? hoverImg : viewImg} alt="Image" onClick={() => {dispatch({type:VIEW_PRODUCT,payload:{id:product.id,name:product.name,thumbnail:product.thumbnail,price:product.price,promo: product.promo,new: product.new,sold: product.sold,wish: product.wish,quantite: product.quantite}})}}/>
+      <img src={isHovered ? hoverImg : viewImg} alt="Image" onClick={() => {dispatch({type:VIEW_PRODUCT,payload:{id:product.id,name:product.name,thumbnail:product.image,price:product.price,promo: product.promo,new: product.new,sold: product.sold,wish: product.wish,quantite: product.quantite}})}}/>
     </div>
 
 

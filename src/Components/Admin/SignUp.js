@@ -25,13 +25,13 @@ export default function SignUp() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+    
         const fullNameRegex = /^[a-zA-Z\s]*$/; // Only letters and spaces
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // Minimum eight characters, at least one uppercase letter, one lowercase letter, one number, and one special character
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Email format regex
-
+    
         let isValid = true;
-
+    
         // Check if full name is valid
         if (!fullNameRegex.test(nameRef.current.value)) {
             setNameError('Full Name is Incorrect');
@@ -43,7 +43,7 @@ export default function SignUp() {
             nameRef.current.classList.remove('failed');
             nameRef.current.classList.add('success');
         }
-
+    
         // Check if email is valid
         if (!emailRegex.test(emailRef.current.value)) {
             setEmailError('Email is Incorrect');
@@ -55,7 +55,7 @@ export default function SignUp() {
             emailRef.current.classList.remove('failed');
             emailRef.current.classList.add('success');
         }
-
+    
         // Check if password meets requirements
         if (!passwordRegex.test(passRef.current.value)) {
             setPassError('Password is Incorrect');
@@ -67,7 +67,7 @@ export default function SignUp() {
             passRef.current.classList.remove('failed');
             passRef.current.classList.add('success');
         }
-
+    
         // Check if password and confirm password match
         if (passRef.current.value !== confirmPassRef.current.value) {
             setConfirmPassError('Passwords do not match');
@@ -79,20 +79,19 @@ export default function SignUp() {
             confirmPassRef.current.classList.remove('failed');
             confirmPassRef.current.classList.add('success');
         }
-
+    
         if (!isValid) {
             return;
         }
-
+    
         const newUser = {
-            id: Math.floor(Math.random() * 100000), // Generate a random user ID
             name: nameRef.current.value,
             email: emailRef.current.value,
             password: passRef.current.value
         };
         
         try {
-            const response = await fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/users', {
+            const response = await fetch('https://frontgiz.store/api/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -101,7 +100,8 @@ export default function SignUp() {
             });
         
             if (!response.ok) {
-                throw new Error('Failed to add user');
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Failed to add user');
             }
         
             // Clear the form fields after successful submission
@@ -117,6 +117,7 @@ export default function SignUp() {
             // Handle error, show error message, etc.
         }
     };
+    
 
     return (
         <div className='parent'>

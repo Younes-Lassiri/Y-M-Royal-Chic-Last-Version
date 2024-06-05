@@ -7,7 +7,7 @@ export default function Reviews() {
     const products = useSelector((state) => state.products)
 
     useEffect(() => {
-        fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/reviews')
+        fetch('https://frontgiz.store/api/reviews')
         .then((res) => res.json())
         .then((data) => {
             setReviews(data)

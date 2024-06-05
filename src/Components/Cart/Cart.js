@@ -85,7 +85,7 @@ const [pay, setPay] = useState(false)
                     <div style={{ padding: '20px' }} className='all-product'>
                       <div className='product-cart'>
                         <button className='remove-cart-product' onClick={() => removeProductCart(product.id, product.name)}></button>
-                        <img src={product.thumbnail} className='cart-img' />
+                        <img src={product.image} className='cart-img' />
                         <h1 className='cart-title'>{product.name}</h1>
                       </div>
 

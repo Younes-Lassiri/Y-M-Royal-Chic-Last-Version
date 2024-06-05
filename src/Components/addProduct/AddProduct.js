@@ -19,7 +19,7 @@ export default function AddProduct() {
 
     const newProduct = {
       name: productName,
-      thumbnail: productImage,
+      image: productImage,
       price: productPrice,
       isNew: neww === "true"? true: false,
       sold: soldee === "true"? true: false,
@@ -31,7 +31,7 @@ export default function AddProduct() {
     };
 
     try {
-      const response = await fetch('https://royalchicapi-cc1c56c683bf.herokuapp.com/api/products', {
+      const response = await fetch('https://frontgiz.store/api/store/product', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
