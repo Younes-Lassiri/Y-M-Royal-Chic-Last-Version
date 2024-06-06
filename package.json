@@ -42,6 +42,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "sonar": "sonarqube-scanner",
     "start": "node server.js",
     "start-react": "react-scripts start",
     "build": "react-scripts build",
@@ -68,7 +69,8 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.0"
+    "gh-pages": "^6.1.0",
+    "sonarqube-scanner": "^4.0.1"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
