@@ -58,7 +58,7 @@ export default function Landing() {
 
   return (
     <div className='landing-page' id='top'>
-      <div><h1 className='logo'>Y&M Royal Chic</h1></div>
+      <div><h1 className='logo'>Y&M Royal Chic for clothes</h1></div>
       <div className='description'>
         <h1 style={{ fontWeight: 500}}>
           Burning <span style={{ fontStyle: 'italic', fontWeight: 100 }}>brightly </span>
@@ -68,7 +68,7 @@ export default function Landing() {
       </div>
       <div className='scroll'>
         <ScrollLink className='a' to="menu" smooth={true} duration={500}>
-          scroll down
+          scroll to down
         </ScrollLink>
       </div>
       <div className='scroll-line'></div>
